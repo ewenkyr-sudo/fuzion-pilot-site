@@ -663,12 +663,47 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
 }
 
 @media (max-width: 768px) {
-    /* Navbar mobile — logo uniquement */
-    .hamburger { display: none !important; }
-    .nav-menu { display: none !important; }
-    .nav-cta-btn { display: none !important; }
+    /* Navbar mobile — hamburger fullscreen */
+    .nav-menu { display: none; }
+    .nav-cta-btn { display: none; }
+    .hamburger {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.12) !important;
+        border-radius: 10px !important;
+        color: white;
+        font-size: 1.1rem;
+    }
     .nav-inner {
-        justify-content: flex-start !important;
+        justify-content: space-between !important;
+    }
+    .nav-menu.open {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(5, 5, 16, 0.98);
+        padding: 100px 2rem 2rem;
+        gap: 1rem;
+        z-index: 999;
+    }
+    .nav-menu.open a {
+        font-size: 1.5rem !important;
+        padding: 1rem !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-menu.open .nav-cta-btn {
+        display: flex !important;
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
     }
     .nav-logo img {
         height: 48px;
