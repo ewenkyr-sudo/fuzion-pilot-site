@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCX Agency — Experience 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html,body{height:100%;overflow:hidden;}
+        body{font-family:'Inter',-apple-system,sans-serif;background:#050510;color:#fff;-webkit-font-smoothing:antialiased;}
+        :root{--pri:#7c3aed;--pri-l:#a78bfa;--acc:#06d6a0;--pink:#ec4899;--card:#111128;--muted:#5a5a7a;--sec:#a0a0c0;}
+
+        /* CANVAS */
+        .bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+        /* BACK */
+        .back-btn{position:fixed;top:1.2rem;left:1.2rem;z-index:200;background:rgba(17,17,40,0.85);backdrop-filter:blur(16px);border:1px solid rgba(124,58,237,0.2);border-radius:50px;padding:0.55rem 1.1rem;color:#fff;font-size:0.75rem;font-weight:600;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:0.4rem;text-decoration:none;}
+        .back-btn:hover{background:rgba(124,58,237,0.2);transform:translateX(-3px);}
+
+        /* VIDEO PLAYER WRAPPER */
+        .player{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;}
+
+        /* VIEWPORT */
+        .viewport{flex:1;position:relative;display:flex;align-items:center;justify-content:center;perspective:2000px;overflow:hidden;}
+
+        /* 3D STAGE */
+        .stage{transform-style:preserve-3d;position:relative;width:820px;height:500px;will-change:transform;}
+
+        /* LAYERS */
+        .layer{position:absolute;transform-style:preserve-3d;will-change:transform,opacity;backface-visibility:hidden;}
+        .layer-shell{inset:0;background:var(--card);border-radius:18px;border:1px solid rgba(124,58,237,0.15);box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 60px rgba(124,58,237,0.06);overflow:hidden;}
+        .layer-shell::before{content:'';position:absolute;inset:-1px;border-radius:19px;padding:1px;background:linear-gradient(135deg,rgba(124,58,237,0.35),transparent 40%,transparent 60%,rgba(6,214,160,0.25));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:10;}
+
+        .layer-topbar{top:0;left:0;right:0;height:34px;background:rgba(8,8,24,0.95);border-radius:18px 18px 0 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;padding:0 0.8rem;gap:5px;box-shadow:0 4px 20px rgba(0,0,0,0.3);}
+        .dot{width:11px;height:11px;border-radius:50%;}.dot-r{background:#ef4444;}.dot-y{background:#fbbf24;}.dot-g{background:#22c55e;}
+        .topbar-t{margin-left:0.8rem;font-size:0.65rem;color:var(--muted);font-weight:600;}
+
+        .layer-sidebar{top:34px;left:0;bottom:0;width:180px;background:rgba(8,8,24,0.95);border-right:1px solid rgba(255,255,255,0.05);border-radius:0 0 0 18px;padding:1rem 0;box-shadow:4px 0 30px rgba(0,0,0,0.3);}
+        .sb-logo{display:flex;align-items:center;gap:0.5rem;padding:0 0.7rem;margin-bottom:1rem;}
+        .sb-ico{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#06d6a0);display:flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:900;}
+        .sb-txt{font-size:0.7rem;font-weight:800;}
+        .sb-nav{list-style:none;}
+        .sb-nav li{display:flex;align-items:center;gap:0.55rem;padding:0.45rem 0.7rem;font-size:0.65rem;color:var(--muted);border-left:3px solid transparent;transition:all 0.3s;}
+        .sb-nav li.active{color:#fff;background:rgba(124,58,237,0.1);border-left-color:var(--pri);}
+        .sb-nav li i{width:15px;text-align:center;font-size:0.6rem;}
+
+        .layer-panel{top:44px;left:190px;right:10px;bottom:10px;background:rgba(12,12,30,0.95);border-radius:14px;padding:1rem;border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 60px rgba(0,0,0,0.4);overflow:hidden;}
+
+        /* Panel contents */
+        .pan{position:absolute;inset:0;padding:1rem;opacity:0;transition:opacity 0.5s;}
+        .pan.active{opacity:1;}
+        .ps{display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-bottom:0.8rem;}
+        .ps-c{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:9px;padding:0.6rem;text-align:center;}
+        .ps-v{font-size:1.2rem;font-weight:900;letter-spacing:-1px;}
+        .ps-l{font-size:0.5rem;color:var(--muted);margin-top:0.1rem;}
+        .pc{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:0.7rem;}
+        .pc-t{font-size:0.65rem;font-weight:700;margin-bottom:0.5rem;}
+        .bars{display:flex;align-items:flex-end;gap:4px;height:90px;}
+        .bar{flex:1;border-radius:3px 3px 0 0;min-height:6px;opacity:0.6;}
+
+        /* Outreach */
+        .og{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
+        .og h4{font-size:0.65rem;font-weight:700;margin-bottom:0.5rem;}
+        .dm{display:flex;align-items:center;gap:0.4rem;padding:0.35rem 0.5rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:7px;margin-bottom:0.35rem;}
+        .dm-a{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.4rem;font-weight:800;color:#fff;}
+        .dm-n{font-size:0.55rem;font-weight:700;}
+        .dm-m{font-size:0.45rem;color:var(--muted);}
+        .dm-b{margin-left:auto;padding:0.08rem 0.35rem;border-radius:50px;font-size:0.45rem;font-weight:700;}
+
+        /* Scripts */
+        .scr{display:flex;flex-direction:column;gap:0.5rem;}
+        .sc{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:9px;padding:0.7rem;}
+        .sc-cat{font-size:0.45rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--pri-l);margin-bottom:0.15rem;}
+        .sc-t{font-size:0.65rem;font-weight:700;margin-bottom:0.2rem;}
+        .sc-b{font-size:0.5rem;color:var(--muted);line-height:1.4;background:rgba(0,0,0,0.2);border-radius:5px;padding:0.4rem;border-left:2px solid var(--pri);}
+
+        /* Planning */
+        .plh{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.7rem;}
+        .plh h4{font-size:0.7rem;font-weight:700;}
+        .plw{font-size:0.5rem;color:var(--pri-l);font-weight:600;background:rgba(124,58,237,0.1);padding:0.15rem 0.5rem;border-radius:50px;}
+        .plg{display:grid;grid-template-columns:repeat(7,1fr);gap:0.25rem;}
+        .pld{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:7px;padding:0.35rem;min-height:80px;}
+        .pldn{font-size:0.45rem;font-weight:700;color:var(--muted);text-align:center;margin-bottom:0.2rem;text-transform:uppercase;}
+        .sh{font-size:0.38rem;font-weight:600;padding:0.12rem 0.25rem;border-radius:4px;margin-bottom:0.12rem;text-align:center;}
+
+        /* Content */
+        .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;}
+        .cc{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:9px;padding:0.5rem;}
+        .cs{font-size:0.4rem;font-weight:700;padding:0.08rem 0.35rem;border-radius:50px;display:inline-block;margin-bottom:0.2rem;}
+        .ct{font-size:0.6rem;font-weight:700;margin-bottom:0.1rem;}
+        .cd{font-size:0.45rem;color:var(--muted);line-height:1.3;}
+
+        /* Analytics */
+        .at{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:0.7rem;}
+        .ac{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:9px;padding:0.7rem;text-align:center;}
+        .av{font-size:1.3rem;font-weight:900;letter-spacing:-1px;}
+        .al{font-size:0.45rem;color:var(--muted);margin-top:0.1rem;}
+        .ach{font-size:0.45rem;font-weight:700;margin-top:0.15rem;}
+
+        /* Coaching */
+        .cog{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
+        .coc{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:11px;padding:0.7rem;}
+        .coh{display:flex;align-items:center;gap:0.4rem;margin-bottom:0.5rem;}
+        .coa{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;color:#fff;}
+        .con{font-size:0.65rem;font-weight:700;}
+        .cor{font-size:0.45rem;color:var(--muted);}
+        .cow{display:flex;justify-content:space-between;padding:0.2rem 0;border-bottom:1px solid rgba(255,255,255,0.03);}
+        .col{font-size:0.45rem;color:var(--muted);}
+        .cov{font-size:0.5rem;font-weight:700;}
+
+        /* ===== TEXT OVERLAY (right side) ===== */
+        .info-panel{
+            position:absolute;right:3%;top:50%;transform:translateY(-50%);
+            max-width:300px;z-index:50;
+            opacity:0;transition:opacity 0.6s,transform 0.6s;
+            transform:translateY(-50%) translateX(30px);
+            pointer-events:none;
+        }
+        .info-panel.vis{opacity:1;transform:translateY(-50%) translateX(0);}
+        .info-panel.left-side{right:auto;left:3%;}
+        .ip-glass{
+            background:rgba(17,17,40,0.85);backdrop-filter:blur(20px);
+            border:1px solid rgba(124,58,237,0.25);border-radius:18px;
+            padding:1.2rem 1.5rem;box-shadow:0 20px 50px rgba(0,0,0,0.5);
+        }
+        .ip-tag{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.5rem;}
+        .ip-title{font-size:1.1rem;font-weight:900;letter-spacing:-0.5px;margin-bottom:0.4rem;line-height:1.2;}
+        .ip-desc{font-size:0.8rem;color:var(--sec);line-height:1.6;margin-bottom:0.6rem;}
+        .ip-feats{list-style:none;}
+        .ip-feats li{display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:var(--sec);padding:0.15rem 0;}
+        .ip-feats li i{color:var(--acc);font-size:0.6rem;}
+        .anim-gradient{background:linear-gradient(270deg,#7c3aed,#06d6a0,#ec4899,#7c3aed);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gS 6s ease infinite;}
+        @keyframes gS{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+        /* ===== CENTER OVERLAY (intro/outro) ===== */
+        .center-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:60;opacity:0;transition:opacity 0.8s;pointer-events:none;background:rgba(5,5,16,0.92);}
+        .center-ov.vis{opacity:1;pointer-events:all;}
+        .co-logo{width:90px;height:90px;border-radius:24px;background:linear-gradient(135deg,#7c3aed,#06d6a0);display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:900;margin-bottom:1.5rem;box-shadow:0 0 60px rgba(124,58,237,0.3);animation:lp 2s ease infinite;}
+        @keyframes lp{0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(124,58,237,0.3);}50%{transform:scale(1.05);box-shadow:0 0 60px rgba(124,58,237,0.2);}}
+        .co-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-2px;margin-bottom:0.6rem;}
+        .co-sub{font-size:1rem;color:var(--sec);max-width:450px;line-height:1.7;}
+        .co-btns{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;justify-content:center;}
+        .btn-g{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 1.8rem;border-radius:14px;font-size:0.9rem;font-weight:700;border:none;cursor:pointer;transition:all 0.3s;text-decoration:none;}
+        .btn-p{background:linear-gradient(135deg,#7c3aed,#06d6a0);color:#fff;}
+        .btn-p:hover{box-shadow:0 10px 30px rgba(124,58,237,0.4);transform:translateY(-2px);}
+        .btn-s{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.12);}
+        .btn-s:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px);}
+
+        /* ===== CONTROLS BAR ===== */
+        .controls{
+            height:60px;background:rgba(10,10,26,0.95);
+            border-top:1px solid rgba(124,58,237,0.12);
+            display:flex;align-items:center;padding:0 1.5rem;gap:1rem;
+            z-index:100;backdrop-filter:blur(16px);
+        }
+        .ctrl-btn{
+            width:40px;height:40px;border-radius:50%;border:none;
+            background:rgba(255,255,255,0.06);color:#fff;font-size:0.9rem;
+            cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;
+        }
+        .ctrl-btn:hover{background:rgba(124,58,237,0.3);}
+        .ctrl-btn.play-btn{background:linear-gradient(135deg,#7c3aed,#06d6a0);width:44px;height:44px;}
+        .ctrl-btn.play-btn:hover{box-shadow:0 0 25px rgba(124,58,237,0.4);}
+
+        .timeline-wrap{flex:1;display:flex;align-items:center;gap:0.8rem;}
+        .timeline-time{font-size:0.7rem;font-weight:600;color:var(--muted);min-width:35px;font-variant-numeric:tabular-nums;}
+        .timeline-track{flex:1;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;cursor:pointer;position:relative;overflow:hidden;}
+        .timeline-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#06d6a0);border-radius:3px;width:0;transition:width 0.1s linear;}
+        .timeline-track:hover .timeline-fill{box-shadow:0 0 10px rgba(124,58,237,0.4);}
+
+        .scene-dots{display:flex;gap:0.35rem;align-items:center;}
+        .scene-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.1);transition:all 0.3s;cursor:pointer;}
+        .scene-dot.active{background:var(--pri);box-shadow:0 0 8px rgba(124,58,237,0.4);}
+        .scene-dot:hover{background:rgba(124,58,237,0.5);}
+
+        .scene-label{font-size:0.7rem;font-weight:600;color:var(--sec);min-width:120px;text-align:right;}
+
+        @media(max-width:1024px){.stage{width:600px;height:370px;}.info-panel{max-width:240px;}}
+        @media(max-width:768px){.stage{width:85vw;height:260px;}.info-panel{display:none;}.layer-sidebar{width:110px;}.layer-panel{left:120px;}.ps{grid-template-columns:repeat(2,1fr);}.plg{grid-template-columns:repeat(3,1fr);}.cg{grid-template-columns:1fr 1fr;}}
+    </style>
+</head>
+<body>
+
+<canvas class="bg-canvas" id="bgCanvas"></canvas>
+<a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+
+<div class="player">
+    <!-- VIEWPORT -->
+    <div class="viewport" id="viewport">
+
+        <!-- INTRO -->
+        <div class="center-ov vis" id="introOv">
+            <div class="co-logo">LCX</div>
+            <div class="co-title">Explorez LCX Agency <span class="anim-gradient">en 3D</span></div>
+            <div class="co-sub">Appuyez sur play pour decouvrir chaque fonctionnalite de la plateforme.</div>
+        </div>
+
+        <!-- OUTRO -->
+        <div class="center-ov" id="outroOv">
+            <div class="co-logo">LCX</div>
+            <div class="co-title">Pret a <span class="anim-gradient">transformer</span> votre agence ?</div>
+            <div class="co-sub">Rejoignez 500+ managers qui scalent deja avec LCX Agency.</div>
+            <div class="co-btns">
+                <a href="pricing.html" class="btn-g btn-p"><i class="fas fa-rocket"></i> Essayer gratuitement</a>
+                <a href="index.html" class="btn-g btn-s"><i class="fas fa-arrow-left"></i> Retour au site</a>
+            </div>
+        </div>
+
+        <!-- 3D STAGE -->
+        <div class="stage" id="stage">
+            <div class="layer layer-shell" id="lShell"></div>
+            <div class="layer layer-topbar" id="lTop"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><span class="topbar-t" id="topT">LCX Agency</span></div>
+            <div class="layer layer-sidebar" id="lSide">
+                <div class="sb-logo"><div class="sb-ico">LCX</div><div class="sb-txt">LCX Agency</div></div>
+                <ul class="sb-nav" id="sbNav">
+                    <li class="active" data-p="0"><i class="fas fa-chart-line"></i> Dashboard</li>
+                    <li data-p="1"><i class="fas fa-paper-plane"></i> Outreach</li>
+                    <li data-p="2"><i class="fas fa-scroll"></i> Scripts</li>
+                    <li data-p="3"><i class="fas fa-calendar"></i> Planning</li>
+                    <li data-p="4"><i class="fas fa-images"></i> Contenu</li>
+                    <li data-p="5"><i class="fas fa-chart-bar"></i> Analytics</li>
+                    <li data-p="6"><i class="fas fa-graduation-cap"></i> Coaching</li>
+                </ul>
+            </div>
+
+            <!-- PANELS -->
+            <div class="layer layer-panel" id="lPanel">
+                <!-- Dashboard -->
+                <div class="pan active" id="p0">
+                    <div class="ps"><div class="ps-c"><div class="ps-v" style="color:#7c3aed;">22,556</div><div class="ps-l">Followers</div></div><div class="ps-c"><div class="ps-v" style="color:#06d6a0;">1,390</div><div class="ps-l">DMs</div></div><div class="ps-c"><div class="ps-v" style="color:#ec4899;">5</div><div class="ps-l">Modeles</div></div><div class="ps-c"><div class="ps-v" style="color:#fbbf24;">€12.4K</div><div class="ps-l">Revenu</div></div></div>
+                    <div class="pc"><div class="pc-t"><i class="fas fa-chart-area" style="color:var(--pri-l);margin-right:0.3rem;"></i>Performance 7j</div><div class="bars" id="b1"></div></div>
+                </div>
+                <!-- Outreach -->
+                <div class="pan" id="p1">
+                    <div class="og"><div><h4><i class="fas fa-inbox" style="color:#7c3aed;margin-right:0.3rem;"></i>DMs Recus</h4><div class="dm"><div class="dm-a" style="background:linear-gradient(135deg,#7c3aed,#ec4899);">S</div><div><div class="dm-n">@sophie_fit</div><div class="dm-m">Interested in collab...</div></div><div class="dm-b" style="background:rgba(6,214,160,0.15);color:#06d6a0;">New</div></div><div class="dm"><div class="dm-a" style="background:linear-gradient(135deg,#3b82f6,#7c3aed);">M</div><div><div class="dm-n">@max_lifestyle</div><div class="dm-m">Can we discuss rates?</div></div><div class="dm-b" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Wait</div></div><div class="dm"><div class="dm-a" style="background:linear-gradient(135deg,#06d6a0,#3b82f6);">L</div><div><div class="dm-n">@luna_model</div><div class="dm-m">Available next week</div></div><div class="dm-b" style="background:rgba(6,214,160,0.15);color:#06d6a0;">New</div></div></div><div><h4><i class="fas fa-rocket" style="color:#06d6a0;margin-right:0.3rem;"></i>Campagnes</h4><div class="dm"><div style="font-size:0.5rem;"><div class="dm-n">Instagram Q1</div><div class="dm-m">1,390 DMs • 39.9%</div></div><div class="dm-b" style="background:rgba(6,214,160,0.15);color:#06d6a0;">Active</div></div><div class="dm"><div style="font-size:0.5rem;"><div class="dm-n">TikTok Recruit</div><div class="dm-m">856 DMs • 28.5%</div></div><div class="dm-b" style="background:rgba(6,214,160,0.15);color:#06d6a0;">Active</div></div></div></div>
+                </div>
+                <!-- Scripts -->
+                <div class="pan" id="p2">
+                    <div class="scr"><div class="sc"><div class="sc-cat">Premier contact</div><div class="sc-t">Intro Modele — Instagram</div><div class="sc-b">Hey {prenom} ! J'ai vu ton profil et je pense que tu serais parfaite pour notre agence...</div></div><div class="sc"><div class="sc-cat">Relance</div><div class="sc-t">Follow-up J+3</div><div class="sc-b">Hey {prenom}, je me permets de te recontacter ! Les resultats sont incroyables...</div></div><div class="sc"><div class="sc-cat">Closing</div><div class="sc-t">Script closing final</div><div class="sc-b">Genial {prenom} ! On te cree ton espace et tu peux commencer des aujourd'hui...</div></div></div>
+                </div>
+                <!-- Planning -->
+                <div class="pan" id="p3">
+                    <div class="plh"><h4><i class="fas fa-calendar-week" style="color:var(--pri-l);margin-right:0.3rem;"></i>Planning</h4><div class="plw">Sem 15 — Avril 2026</div></div>
+                    <div class="plg"><div class="pld"><div class="pldn">Lun</div><div class="sh" style="background:rgba(124,58,237,0.15);color:#a78bfa;">Gaby 8-16h</div><div class="sh" style="background:rgba(6,214,160,0.15);color:#06d6a0;">Ines 16-00h</div></div><div class="pld"><div class="pldn">Mar</div><div class="sh" style="background:rgba(236,72,153,0.15);color:#ec4899;">Ewen 8-16h</div><div class="sh" style="background:rgba(124,58,237,0.15);color:#a78bfa;">Gaby 16-00h</div></div><div class="pld"><div class="pldn">Mer</div><div class="sh" style="background:rgba(6,214,160,0.15);color:#06d6a0;">Ines 8-16h</div><div class="sh" style="background:rgba(236,72,153,0.15);color:#ec4899;">Ewen 16-00h</div></div><div class="pld"><div class="pldn">Jeu</div><div class="sh" style="background:rgba(124,58,237,0.15);color:#a78bfa;">Gaby 8-16h</div><div class="sh" style="background:rgba(6,214,160,0.15);color:#06d6a0;">Ines 16-00h</div></div><div class="pld"><div class="pldn">Ven</div><div class="sh" style="background:rgba(236,72,153,0.15);color:#ec4899;">Ewen 8-16h</div><div class="sh" style="background:rgba(124,58,237,0.15);color:#a78bfa;">Gaby 16-00h</div></div><div class="pld"><div class="pldn">Sam</div><div class="sh" style="background:rgba(6,214,160,0.15);color:#06d6a0;">Ines 10-18h</div></div><div class="pld"><div class="pldn">Dim</div><div class="sh" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Repos</div></div></div>
+                </div>
+                <!-- Content -->
+                <div class="pan" id="p4">
+                    <h4 style="font-size:0.7rem;font-weight:700;margin-bottom:0.6rem;"><i class="fas fa-images" style="color:var(--pink);margin-right:0.3rem;"></i>Demandes de contenu</h4>
+                    <div class="cg"><div class="cc"><div class="cs" style="background:rgba(239,68,68,0.15);color:#ef4444;">Urgent</div><div class="ct">Photos bikini</div><div class="cd">Clara — 5 photos HD</div></div><div class="cc"><div class="cs" style="background:rgba(251,191,36,0.15);color:#fbbf24;">En cours</div><div class="ct">Video workout</div><div class="cd">Sofia — 60s sport</div></div><div class="cc"><div class="cs" style="background:rgba(6,214,160,0.15);color:#06d6a0;">Livre</div><div class="ct">Shooting lifestyle</div><div class="cd">Emma — 10 photos</div></div><div class="cc"><div class="cs" style="background:rgba(239,68,68,0.15);color:#ef4444;">Urgent</div><div class="ct">Reels Instagram</div><div class="cd">Clara — 3 reels</div></div><div class="cc"><div class="cs" style="background:rgba(124,58,237,0.15);color:#a78bfa;">Planifie</div><div class="ct">Collab marque</div><div class="cd">Sofia — Produit</div></div><div class="cc"><div class="cs" style="background:rgba(6,214,160,0.15);color:#06d6a0;">Livre</div><div class="ct">Story set</div><div class="cd">Emma — 15 stories</div></div></div>
+                </div>
+                <!-- Analytics -->
+                <div class="pan" id="p5">
+                    <div class="at"><div class="ac"><div class="av" style="color:#7c3aed;">22.5K</div><div class="al">Followers</div><div class="ach" style="color:#06d6a0;"><i class="fas fa-arrow-up"></i> +12.3%</div></div><div class="ac"><div class="av" style="color:#06d6a0;">€12.4K</div><div class="al">Revenu</div><div class="ach" style="color:#06d6a0;"><i class="fas fa-arrow-up"></i> +23.1%</div></div><div class="ac"><div class="av" style="color:#ec4899;">39.9%</div><div class="al">Taux rep.</div><div class="ach" style="color:#06d6a0;"><i class="fas fa-arrow-up"></i> +5.2%</div></div></div>
+                    <div class="pc"><div class="pc-t"><i class="fas fa-chart-line" style="color:#06d6a0;margin-right:0.3rem;"></i>Croissance 30j</div><div class="bars" id="b2"></div></div>
+                </div>
+                <!-- Coaching -->
+                <div class="pan" id="p6">
+                    <h4 style="font-size:0.7rem;font-weight:700;margin-bottom:0.6rem;"><i class="fas fa-graduation-cap" style="color:var(--acc);margin-right:0.3rem;"></i>Coaching</h4>
+                    <div class="cog"><div class="coc"><div class="coh"><div class="coa" style="background:linear-gradient(135deg,#7c3aed,#06d6a0);">G</div><div><div class="con">Gaby</div><div class="cor">Senior Chatter</div></div></div><div class="cow"><span class="col">DMs</span><span class="cov" style="color:#06d6a0;">456</span></div><div class="cow"><span class="col">Taux</span><span class="cov" style="color:#06d6a0;">42.3%</span></div><div class="cow"><span class="col">Closes</span><span class="cov" style="color:#fbbf24;">28</span></div><div class="cow"><span class="col">Score</span><span class="cov" style="color:#7c3aed;">94/100</span></div></div><div class="coc"><div class="coh"><div class="coa" style="background:linear-gradient(135deg,#ec4899,#7c3aed);">I</div><div><div class="con">Ines</div><div class="cor">Chatter</div></div></div><div class="cow"><span class="col">DMs</span><span class="cov" style="color:#06d6a0;">312</span></div><div class="cow"><span class="col">Taux</span><span class="cov" style="color:#06d6a0;">38.7%</span></div><div class="cow"><span class="col">Closes</span><span class="cov" style="color:#fbbf24;">19</span></div><div class="cow"><span class="col">Score</span><span class="cov" style="color:#7c3aed;">87/100</span></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFO PANELS -->
+        <div class="info-panel" id="info0"><div class="ip-glass"><div class="ip-tag" style="color:#7c3aed;"><i class="fas fa-chart-line"></i> Dashboard</div><div class="ip-title">Tout votre business <span class="anim-gradient">d'un coup d'oeil</span></div><div class="ip-desc">Followers, DMs, revenus, performance equipe — tout en temps reel.</div><ul class="ip-feats"><li><i class="fas fa-check"></i> KPIs en direct</li><li><i class="fas fa-check"></i> Graphiques interactifs</li><li><i class="fas fa-check"></i> Vue multi-modeles</li></ul></div></div>
+        <div class="info-panel left-side" id="info1"><div class="ip-glass"><div class="ip-tag" style="color:#06d6a0;"><i class="fas fa-paper-plane"></i> Outreach</div><div class="ip-title">DMs & recrutement <span class="anim-gradient">automatises</span></div><div class="ip-desc">Campagnes multi-plateforme, suivi des reponses en direct.</div><ul class="ip-feats"><li><i class="fas fa-check"></i> 39.9% taux de reponse</li><li><i class="fas fa-check"></i> Campagnes automatisees</li></ul></div></div>
+        <div class="info-panel" id="info2"><div class="ip-glass"><div class="ip-tag" style="color:var(--pri-l);"><i class="fas fa-scroll"></i> Scripts</div><div class="ip-title">Des templates <span class="anim-gradient">qui closent</span></div><div class="ip-desc">Premier contact, relance, closing — tout est pret et personnalisable.</div><ul class="ip-feats"><li><i class="fas fa-check"></i> Variables dynamiques</li><li><i class="fas fa-check"></i> Categorises par etape</li></ul></div></div>
+        <div class="info-panel left-side" id="info3"><div class="ip-glass"><div class="ip-tag" style="color:#ec4899;"><i class="fas fa-calendar"></i> Planning</div><div class="ip-title">Organisation <span class="anim-gradient">zero friction</span></div><div class="ip-desc">Shifts visuels, rotations equipe, vue semaine complete.</div><ul class="ip-feats"><li><i class="fas fa-check"></i> Gestion des shifts</li><li><i class="fas fa-check"></i> Notifications equipe</li></ul></div></div>
+        <div class="info-panel" id="info4"><div class="ip-glass"><div class="ip-tag" style="color:var(--pink);"><i class="fas fa-images"></i> Contenu</div><div class="ip-title">Demandes <span class="anim-gradient">centralisees</span></div><div class="ip-desc">Chaque demande trackee avec statut, priorite et deadline.</div><ul class="ip-feats"><li><i class="fas fa-check"></i> Statuts visuels</li><li><i class="fas fa-check"></i> Briefs detailles</li></ul></div></div>
+        <div class="info-panel left-side" id="info5"><div class="ip-glass"><div class="ip-tag" style="color:#06d6a0;"><i class="fas fa-chart-bar"></i> Analytics</div><div class="ip-title">Des donnees pour <span class="anim-gradient">scaler</span></div><div class="ip-desc">+12.3% followers, +23.1% revenu — mesurez et exportez tout.</div><ul class="ip-feats"><li><i class="fas fa-check"></i> Rapports exportables</li><li><i class="fas fa-check"></i> Tendances en temps reel</li></ul></div></div>
+        <div class="info-panel" id="info6"><div class="ip-glass"><div class="ip-tag" style="color:var(--acc);"><i class="fas fa-graduation-cap"></i> Coaching</div><div class="ip-title">Formez votre <span class="anim-gradient">equipe</span></div><div class="ip-desc">Scores, classement, objectifs — transformez vos chatters.</div><ul class="ip-feats"><li><i class="fas fa-check"></i> Score / 100</li><li><i class="fas fa-check"></i> Suivi DMs & closes</li></ul></div></div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+        <button class="ctrl-btn" onclick="skipBack()" title="Precedent"><i class="fas fa-backward-step"></i></button>
+        <button class="ctrl-btn play-btn" id="playBtn" onclick="togglePlay()" title="Play/Pause"><i class="fas fa-play" id="playIcon"></i></button>
+        <button class="ctrl-btn" onclick="skipForward()" title="Suivant"><i class="fas fa-forward-step"></i></button>
+
+        <div class="timeline-wrap">
+            <span class="timeline-time" id="timeElapsed">0:00</span>
+            <div class="timeline-track" id="timelineTrack" onclick="seekTo(event)">
+                <div class="timeline-fill" id="timelineFill"></div>
+            </div>
+            <span class="timeline-time" id="timeTotal">0:00</span>
+        </div>
+
+        <div class="scene-dots" id="sceneDots"></div>
+        <div class="scene-label" id="sceneLabel">Intro</div>
+    </div>
+</div>
+
+<script>
+// ===== CANVAS =====
+const cv=document.getElementById('bgCanvas'),cx=cv.getContext('2d');
+let mx=-999,my=-999;
+function rz(){cv.width=innerWidth;cv.height=innerHeight;}rz();addEventListener('resize',rz);
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+const pts=Array.from({length:40},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:Math.random()*1.5+0.5,a:Math.random()*0.25+0.08}));
+function drawP(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{const dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<120){const f=(120-d)/120*0.5;p.vx+=dx/d*f;p.vy+=dy/d*f;}p.vx*=0.98;p.vy*=0.98;p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=cv.width;if(p.x>cv.width)p.x=0;if(p.y<0)p.y=cv.height;if(p.y>cv.height)p.y=0;cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=`rgba(124,58,237,${p.a})`;cx.fill();});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle=`rgba(124,58,237,${(1-d/110)*0.07})`;cx.lineWidth=0.5;cx.stroke();}}requestAnimationFrame(drawP);}drawP();
+
+// Bars
+function mkB(id,n,c){const el=document.getElementById(id);if(!el)return;for(let i=0;i<n;i++){const b=document.createElement('div');b.className='bar';b.style.background=c;b.style.height=(Math.random()*70+20)+'%';el.appendChild(b);}}
+mkB('b1',14,'linear-gradient(to top,#7c3aed,#a78bfa)');
+mkB('b2',14,'linear-gradient(to top,#06d6a0,#34d399)');
+
+// ===== VIDEO ENGINE =====
+const SCENE_DURATION = 5; // seconds per scene
+const scenes = [
+    { name:'Intro', panel:-1, rotX:0, rotY:0, scale:0.85, explode:0, topZ:0, sideX:0, sideZ:0 },
+    { name:'Transition 3D', panel:0, rotX:18, rotY:-25, scale:0.7, explode:0.5, topZ:90, sideX:-40, sideZ:60 },
+    { name:'Dashboard', panel:0, rotX:12, rotY:-18, scale:0.72, explode:1, topZ:180, sideX:-80, sideZ:120 },
+    { name:'Outreach', panel:1, rotX:10, rotY:15, scale:0.72, explode:1, topZ:180, sideX:-80, sideZ:120 },
+    { name:'Scripts', panel:2, rotX:15, rotY:-12, scale:0.72, explode:1, topZ:180, sideX:-80, sideZ:120 },
+    { name:'Planning', panel:3, rotX:8, rotY:18, scale:0.72, explode:1, topZ:180, sideX:-80, sideZ:120 },
+    { name:'Contenu', panel:4, rotX:12, rotY:-15, scale:0.72, explode:1, topZ:180, sideX:-80, sideZ:120 },
+    { name:'Analytics', panel:5, rotX:10, rotY:12, scale:0.72, explode:1, topZ:180, sideX:-80, sideZ:120 },
+    { name:'Coaching', panel:6, rotX:14, rotY:-10, scale:0.72, explode:1, topZ:180, sideX:-80, sideZ:120 },
+    { name:'Reassemblage', panel:0, rotX:5, rotY:-5, scale:0.8, explode:0.3, topZ:30, sideX:-15, sideZ:20 },
+    { name:'Fin', panel:-1, rotX:0, rotY:0, scale:0.85, explode:0, topZ:0, sideX:0, sideZ:0 }
+];
+
+const TOTAL_DURATION = scenes.length * SCENE_DURATION;
+let currentTime = 0;
+let isPlaying = false;
+let lastTimestamp = null;
+
+const stage = document.getElementById('stage');
+const lShell = document.getElementById('lShell');
+const lTop = document.getElementById('lTop');
+const lSide = document.getElementById('lSide');
+const lPanel = document.getElementById('lPanel');
+const topT = document.getElementById('topT');
+const introOv = document.getElementById('introOv');
+const outroOv = document.getElementById('outroOv');
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
+const timelineFill = document.getElementById('timelineFill');
+const timeElapsed = document.getElementById('timeElapsed');
+const timeTotal = document.getElementById('timeTotal');
+const sceneLabel = document.getElementById('sceneLabel');
+const sceneDots = document.getElementById('sceneDots');
+const sidebarItems = document.querySelectorAll('#sbNav li');
+const infoPanels = Array.from({length:7},(_,i)=>document.getElementById('info'+i));
+const panels = Array.from({length:7},(_,i)=>document.getElementById('p'+i));
+const titles = ['Dashboard','Outreach & DMs','Scripts & Templates','Planning Equipe','Demandes de Contenu','Analytics','Coaching'];
+
+// Scene dots
+scenes.forEach((s,i)=>{const d=document.createElement('div');d.className='scene-dot';d.onclick=()=>{currentTime=i*SCENE_DURATION;render();};sceneDots.appendChild(d);});
+const dots = sceneDots.querySelectorAll('.scene-dot');
+
+timeTotal.textContent = formatTime(TOTAL_DURATION);
+
+function formatTime(s){const m=Math.floor(s/60);const ss=Math.floor(s%60);return m+':'+String(ss).padStart(2,'0');}
+
+function lerp(a,b,t){return a+(b-a)*t;}
+function smooth(t){return t*t*(3-2*t);}
+
+function render(){
+    const p = currentTime / TOTAL_DURATION;
+    const sceneIdx = Math.min(Math.floor(currentTime / SCENE_DURATION), scenes.length-1);
+    const sceneLocal = (currentTime % SCENE_DURATION) / SCENE_DURATION;
+    const t = smooth(sceneLocal);
+
+    const curr = scenes[sceneIdx];
+    const next = scenes[Math.min(sceneIdx+1, scenes.length-1)];
+
+    // Interpolate
+    const rotX = lerp(curr.rotX, next.rotX, t);
+    const rotY = lerp(curr.rotY, next.rotY, t);
+    const sc = lerp(curr.scale, next.scale, t);
+    const ex = lerp(curr.explode, next.explode, t);
+    const tZ = lerp(curr.topZ, next.topZ, t);
+    const sX = lerp(curr.sideX, next.sideX, t);
+    const sZ = lerp(curr.sideZ, next.sideZ, t);
+
+    stage.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${sc})`;
+    lShell.style.transform = `translateZ(${-15*ex}px)`;
+    lTop.style.transform = `translateZ(${tZ}px) translateY(${-50*ex}px)`;
+    lSide.style.transform = `translateZ(${sZ}px) translateX(${sX}px)`;
+    lPanel.style.transform = `translateZ(${60*ex}px)`;
+
+    // Shadows
+    lTop.style.boxShadow = ex>0.1?`0 ${8+15*ex}px ${20+30*ex}px rgba(0,0,0,0.5)`:'';
+    lSide.style.boxShadow = ex>0.1?`${4+8*ex}px 0 ${20+25*ex}px rgba(0,0,0,0.4)`:'';
+    lPanel.style.boxShadow = ex>0.1?`0 ${10+20*ex}px ${30+40*ex}px rgba(0,0,0,0.4)`:'';
+
+    // Active panel
+    const activePanel = curr.panel;
+    panels.forEach((pan,i)=>{
+        pan.classList.toggle('active', i===activePanel || (activePanel===-1 && i===0));
+    });
+
+    // Sidebar
+    sidebarItems.forEach((li,i)=>li.classList.toggle('active', i===(activePanel>=0?activePanel:0)));
+    topT.textContent = 'LCX Agency' + (activePanel>=0?' — '+titles[activePanel]:'');
+
+    // Info panels
+    infoPanels.forEach((ip,i)=>{
+        ip.classList.toggle('vis', i===activePanel && ex>0.5);
+    });
+
+    // Intro/Outro
+    introOv.classList.toggle('vis', sceneIdx===0 && sceneLocal<0.7);
+    outroOv.classList.toggle('vis', sceneIdx===scenes.length-1 && sceneLocal>0.3);
+
+    // Timeline
+    timelineFill.style.width = (p*100)+'%';
+    timeElapsed.textContent = formatTime(currentTime);
+
+    // Scene dots
+    dots.forEach((d,i)=>d.classList.toggle('active',i===sceneIdx));
+    sceneLabel.textContent = curr.name;
+}
+
+function tick(timestamp){
+    if(!isPlaying) return;
+    if(lastTimestamp===null) lastTimestamp=timestamp;
+    const delta = (timestamp - lastTimestamp)/1000;
+    lastTimestamp = timestamp;
+    currentTime = Math.min(currentTime + delta, TOTAL_DURATION);
+
+    render();
+
+    if(currentTime >= TOTAL_DURATION){
+        isPlaying = false;
+        playIcon.className = 'fas fa-redo';
+        return;
+    }
+    requestAnimationFrame(tick);
+}
+
+function togglePlay(){
+    if(currentTime >= TOTAL_DURATION){
+        currentTime = 0;
+        render();
+    }
+    isPlaying = !isPlaying;
+    playIcon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
+    if(isPlaying){
+        lastTimestamp = null;
+        requestAnimationFrame(tick);
+    }
+}
+
+function skipForward(){
+    const sceneIdx = Math.floor(currentTime / SCENE_DURATION);
+    currentTime = Math.min((sceneIdx+1)*SCENE_DURATION, TOTAL_DURATION-0.01);
+    render();
+}
+
+function skipBack(){
+    const sceneIdx = Math.floor(currentTime / SCENE_DURATION);
+    currentTime = Math.max((sceneIdx-1)*SCENE_DURATION, 0);
+    render();
+}
+
+function seekTo(e){
+    const rect = document.getElementById('timelineTrack').getBoundingClientRect();
+    const p = (e.clientX - rect.left) / rect.width;
+    currentTime = Math.max(0, Math.min(p * TOTAL_DURATION, TOTAL_DURATION-0.01));
+    render();
+}
+
+// Keyboard
+document.addEventListener('keydown', e=>{
+    if(e.code==='Space'){e.preventDefault();togglePlay();}
+    if(e.code==='ArrowRight') skipForward();
+    if(e.code==='ArrowLeft') skipBack();
+});
+
+// Audio
+let actx;
+function playSound(){if(!actx)try{actx=new(AudioContext||webkitAudioContext)();}catch(e){return;}const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type='sine';o.frequency.setValueAtTime(600,actx.currentTime);o.frequency.exponentialRampToValueAtTime(300,actx.currentTime+0.1);g.gain.setValueAtTime(0.03,actx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,actx.currentTime+0.1);o.start(actx.currentTime);o.stop(actx.currentTime+0.1);}
+let prevSi=-1;setInterval(()=>{const si=Math.floor(currentTime/SCENE_DURATION);if(si!==prevSi&&prevSi!==-1)playSound();prevSi=si;},100);
+
+render();
+</script>
+</body>
+</html>

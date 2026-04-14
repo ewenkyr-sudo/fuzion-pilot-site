@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctionnalités — LCX Agency</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Canvas particle system */
+        .hero-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page-hero {
+            padding: 10rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        /* Grid overlay on hero */
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(0deg, transparent 24%, rgba(124, 58, 237, 0.05) 25%, rgba(124, 58, 237, 0.05) 26%, transparent 27%, transparent 74%, rgba(124, 58, 237, 0.05) 75%, rgba(124, 58, 237, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(124, 58, 237, 0.05) 25%, rgba(124, 58, 237, 0.05) 26%, transparent 27%, transparent 74%, rgba(124, 58, 237, 0.05) 75%, rgba(124, 58, 237, 0.05) 76%, transparent 77%, transparent);
+            background-size: 80px 80px;
+            animation: gridPulse 4s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Animated gradient orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 10%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.8) 0%, transparent 70%);
+            animation: orbFloat1 15s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            top: 60%;
+            right: 15%;
+            background: radial-gradient(circle, rgba(6, 214, 160, 0.6) 0%, transparent 70%);
+            animation: orbFloat2 18s ease-in-out infinite;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.6) 0%, transparent 70%);
+            animation: orbFloat3 20s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat1 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -50px); }
+            66% { transform: translate(-40px, 30px); }
+        }
+
+        @keyframes orbFloat2 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-50px, 40px); }
+            66% { transform: translate(50px, -30px); }
+        }
+
+        @keyframes orbFloat3 {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            33% { transform: translateX(-50%) translateY(30px); }
+            66% { transform: translateX(-50%) translateY(-40px); }
+        }
+
+        /* Hero badge with pulse */
+        .section-tag {
+            position: relative;
+            z-index: 3;
+            display: inline-block;
+        }
+
+        .section-tag::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulseDot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% {
+                opacity: 1;
+                transform: translateY(-50%) scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateY(-50%) scale(1.3);
+            }
+        }
+
+        /* Animated gradient text */
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .anim-gradient {
+            background: linear-gradient(
+                90deg,
+                #7c3aed 0%,
+                #06d6a0 25%,
+                #ec4899 50%,
+                #7c3aed 75%,
+                #06d6a0 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmerGradient 6s linear infinite;
+        }
+
+        @keyframes shimmerGradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Feature tabs */
+        .feature-tabs {
+            padding: 4rem 0 2rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 60px;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(5, 5, 16, 0.9);
+        }
+
+        .tabs-row {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            background: var(--gradient-main);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+        }
+
+        /* Feature detail sections */
+        .feature-detail {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .feature-detail::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 600px 400px at center, rgba(124, 58, 237, 0) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .feature-detail:hover::before {
+            opacity: 0.08;
+        }
+
+        .feature-detail:last-child { border-bottom: none; }
+
+        .feature-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-detail-grid.reverse { direction: rtl; }
+        .feature-detail-grid.reverse > * { direction: ltr; }
+
+        .fd-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .fd-title {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .fd-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .fd-features {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .fd-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            padding: 0.4rem 0;
+        }
+
+        .fd-features li i {
+            color: var(--accent);
+            font-size: 0.75rem;
+            width: 16px;
+        }
+
+        /* 3D perspective tilt on mockups */
+        .app-mockup {
+            perspective: 1000px;
+            transition: transform 0.3s ease-out;
+        }
+
+        /* Extra highlight cards */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding: 6rem 0;
+        }
+
+        .highlight-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all 0.3s;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .highlight-card:hover::before {
+            opacity: 1;
+        }
+
+        .highlight-card:hover {
+            background: rgba(124, 58, 237, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .highlight-card .h-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1.2rem;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CTA */
+        .features-cta {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .features-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.06) 0%, transparent 60%);
+        }
+
+        /* Fade in up animations */
+        .reveal {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .reveal:nth-child(1) { animation-delay: 0.1s; }
+        .reveal:nth-child(2) { animation-delay: 0.2s; }
+        .reveal:nth-child(3) { animation-delay: 0.3s; }
+        .reveal:nth-child(4) { animation-delay: 0.4s; }
+        .reveal:nth-child(5) { animation-delay: 0.5s; }
+        .reveal:nth-child(6) { animation-delay: 0.6s; }
+        .reveal:nth-child(7) { animation-delay: 0.7s; }
+        .reveal:nth-child(8) { animation-delay: 0.8s; }
+        .reveal:nth-child(9) { animation-delay: 0.9s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .feature-detail-grid, .feature-detail-grid.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+            .fd-features { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .tabs-row { justify-content: flex-start; }
+            .highlight-grid { grid-template-columns: 1fr; }
+            .orb { display: none; }
+            .page-hero::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Animated gradient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- Canvas for particle system -->
+<canvas class="hero-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-icon">LCX</div>
+            <span class="nav-logo-text">LCX Agency</span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="features.html" class="active">Fonctionnalités</a></li>
+            <li><a href="pricing.html">Tarifs</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="#" class="nav-cta-btn"><i class="fas fa-rocket"></i> Essai gratuit</a></li>
+        </ul>
+        <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+        <div class="section-tag"><i class="fas fa-sparkles"></i> Fonctionnalités</div>
+        <h1>Un outil <span class="gradient-text anim-gradient">surpuissant</span><br>qui n'existe nulle part ailleurs</h1>
+        <p>Chaque fonctionnalité a été pensée et conçue par des managers d'agence. Pas de superflu, que de l'essentiel optimisé pour votre workflow.</p>
+    </div>
+    <div class="scroll-indicator">
+        <i class="fas fa-mouse"></i>
+    </div>
+</section>
+
+<!-- TAB NAV -->
+<section class="feature-tabs">
+    <div class="container">
+        <div class="tabs-row">
+            <a href="#dashboard" class="tab-btn active">Dashboard</a>
+            <a href="#chatters" class="tab-btn">Chatters</a>
+            <a href="#outreach" class="tab-btn">Outreach</a>
+            <a href="#planning" class="tab-btn">Planning</a>
+            <a href="#scripts" class="tab-btn">Scripts</a>
+            <a href="#content" class="tab-btn">Contenu</a>
+            <a href="#analytics" class="tab-btn">Analytics</a>
+            <a href="#finances" class="tab-btn">Finances</a>
+            <a href="#coaching" class="tab-btn">Coaching</a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: DASHBOARD -->
+<section class="feature-detail" id="dashboard">
+    <div class="container">
+        <div class="feature-detail-grid reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(124,58,237,0.12);color:var(--primary-light);"><i class="fas fa-th-large"></i> Dashboard</div>
+                <h2 class="fd-title">Votre agence en <span class="gradient-text">temps réel</span></h2>
+                <p class="fd-desc">Le centre de commande ultime. Visualisez instantanément tous vos KPIs, l'activité de votre équipe et vos revenus. Plus besoin de jongler entre 10 outils — tout est condensé dans un seul écran.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Total followers en temps réel</li>
+                    <li><i class="fas fa-check"></i> Modèles actives / inactives</li>
+                    <li><i class="fas fa-check"></i> Taille d'équipe & rôles</li>
+                    <li><i class="fas fa-check"></i> Étudiants en formation</li>
+                    <li><i class="fas fa-check"></i> Membres en ligne</li>
+                    <li><i class="fas fa-check"></i> Tâches urgentes</li>
+                    <li><i class="fas fa-check"></i> Revenus chatters live</li>
+                    <li><i class="fas fa-check"></i> Métriques outreach live</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/dashboard</div>
+                </div>
+                <div class="mockup-layout">
+                    <div class="mockup-sidebar">
+                        <div class="mockup-sidebar-brand"><span class="dot">LCX</span> LCX Agency</div>
+                        <div class="mockup-nav-label">Principal</div>
+                        <div class="mockup-nav-item active"><i class="fas fa-th-large"></i> Dashboard</div>
+                        <div class="mockup-nav-item"><i class="fas fa-calendar-alt"></i> Planning</div>
+                        <div class="mockup-nav-item"><i class="fas fa-tasks"></i> Tâches</div>
+                        <div class="mockup-nav-label">Équipes</div>
+                        <div class="mockup-nav-item"><i class="fas fa-user-circle"></i> Modèles</div>
+                        <div class="mockup-nav-item"><i class="fas fa-comments"></i> Chatters</div>
+                        <div class="mockup-nav-item"><i class="fas fa-paper-plane"></i> Outreach</div>
+                    </div>
+                    <div class="mockup-main">
+                        <div class="mockup-page-title">Dashboard</div>
+                        <div class="mockup-page-subtitle">Vue d'ensemble de ton agence</div>
+                        <div class="mockup-stats-row">
+                            <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--primary-light);">22,556</div><div class="mockup-stat-lbl">Followers</div></div>
+                            <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--accent);">5</div><div class="mockup-stat-lbl">Modèles</div></div>
+                            <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--pink);">15</div><div class="mockup-stat-lbl">Équipe</div></div>
+                            <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--orange);">10</div><div class="mockup-stat-lbl">Étudiants</div></div>
+                        </div>
+                        <div class="mockup-chart-area">
+                            <div class="mockup-chart-title">Chatters — Revenue temps réel</div>
+                            <div class="chart-bars" style="height:100px;">
+                                <div class="chart-bar" style="height:40%;background:var(--primary);animation-delay:0.1s;"></div>
+                                <div class="chart-bar" style="height:65%;background:var(--primary-light);animation-delay:0.15s;"></div>
+                                <div class="chart-bar" style="height:50%;background:var(--primary);animation-delay:0.2s;"></div>
+                                <div class="chart-bar" style="height:80%;background:var(--accent);animation-delay:0.25s;"></div>
+                                <div class="chart-bar" style="height:60%;background:var(--primary);animation-delay:0.3s;"></div>
+                                <div class="chart-bar" style="height:90%;background:var(--accent);animation-delay:0.35s;"></div>
+                                <div class="chart-bar" style="height:100%;background:var(--gradient-main);animation-delay:0.4s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: CHATTERS -->
+<section class="feature-detail" id="chatters" style="background:var(--bg-section);">
+    <div class="container">
+        <div class="feature-detail-grid reverse reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(6,214,160,0.12);color:var(--accent);"><i class="fas fa-comments"></i> Chatters</div>
+                <h2 class="fd-title">Suivez chaque chatter <span class="gradient-text">à la seconde</span></h2>
+                <p class="fd-desc">Visualisez les performances de chaque chatter en temps réel. Revenue, PPV, tips — tout est tracké automatiquement par modèle. Identifiez vos top performers et optimisez votre équipe.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Revenue par chatter</li>
+                    <li><i class="fas fa-check"></i> PPV et tips en temps réel</li>
+                    <li><i class="fas fa-check"></i> Revenue totale par modèle</li>
+                    <li><i class="fas fa-check"></i> Classement des performers</li>
+                    <li><i class="fas fa-check"></i> Historique des sessions</li>
+                    <li><i class="fas fa-check"></i> Comparaison inter-périodes</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/chatters</div>
+                </div>
+                <div class="mockup-main" style="padding:1.5rem;">
+                    <div class="mockup-page-title">Chatters — Temps réel</div>
+                    <div class="mockup-stats-row">
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--accent);">$1,240</div><div class="mockup-stat-lbl">Revenue</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--primary-light);">$890</div><div class="mockup-stat-lbl">PPV</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--pink);">$350</div><div class="mockup-stat-lbl">Tips</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--yellow);">$2,480</div><div class="mockup-stat-lbl">Revenue totale</div></div>
+                    </div>
+                    <table class="mockup-table">
+                        <thead><tr><th>Chatter</th><th>PPV</th><th>Tips</th><th>Revenue</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <tr><td>Gaby</td><td class="val-purple">$520</td><td class="val-green">$180</td><td class="val-green">$700</td><td><span class="mockup-badge mockup-badge-green">En ligne</span></td></tr>
+                            <tr><td>Inès</td><td class="val-purple">$370</td><td class="val-green">$170</td><td class="val-green">$540</td><td><span class="mockup-badge mockup-badge-green">En ligne</span></td></tr>
+                            <tr><td>Ewen</td><td class="val-purple">$0</td><td class="val-green">$0</td><td class="val-pink">$0</td><td><span class="mockup-badge mockup-badge-orange">Manager</span></td></tr>
+                        </tbody>
+                    </table>
+                    <div class="chart-bars" style="height:60px;margin-top:1rem;">
+                        <div class="chart-bar" style="height:70%;background:var(--accent);animation-delay:0.1s;"></div>
+                        <div class="chart-bar" style="height:55%;background:var(--accent);animation-delay:0.15s;"></div>
+                        <div class="chart-bar" style="height:90%;background:var(--gradient-main);animation-delay:0.2s;"></div>
+                        <div class="chart-bar" style="height:45%;background:var(--primary);animation-delay:0.25s;"></div>
+                        <div class="chart-bar" style="height:75%;background:var(--accent);animation-delay:0.3s;"></div>
+                        <div class="chart-bar" style="height:85%;background:var(--primary-light);animation-delay:0.35s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: OUTREACH -->
+<section class="feature-detail" id="outreach">
+    <div class="container">
+        <div class="feature-detail-grid reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(236,72,153,0.12);color:var(--pink);"><i class="fas fa-paper-plane"></i> Outreach</div>
+                <h2 class="fd-title">Un pipeline d'outreach <span class="gradient-text-pink">ultra-complet</span></h2>
+                <p class="fd-desc">Du premier DM à la signature, chaque étape est traquée. Suivez vos assistants, optimisez vos taux de conversion et scalez votre recrutement de modèles efficacement.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Leads quotidiens par assistant</li>
+                    <li><i class="fas fa-check"></i> Compteur de DMs envoyés</li>
+                    <li><i class="fas fa-check"></i> Suivi "Talking Warm"</li>
+                    <li><i class="fas fa-check"></i> Calls booked trackés</li>
+                    <li><i class="fas fa-check"></i> Signatures suivies</li>
+                    <li><i class="fas fa-check"></i> Taux de réponse en live</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/outreach</div>
+                </div>
+                <div class="mockup-main" style="padding:1.5rem;">
+                    <div class="mockup-page-title">Outreach — Temps réel</div>
+                    <div class="mockup-stats-row" style="margin-bottom:1.2rem;">
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--primary-light);">12</div><div class="mockup-stat-lbl">Leads</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--accent);">1,390</div><div class="mockup-stat-lbl">DMs total</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--pink);">3</div><div class="mockup-stat-lbl">Calls</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--yellow);">39.9%</div><div class="mockup-stat-lbl">Taux</div></div>
+                    </div>
+                    <table class="mockup-table">
+                        <thead><tr><th>Assistant</th><th>Leads</th><th>DMs</th><th>Warm</th><th>Calls</th><th>Signés</th><th>Taux</th></tr></thead>
+                        <tbody>
+                            <tr><td>Gaby</td><td>0</td><td>1,343</td><td class="val-green">4</td><td class="val-purple">3</td><td class="val-pink">2</td><td class="val-green">39.8%</td></tr>
+                            <tr><td>Inès</td><td>0</td><td>47</td><td class="val-green">0</td><td class="val-purple">0</td><td class="val-pink">0</td><td class="val-green">42.6%</td></tr>
+                            <tr><td>Ewen</td><td>12</td><td>856</td><td class="val-green">6</td><td class="val-purple">4</td><td class="val-pink">3</td><td class="val-green">45.2%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: PLANNING -->
+<section class="feature-detail" id="planning" style="background:var(--bg-section);">
+    <div class="container">
+        <div class="feature-detail-grid reverse reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(251,146,60,0.12);color:var(--orange);"><i class="fas fa-calendar-alt"></i> Planning</div>
+                <h2 class="fd-title">Planifiez votre <span class="gradient-text-pink">calendrier complet</span></h2>
+                <p class="fd-desc">Tous les lives de vos modèles au même endroit. Planifiez, remplissez, optimisez — en un coup d'œil. Pas de streams manquées, pas de chevauchements. Votre agence tourne comme une horloge suisse.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Calendrier global interactif</li>
+                    <li><i class="fas fa-check"></i> Affichage par modèle</li>
+                    <li><i class="fas fa-check"></i> Planification par plateau</li>
+                    <li><i class="fas fa-check"></i> Notifications de conflicts</li>
+                    <li><i class="fas fa-check"></i> Drag & drop scheduling</li>
+                    <li><i class="fas fa-check"></i> Sync Google Calendar</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/planning</div>
+                </div>
+                <div class="mockup-main" style="padding:1.5rem;">
+                    <div class="mockup-page-title">Planning — Calendrier</div>
+                    <div class="mockup-calendar">
+                        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:1rem;">
+                            <div style="font-size:0.7rem;font-weight:600;padding:0.3rem;text-align:center;color:var(--text-secondary);">L</div>
+                            <div style="font-size:0.7rem;font-weight:600;padding:0.3rem;text-align:center;color:var(--text-secondary);">M</div>
+                            <div style="font-size:0.7rem;font-weight:600;padding:0.3rem;text-align:center;color:var(--text-secondary);">M</div>
+                            <div style="font-size:0.7rem;font-weight:600;padding:0.3rem;text-align:center;color:var(--text-secondary);">J</div>
+                            <div style="font-size:0.7rem;font-weight:600;padding:0.3rem;text-align:center;color:var(--text-secondary);">V</div>
+                            <div style="font-size:0.7rem;font-weight:600;padding:0.3rem;text-align:center;color:var(--text-secondary);">S</div>
+                            <div style="font-size:0.7rem;font-weight:600;padding:0.3rem;text-align:center;color:var(--text-secondary);">D</div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">
+                            <div style="width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.75rem;">28</div>
+                            <div style="width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.75rem;">1</div>
+                            <div style="width:30px;height:30px;border-radius:6px;background:rgba(124,58,237,0.3);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:var(--primary-light);font-weight:600;">2</div>
+                            <div style="width:30px;height:30px;border-radius:6px;background:rgba(6,214,160,0.3);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:var(--accent);font-weight:600;">3</div>
+                            <div style="width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.75rem;">4</div>
+                            <div style="width:30px;height:30px;border-radius:6px;background:rgba(236,72,153,0.3);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:var(--pink);font-weight:600;">5</div>
+                            <div style="width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.75rem;">6</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: SCRIPTS -->
+<section class="feature-detail" id="scripts">
+    <div class="container">
+        <div class="feature-detail-grid reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(168,85,247,0.12);color:var(--primary-light);"><i class="fas fa-scroll"></i> Scripts</div>
+                <h2 class="fd-title">Library de <span class="gradient-text">scripts gainants</span></h2>
+                <p class="fd-desc">Chaque script optimisé pour maximiser les revenus. Tips, PPV, show privé — le langage qui convertit. Partagez, itérez, mesurez l'impact de chaque script sur vos conversions.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Templates pré-optimisés</li>
+                    <li><i class="fas fa-check"></i> Version control & history</li>
+                    <li><i class="fas fa-check"></i> Taux de succès par script</li>
+                    <li><i class="fas fa-check"></i> Duplication & customization</li>
+                    <li><i class="fas fa-check"></i> Notes & commentaires</li>
+                    <li><i class="fas fa-check"></i> Tags & catégories</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/scripts</div>
+                </div>
+                <div class="mockup-main" style="padding:1.5rem;">
+                    <div class="mockup-page-title">Scripts — Library</div>
+                    <div style="display:flex;gap:0.8rem;margin-bottom:1rem;">
+                        <div style="flex:1;padding:0.8rem;background:rgba(124,58,237,0.1);border-radius:6px;border:1px solid rgba(124,58,237,0.3);">
+                            <div style="font-size:0.7rem;color:var(--text-secondary);margin-bottom:0.2rem;">Tips Teaser</div>
+                            <div style="font-size:0.85rem;font-weight:600;">Taux: 45%</div>
+                        </div>
+                        <div style="flex:1;padding:0.8rem;background:rgba(6,214,160,0.1);border-radius:6px;border:1px solid rgba(6,214,160,0.3);">
+                            <div style="font-size:0.7rem;color:var(--text-secondary);margin-bottom:0.2rem;">PPV Pitch</div>
+                            <div style="font-size:0.85rem;font-weight:600;">Taux: 62%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: CONTENU -->
+<section class="feature-detail" id="content" style="background:var(--bg-section);">
+    <div class="container">
+        <div class="feature-detail-grid reverse reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(59,130,246,0.12);color:var(--primary);"><i class="fas fa-image"></i> Contenu</div>
+                <h2 class="fd-title">Gestion de contenu <span class="gradient-text">hyper-centralisée</span></h2>
+                <p class="fd-desc">Tous les contenus, modèles, accès, droits en un endroit. Qui a accès à quoi, qui a uploadé quoi, quand. Zero perte, zero confusion, 100% d'organisation.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Stockage illimité</li>
+                    <li><i class="fas fa-check"></i> Permissions granulaires</li>
+                    <li><i class="fas fa-check"></i> Audit trail complet</li>
+                    <li><i class="fas fa-check"></i> Partage par modèle</li>
+                    <li><i class="fas fa-check"></i> Tagging automatique</li>
+                    <li><i class="fas fa-check"></i> Intégration drives</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/content</div>
+                </div>
+                <div class="mockup-main" style="padding:1.5rem;">
+                    <div class="mockup-page-title">Contenu — Media</div>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;">
+                        <div style="aspect-ratio:1;background:rgba(124,58,237,0.2);border-radius:6px;border:1px solid rgba(124,58,237,0.3);"></div>
+                        <div style="aspect-ratio:1;background:rgba(6,214,160,0.2);border-radius:6px;border:1px solid rgba(6,214,160,0.3);"></div>
+                        <div style="aspect-ratio:1;background:rgba(236,72,153,0.2);border-radius:6px;border:1px solid rgba(236,72,153,0.3);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: ANALYTICS -->
+<section class="feature-detail" id="analytics">
+    <div class="container">
+        <div class="feature-detail-grid reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(34,197,94,0.12);color:var(--green);"><i class="fas fa-chart-line"></i> Analytics</div>
+                <h2 class="fd-title">Analytics <span class="gradient-text-pink">ultra-détaillés</span></h2>
+                <p class="fd-desc">Chaque metrique. Chaque jour. Chaque modèle. Visualisez les trends, détectez les anomalies, optimisez votre mix produit pour maximiser ARR.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Dashboards custom</li>
+                    <li><i class="fas fa-check"></i> Rapports programmés</li>
+                    <li><i class="fas fa-check"></i> Export CSV/PDF</li>
+                    <li><i class="fas fa-check"></i> Comparaisons YoY</li>
+                    <li><i class="fas fa-check"></i> Prédictions ML</li>
+                    <li><i class="fas fa-check"></i> Alertes anomalies</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/analytics</div>
+                </div>
+                <div class="mockup-main" style="padding:1.5rem;">
+                    <div class="mockup-page-title">Analytics — Revenue</div>
+                    <div class="chart-bars" style="height:80px;">
+                        <div class="chart-bar" style="height:35%;background:var(--primary);animation-delay:0.1s;"></div>
+                        <div class="chart-bar" style="height:58%;background:var(--primary-light);animation-delay:0.15s;"></div>
+                        <div class="chart-bar" style="height:72%;background:var(--accent);animation-delay:0.2s;"></div>
+                        <div class="chart-bar" style="height:45%;background:var(--primary);animation-delay:0.25s;"></div>
+                        <div class="chart-bar" style="height:85%;background:var(--gradient-main);animation-delay:0.3s;"></div>
+                        <div class="chart-bar" style="height:65%;background:var(--accent);animation-delay:0.35s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: FINANCES -->
+<section class="feature-detail" id="finances" style="background:var(--bg-section);">
+    <div class="container">
+        <div class="feature-detail-grid reverse reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(248,113,113,0.12);color:var(--pink);"><i class="fas fa-dollar-sign"></i> Finances</div>
+                <h2 class="fd-title">Finances <span class="gradient-text">100% transparent</span></h2>
+                <p class="fd-desc">Commission tracking, payout scheduling, verification de paiements — tout en direct. Vos modèles savent exactement ce qu'elles gagnent, vous savez exactement ce que vous gardez.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Suivi commission temps réel</li>
+                    <li><i class="fas fa-check"></i> Automatic payout scheduling</li>
+                    <li><i class="fas fa-check"></i> Multi-currency support</li>
+                    <li><i class="fas fa-check"></i> Tax reporting ready</li>
+                    <li><i class="fas fa-check"></i> Payment gateway integrations</li>
+                    <li><i class="fas fa-check"></i> Invoice generation</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/finances</div>
+                </div>
+                <div class="mockup-main" style="padding:1.5rem;">
+                    <div class="mockup-page-title">Finances — Payouts</div>
+                    <div class="mockup-stats-row">
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--primary-light);">$45,230</div><div class="mockup-stat-lbl">Revenue</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--accent);">$22,615</div><div class="mockup-stat-lbl">Payouts</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE: COACHING -->
+<section class="feature-detail" id="coaching">
+    <div class="container">
+        <div class="feature-detail-grid reveal">
+            <div>
+                <div class="fd-tag" style="background:rgba(249,115,22,0.12);color:var(--orange);"><i class="fas fa-users"></i> Coaching</div>
+                <h2 class="fd-title">System de coaching <span class="gradient-text-pink">intégré</span></h2>
+                <p class="fd-desc">Formations, ressources, mentorat — tout centralisé. Développez vos modèles, augmentez leur revenue per hour, bâtissez une équipe championship.</p>
+                <ul class="fd-features">
+                    <li><i class="fas fa-check"></i> Video library</li>
+                    <li><i class="fas fa-check"></i> Progress tracking</li>
+                    <li><i class="fas fa-check"></i> 1:1 coaching sessions</li>
+                    <li><i class="fas fa-check"></i> Group workshops</li>
+                    <li><i class="fas fa-check"></i> Certification programs</li>
+                    <li><i class="fas fa-check"></i> Resource hub</li>
+                </ul>
+            </div>
+            <div class="app-mockup">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span>
+                    <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/coaching</div>
+                </div>
+                <div class="mockup-main" style="padding:1.5rem;">
+                    <div class="mockup-page-title">Coaching — Formations</div>
+                    <div style="display:flex;flex-direction:column;gap:0.8rem;">
+                        <div style="padding:0.8rem;background:rgba(124,58,237,0.1);border-radius:6px;border:1px solid rgba(124,58,237,0.3);">
+                            <div style="font-size:0.8rem;font-weight:600;margin-bottom:0.3rem;">Masterclass Tips</div>
+                            <div style="font-size:0.7rem;color:var(--text-secondary);">12 vidéos • 2h 45m</div>
+                        </div>
+                        <div style="padding:0.8rem;background:rgba(6,214,160,0.1);border-radius:6px;border:1px solid rgba(6,214,160,0.3);">
+                            <div style="font-size:0.8rem;font-weight:600;margin-bottom:0.3rem;">PPV Psychology</div>
+                            <div style="font-size:0.7rem;color:var(--text-secondary);">8 vidéos • 1h 20m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HIGHLIGHT CARDS -->
+<section>
+    <div class="container">
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <div class="h-icon" style="background:rgba(124,58,237,0.15);color:var(--primary-light);">
+                    <i class="fas fa-zap"></i>
+                </div>
+                <h3>Ultra-rapide</h3>
+                <p>Vitesse de chargement optimale. Interface responsive en moins de 50ms. Zéro latence, 100% fluidité.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="h-icon" style="background:rgba(6,214,160,0.15);color:var(--accent);">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Sécurisé au max</h3>
+                <p>Encryption end-to-end. Compliance GDPR/SOC2. Backups automatiques. Vos données sont sacrées.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="h-icon" style="background:rgba(236,72,153,0.15);color:var(--pink);">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Support 24/7</h3>
+                <p>Équipe dédiée. Chat instantané. Réponses en moins de 5 minutes. On est là pour toi.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="features-cta">
+    <div class="container">
+        <h2 style="font-size:2.2rem;font-weight:800;margin-bottom:1.5rem;">Prêt à transformer votre agence ?</h2>
+        <p style="font-size:1.1rem;color:var(--text-secondary);max-width:600px;margin:0 auto 2rem;line-height:1.6;">Rejoins les meilleures agences qui utilisent LCX pour scaler. Essai 100% gratuit, sans carte bancaire, sans engagement.</p>
+        <a href="#" class="btn btn-primary" style="display:inline-block;">
+            <i class="fas fa-rocket" style="margin-right:0.5rem;"></i> Commencer maintenant
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:3rem;">
+            <div>
+                <h4 style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;color:var(--text-secondary);">Produit</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Fonctionnalités</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Tarifs</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Integrations</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Roadmap</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;color:var(--text-secondary);">Ressources</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Documentation</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Blog</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Webinars</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;color:var(--text-secondary);">Entreprise</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">À propos</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Contact</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Careers</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;color:var(--text-secondary);">Legal</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Privacy</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Terms</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Cookies</a></li>
+                    <li style="margin-bottom:0.6rem;"><a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Security</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;">
+            <p style="color:var(--text-secondary);font-size:0.85rem;">© 2024 LCX Agency. Tous droits réservés.</p>
+            <div style="display:flex;gap:1.5rem;">
+                <a href="#" style="color:var(--text-secondary);text-decoration:none;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color:var(--text-secondary);text-decoration:none;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color:var(--text-secondary);text-decoration:none;"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- SHARED SCRIPTS -->
+<script src="shared.js"></script>
+
+<!-- PARTICLE SYSTEM & EFFECTS -->
+<script>
+    // Canvas particle system
+    const canvas = document.querySelector('.hero-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 50;
+    const mouse = { x: 0, y: 0 };
+    const repulsionDistance = 150;
+    const lineDistance = 150;
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 2;
+            this.speedY = (Math.random() - 0.5) * 2;
+            this.opacity = Math.random() * 0.5 + 0.2;
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // Bounce off walls
+            if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+            if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+
+            // Mouse repulsion
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < repulsionDistance) {
+                const angle = Math.atan2(dy, dx);
+                const force = (repulsionDistance - distance) / repulsionDistance;
+                this.speedX -= Math.cos(angle) * force * 3;
+                this.speedY -= Math.sin(angle) * force * 3;
+            }
+        }
+
+        draw() {
+            ctx.fillStyle = `rgba(124, 58, 237, ${this.opacity})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function initParticles() {
+        particles.length = 0;
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    function drawLines() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < lineDistance) {
+                    ctx.strokeStyle = `rgba(124, 58, 237, ${0.15 * (1 - distance / lineDistance)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let particle of particles) {
+            particle.update();
+            particle.draw();
+        }
+
+        drawLines();
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    initParticles();
+    animate();
+
+    // 3D Tilt on mockups
+    const mockups = document.querySelectorAll('.app-mockup');
+    mockups.forEach(mockup => {
+        mockup.addEventListener('mousemove', (e) => {
+            const rect = mockup.getBoundingClientRect();
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            const rotateX = (mouseY - centerY) / 20;
+            const rotateY = (centerX - mouseX) / 20;
+
+            mockup.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        mockup.addEventListener('mouseleave', () => {
+            mockup.style.transform = 'rotateX(0) rotateY(0)';
+        });
+    });
+
+    // Intersection Observer for reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    revealElements.forEach(element => {
+        element.style.opacity = '0';
+        observer.observe(element);
+    });
+
+    // Tab highlighting on scroll
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.feature-detail');
+
+    window.addEventListener('scroll', () => {
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 150 && rect.bottom >= 150) {
+                const id = section.getAttribute('id');
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('href') === '#' + id) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
