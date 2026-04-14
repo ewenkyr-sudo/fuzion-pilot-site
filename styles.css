@@ -663,25 +663,25 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
 }
 
 @media (max-width: 768px) {
-    /* Navbar mobile */
-    .nav-menu { display: none; }
-    .nav-menu.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(5, 5, 16, 0.98);
-        padding: 1.5rem;
-        border-bottom: 1px solid var(--border);
-        gap: 0.5rem;
+    /* Navbar mobile — liens en ligne, pas de hamburger */
+    .hamburger { display: none !important; }
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0.5rem !important;
+        position: static !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
     }
-    .nav-menu.open a {
-        padding: 0.75rem 1rem;
-        font-size: 1rem;
+    .nav-menu a {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.5rem !important;
     }
-    .hamburger { display: block; }
+    .nav-cta-btn {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
     .nav-logo img {
         height: 48px;
     }
