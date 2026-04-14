@@ -716,10 +716,21 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
     }
 
     /* Tableau outreach */
-    .mockup-table-wrap,
     .app-mockup {
-        overflow-x: scroll !important;
-        -webkit-overflow-scrolling: touch !important;
+        max-width: calc(100vw - 2rem) !important;
+        overflow: hidden !important;
+    }
+    .mockup-main {
+        padding: 0.8rem !important;
+        overflow-x: auto !important;
+    }
+    .mockup-table {
+        min-width: 320px !important;
+        font-size: 0.6rem !important;
+    }
+    .mockup-table th,
+    .mockup-table td {
+        padding: 0.3rem 0.4rem !important;
     }
     .mockup-stats-row {
         grid-template-columns: repeat(2, 1fr) !important;
