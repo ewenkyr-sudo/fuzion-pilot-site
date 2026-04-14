@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
 }
 
 .nav-logo img {
-    height: 72px;
+    height: clamp(40px, 8vw, 72px);
     width: auto;
     display: block;
     border-radius: 8px;
@@ -886,8 +886,12 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
         overflow: hidden !important;
     }
 
-    /* Texte qui déborde */
-    * {
+    /* Texte qui déborde — ciblé (pas wildcard) */
+    .container, .card, .section-header, .footer,
+    .mockup-main, .app-mockup, .app-mockup-epic,
+    .showcase-block, .sc-text, .sc-visual,
+    .feature-detail-grid, .pricing-card,
+    img, video, iframe, table {
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
@@ -896,6 +900,29 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
         word-break: break-word !important;
         overflow-wrap: break-word !important;
         hyphens: auto !important;
+    }
+
+    /* Disable heavy animations on mobile */
+    .orb, .orb-1, .orb-2, .orb-3,
+    .hero-orb, .particle,
+    .particles-container {
+        display: none !important;
+    }
+
+    .hero-canvas, .bg-canvas {
+        display: none !important;
+    }
+
+    /* Reduce animations for battery */
+    .card:hover { transform: none !important; }
+    .sc-mockup-tilt:hover { transform: none !important; }
+    .btn:hover { transform: none !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+        }
     }
 
     /* Carousel/tabs horizontal */
@@ -954,7 +981,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
     .mockup-main [style*="grid-template-columns:70px"],
     .mockup-main [style*="grid-template-columns: 70px"] {
         grid-template-columns: 50px repeat(7, minmax(32px, 1fr)) !important;
-        font-size: 0.4rem !important;
+        font-size: 0.5rem !important;
         overflow-x: auto !important;
     }
 
@@ -1044,11 +1071,11 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
         font-size: clamp(24px, 8vw, 36px) !important;
     }
 
-    /* Planning grid — even smaller */
+    /* Planning grid — even smaller but still readable */
     .mockup-main [style*="grid-template-columns:70px"],
     .mockup-main [style*="grid-template-columns: 70px"] {
         grid-template-columns: 40px repeat(7, minmax(26px, 1fr)) !important;
-        font-size: 0.35rem !important;
+        font-size: 0.45rem !important;
     }
 
     /* Footer 2-col → 1-col */
