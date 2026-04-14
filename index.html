@@ -967,6 +967,37 @@
             .sc-text h3 {
                 font-size: clamp(1.3rem, 4vw, 1.8rem);
             }
+
+            /* Video section 2-col → 1-col */
+            .video-section .container > [style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            /* Planning grid responsive */
+            .mockup-main [style*="grid-template-columns:70px"] {
+                grid-template-columns: 50px repeat(7, minmax(30px, 1fr)) !important;
+                font-size: 0.4rem !important;
+                overflow-x: auto !important;
+            }
+
+            /* Inline stats 4-col → 2-col */
+            .mockup-chart-area [style*="repeat(4,1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* App mockup contain */
+            .app-mockup-epic {
+                max-width: 100% !important;
+                overflow: hidden !important;
+            }
+
+            /* Showcase padding */
+            .showcase-block {
+                padding: 1.5rem !important;
+                margin-bottom: 3rem !important;
+                gap: 1.5rem !important;
+            }
         }
 
         @media (max-width: 420px) {
@@ -987,6 +1018,18 @@
             .stat-label { font-size: 0.75rem; }
             .platforms-row { grid-template-columns: 1fr 1fr; }
             .marquee-item { min-width: 85vw; }
+
+            /* Planning grid even smaller */
+            .mockup-main [style*="grid-template-columns:70px"] {
+                grid-template-columns: 38px repeat(7, minmax(24px, 1fr)) !important;
+                font-size: 0.32rem !important;
+            }
+
+            /* Showcase tighter */
+            .showcase-block {
+                padding: 1rem !important;
+                margin-bottom: 2rem !important;
+            }
         }
     </style>
 </head>

@@ -465,6 +465,26 @@
                 font-size: 0.95rem;
                 max-font-size: 16px;
             }
+            .page-hero {
+                padding: 5rem 0 2.5rem !important;
+            }
+            /* Calendar cells responsive */
+            .mockup-calendar [style*="width:30px"] {
+                width: auto !important;
+                height: auto !important;
+                aspect-ratio: 1 !important;
+            }
+            /* Feature detail grid */
+            .feature-detail-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .page-hero h1 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+            .highlight-card { padding: 1.2rem; }
+            .mockup-main { padding: 0.8rem !important; }
         }
     </style>
 </head>

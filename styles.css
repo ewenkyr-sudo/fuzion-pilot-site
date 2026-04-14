@@ -933,6 +933,105 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
     }
 }
 
+/* ===== OVERRIDE INLINE GRIDS MOBILE ===== */
+@media (max-width: 768px) {
+    /* Video section 2-col → 1-col */
+    .video-section [style*="grid-template-columns: 1fr 1fr"],
+    .video-section [style*="grid-template-columns:1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    /* Video mockup sidebar 80px → hide */
+    .video-bg-mockup [style*="grid-template-columns:80px"] {
+        grid-template-columns: 1fr !important;
+    }
+    .video-bg-mockup [style*="grid-template-columns:80px"] > div:first-child {
+        display: none !important;
+    }
+
+    /* Planning grid 70px + 7cols → scrollable */
+    .mockup-main [style*="grid-template-columns:70px"],
+    .mockup-main [style*="grid-template-columns: 70px"] {
+        grid-template-columns: 50px repeat(7, minmax(32px, 1fr)) !important;
+        font-size: 0.4rem !important;
+        overflow-x: auto !important;
+    }
+
+    /* Stats 4-col inline → 2-col */
+    .mockup-chart-area [style*="repeat(4,1fr)"],
+    [style*="grid-template-columns:repeat(4,1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Content 3-col grid → 3-col smaller (they're squares, fine) */
+    .mockup-main [style*="repeat(3,1fr)"] {
+        gap: 0.4rem !important;
+    }
+
+    /* Calendar 7-col cells — responsive sizing */
+    .mockup-calendar [style*="width:30px"] {
+        width: auto !important;
+        height: auto !important;
+        aspect-ratio: 1 !important;
+        min-width: 0 !important;
+    }
+
+    /* Footer 4-col inline → 2-col */
+    footer [style*="repeat(4,1fr)"],
+    .features-cta + footer [style*="repeat(4,1fr)"],
+    .footer [style*="repeat(4,1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Hero sections — reduce inline padding */
+    .page-hero {
+        padding: 5rem 0 2.5rem !important;
+    }
+
+    /* Section excessive padding */
+    section[style*="padding:0 0 6rem"],
+    section[style*="padding: 0 0 6rem"] {
+        padding-bottom: 2.5rem !important;
+    }
+
+    /* Showcase blocks */
+    .showcase-block {
+        padding: 1.5rem !important;
+        margin-bottom: 3rem !important;
+        gap: 1.5rem !important;
+    }
+
+    /* App mockup epic — contain */
+    .app-mockup-epic {
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    /* Footer socials — bigger touch targets */
+    .footer-socials a {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1rem !important;
+    }
+
+    /* Mockup text — minimum readable */
+    .mockup-stat-lbl {
+        font-size: 0.5rem !important;
+    }
+    .mockup-stat-val {
+        font-size: 0.75rem !important;
+    }
+
+    /* CTA section font */
+    .features-cta h2,
+    section h2[style*="font-size:2.2rem"] {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* ===== EXTRA SMALL — 420px ===== */
 @media (max-width: 420px) {
     .stats-grid,
     [class*="stats"] {
@@ -943,5 +1042,35 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
     [class*="stat"] h3,
     .stat-val {
         font-size: clamp(24px, 8vw, 36px) !important;
+    }
+
+    /* Planning grid — even smaller */
+    .mockup-main [style*="grid-template-columns:70px"],
+    .mockup-main [style*="grid-template-columns: 70px"] {
+        grid-template-columns: 40px repeat(7, minmax(26px, 1fr)) !important;
+        font-size: 0.35rem !important;
+    }
+
+    /* Footer 2-col → 1-col */
+    footer [style*="repeat(4,1fr)"],
+    .footer [style*="repeat(4,1fr)"] {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+    }
+
+    /* Page hero — even less padding */
+    .page-hero {
+        padding: 3.5rem 0 2rem !important;
+    }
+
+    /* Experience stage sidebar */
+    .layer-sidebar {
+        width: 80px !important;
+    }
+
+    /* Video mockup max-width */
+    .video-bg-mockup [style*="max-width:350px"] {
+        max-width: 100% !important;
+        width: 90% !important;
     }
 }

@@ -717,6 +717,29 @@
             .scene-text h2 { font-size: clamp(1.4rem, 4vw, 1.8rem); }
             .intro-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
             .intro-desc { font-size: 0.95rem; }
+            /* Planning grid — reduce label col */
+            .mockup-main [style*="grid-template-columns:70px"] {
+                grid-template-columns: 45px repeat(7, minmax(28px, 1fr)) !important;
+                font-size: 0.4rem !important;
+                overflow-x: auto !important;
+            }
+            .demo-mockup {
+                max-width: 100% !important;
+                overflow: hidden !important;
+            }
+            .mockup-main {
+                overflow-x: auto !important;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .feature-scene { padding: 1rem; gap: 1rem; }
+            .scene-text h2 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+            .intro-title { font-size: clamp(1.4rem, 5vw, 2rem); }
+            .mockup-main [style*="grid-template-columns:70px"] {
+                grid-template-columns: 35px repeat(7, minmax(22px, 1fr)) !important;
+                font-size: 0.3rem !important;
+            }
         }
     </style>
 </head>
