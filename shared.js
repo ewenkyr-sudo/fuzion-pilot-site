@@ -2,7 +2,18 @@
 // FUZION PILOT — SHARED JS
 // ========================================
 
-// Navbar — always transparent, no scroll logic
+// Navbar — hidden by default, shows on scroll up
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current < lastScroll && current > 100) {
+        navbar.classList.add('show');
+    } else {
+        navbar.classList.remove('show');
+    }
+    lastScroll = current;
+});
 
 // Mobile hamburger toggle
 function toggleMenu() {
