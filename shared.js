@@ -1,5 +1,5 @@
 // ========================================
-// LCX AGENCY — SHARED JS
+// FUZION PILOT — SHARED JS
 // ========================================
 
 // Navbar scroll effect

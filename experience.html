@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LCX Agency — Experience 3D</title>
+    <title>Fuzion Pilot — L'outil qui n'existait nulle part ailleurs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -192,18 +192,18 @@
 
         <!-- INTRO -->
         <div class="center-ov vis" id="introOv">
-            <div class="co-logo">LCX</div>
-            <div class="co-title">Explorez LCX Agency <span class="anim-gradient">en 3D</span></div>
+            <div class="co-logo">FP</div>
+            <div class="co-title">Explorez Fuzion Pilot <span class="anim-gradient">en 3D</span></div>
             <div class="co-sub">Appuyez sur play pour decouvrir chaque fonctionnalite de la plateforme.</div>
         </div>
 
         <!-- OUTRO -->
         <div class="center-ov" id="outroOv">
-            <div class="co-logo">LCX</div>
+            <div class="co-logo">FP</div>
             <div class="co-title">Pret a <span class="anim-gradient">transformer</span> votre agence ?</div>
-            <div class="co-sub">Rejoignez 500+ managers qui scalent deja avec LCX Agency.</div>
+            <div class="co-sub">Rejoignez 500+ managers qui scalent deja avec Fuzion Pilot.</div>
             <div class="co-btns">
-                <a href="pricing.html" class="btn-g btn-p"><i class="fas fa-rocket"></i> Essayer gratuitement</a>
+                <a href="https://lcx-agency.onrender.com" class="btn-g btn-p"><i class="fas fa-rocket"></i> Essayer gratuitement</a>
                 <a href="index.html" class="btn-g btn-s"><i class="fas fa-arrow-left"></i> Retour au site</a>
             </div>
         </div>
@@ -211,9 +211,9 @@
         <!-- 3D STAGE -->
         <div class="stage" id="stage">
             <div class="layer layer-shell" id="lShell"></div>
-            <div class="layer layer-topbar" id="lTop"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><span class="topbar-t" id="topT">LCX Agency</span></div>
+            <div class="layer layer-topbar" id="lTop"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div><span class="topbar-t" id="topT">Fuzion Pilot</span></div>
             <div class="layer layer-sidebar" id="lSide">
-                <div class="sb-logo"><div class="sb-ico">LCX</div><div class="sb-txt">LCX Agency</div></div>
+                <div class="sb-logo"><div class="sb-ico">FP</div><div class="sb-txt">Fuzion Pilot</div></div>
                 <ul class="sb-nav" id="sbNav">
                     <li class="active" data-p="0"><i class="fas fa-chart-line"></i> Dashboard</li>
                     <li data-p="1"><i class="fas fa-paper-plane"></i> Outreach</li>
@@ -395,7 +395,7 @@ function render(){
 
     // Sidebar
     sidebarItems.forEach((li,i)=>li.classList.toggle('active', i===(activePanel>=0?activePanel:0)));
-    topT.textContent = 'LCX Agency' + (activePanel>=0?' — '+titles[activePanel]:'');
+    topT.textContent = 'Fuzion Pilot' + (activePanel>=0?' — '+titles[activePanel]:'');
 
     // Info panels
     infoPanels.forEach((ip,i)=>{
