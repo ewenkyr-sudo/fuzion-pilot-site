@@ -2,18 +2,7 @@
 // FUZION PILOT — SHARED JS
 // ========================================
 
-// Navbar scroll effect — show on scroll up, hide on scroll down
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current < lastScroll || current < 50) {
-        navbar.classList.add('visible');
-    } else {
-        navbar.classList.remove('visible');
-    }
-    lastScroll = current;
-});
+// Navbar — always transparent, no scroll logic
 
 // Mobile hamburger toggle
 function toggleMenu() {
