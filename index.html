@@ -920,12 +920,20 @@
                 padding: 1rem 1rem;
                 min-height: 52px;
             }
+            /* Hero — CTA visible without scroll */
+            .hero {
+                min-height: auto !important;
+                padding: 3.5rem 0 2rem !important;
+            }
             .hero-visual {
                 max-width: 100%;
+                display: none; /* hide mockup on mobile, focus on CTA */
             }
             .hero-mockup-3d {
                 transform: none;
             }
+            .hero-grid-overlay { display: none; }
+            .hero-canvas { display: none; }
             .features-mega-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
             .platforms-row { grid-template-columns: repeat(2, 1fr); }
@@ -1430,7 +1438,7 @@
     </div>
 </footer>
 
-<script src="shared.js"></script>
+<script src="shared.js" defer></script>
 <script>
 // ========== PARTICLE CANVAS ==========
 const canvas = document.getElementById('particleCanvas');

@@ -5,34 +5,35 @@
 // Navbar — visible at load, hides on scroll down, shows on scroll up
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current < lastScroll || current < 10) {
-        navbar.classList.add('show');
-    } else {
-        navbar.classList.remove('show');
-    }
-    lastScroll = current;
-});
-navbar.classList.add('show');
+if (navbar) {
+    navbar.classList.add('show');
+    window.addEventListener('scroll', () => {
+        const current = window.scrollY;
+        if (current < lastScroll || current < 10) {
+            navbar.classList.add('show');
+        } else {
+            navbar.classList.remove('show');
+        }
+        lastScroll = current;
+    }, { passive: true });
+}
 
 // Mobile hamburger toggle
 function toggleMenu() {
-    document.querySelector('.nav-menu').classList.toggle('open');
+    document.querySelector('.nav-menu')?.classList.toggle('open');
 }
 
-// Reveal on scroll
+// Reveal on scroll (IntersectionObserver — zero layout cost)
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target); // stop watching once visible
         }
     });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-});
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // Smooth scroll
 document.addEventListener('click', (e) => {
@@ -54,3 +55,8 @@ function toggleFaq(el) {
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
     if (!wasActive) item.classList.add('active');
 }
+
+// Pause animations when tab not visible (battery saving)
+document.addEventListener('visibilitychange', () => {
+    document.body.style.animationPlayState = document.hidden ? 'paused' : 'running';
+});
