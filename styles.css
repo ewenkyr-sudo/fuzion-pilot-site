@@ -684,51 +684,45 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
     .nav-menu.open {
         display: flex !important;
         flex-direction: column !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background: #050510 !important;
-        padding: 120px 2rem 2rem !important;
+        position: absolute !important;
+        top: 100% !important;
+        right: 1rem !important;
+        left: auto !important;
+        width: 200px !important;
+        height: auto !important;
+        background: rgba(10, 10, 26, 0.98) !important;
+        border: 1px solid rgba(124, 58, 237, 0.2) !important;
+        border-radius: 12px !important;
+        padding: 0.5rem !important;
         gap: 0 !important;
         z-index: 9999 !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
     }
-    .nav-menu.open li {
-        width: 100% !important;
-        text-align: center !important;
-        border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-    }
+    .nav-menu.open li { width: 100% !important; }
     .nav-menu.open a {
-        font-size: 1.4rem !important;
-        padding: 1.2rem !important;
+        font-size: 0.9rem !important;
+        padding: 0.75rem 1rem !important;
         display: block !important;
-        width: 100% !important;
+        border-radius: 8px !important;
+    }
+    .nav-menu.open a:hover {
+        background: rgba(124, 58, 237, 0.15) !important;
     }
     .nav-menu.open .nav-cta-btn {
         display: flex !important;
-        margin-top: 2rem !important;
+        margin-top: 0.5rem !important;
         width: 100% !important;
         justify-content: center !important;
-        font-size: 1rem !important;
-        padding: 1rem !important;
+        font-size: 0.85rem !important;
     }
 
-    /* Tableau qui déborde */
-    .app-mockup, [class*="mockup"] {
-        overflow: hidden !important;
-        max-width: 100% !important;
+    /* Tableau outreach */
+    .mockup-table-wrap,
+    .app-mockup {
+        overflow-x: scroll !important;
+        -webkit-overflow-scrolling: touch !important;
     }
-    .mockup-table, table {
-        display: block !important;
-        overflow-x: auto !important;
-        white-space: nowrap !important;
-        max-width: 100% !important;
-        font-size: 0.65rem !important;
+    .mockup-stats-row {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
     .nav-logo img {
         height: 48px;
