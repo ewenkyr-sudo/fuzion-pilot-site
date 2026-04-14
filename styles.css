@@ -663,24 +663,12 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
 }
 
 @media (max-width: 768px) {
-    /* Navbar mobile — liens en ligne, pas de hamburger */
+    /* Navbar mobile — logo uniquement */
     .hamburger { display: none !important; }
-    .nav-menu {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 0.5rem !important;
-        position: static !important;
-        background: transparent !important;
-        padding: 0 !important;
-        border: none !important;
-    }
-    .nav-menu a {
-        font-size: 0.7rem !important;
-        padding: 0.3rem 0.5rem !important;
-    }
-    .nav-cta-btn {
-        font-size: 0.7rem !important;
-        padding: 0.4rem 0.8rem !important;
+    .nav-menu { display: none !important; }
+    .nav-cta-btn { display: none !important; }
+    .nav-inner {
+        justify-content: flex-start !important;
     }
     .nav-logo img {
         height: 48px;
