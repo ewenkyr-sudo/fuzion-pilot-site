@@ -2,6 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fuzion Pilot — L'outil qui n'existait nulle part ailleurs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -707,6 +710,13 @@
             .mockup-layout { grid-template-columns: 1fr; }
             .mockup-sidebar { display: none; }
             .demo-mockup { max-width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .feature-scene { padding: 1.5rem; gap: 1.5rem; }
+            .scene-text h2 { font-size: clamp(1.4rem, 4vw, 1.8rem); }
+            .intro-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+            .intro-desc { font-size: 0.95rem; }
         }
     </style>
 </head>

@@ -2,6 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fuzion Pilot — L'outil qui n'existait nulle part ailleurs</title>
     <link rel="stylesheet" href="styles.css">
@@ -449,10 +452,19 @@
         }
 
         @media (max-width: 768px) {
-            .tabs-row { justify-content: flex-start; }
+            .tabs-row { justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .highlight-grid { grid-template-columns: 1fr; }
             .orb { display: none; }
             .page-hero::before { display: none; }
+            .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+            .fd-features { grid-template-columns: 1fr; }
+            .fd-desc,
+            .feature-detail-grid p,
+            .tab-content p {
+                padding: 0 20px;
+                font-size: 0.95rem;
+                max-font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -470,7 +482,7 @@
 <nav class="navbar">
     <div class="container nav-inner">
         <a href="index.html" class="nav-logo">
-            <img src="logo.png" alt="Fuzion Pilot" style="height: 52px; width: auto; border-radius: 8px;">
+            <span style="font-size: 22px; font-weight: 800; letter-spacing: 1px; font-family: 'Arial Black', sans-serif;"><span style="color: #ffffff;">FU</span><span style="background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Z</span><span style="color: #ffffff;">ION</span> <span style="display: block; font-size: 11px; font-weight: 400; letter-spacing: 8px; background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: -4px;">PILOT</span></span>
         </a>
         <ul class="nav-menu">
             <li><a href="index.html">Accueil</a></li>

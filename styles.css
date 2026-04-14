@@ -45,15 +45,21 @@
     box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg-dark);
     color: var(--text-primary);
     overflow-x: hidden;
+    max-width: 100vw;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -61,7 +67,13 @@ img { max-width: 100%; display: block; }
 button { cursor: pointer; border: none; font-family: inherit; }
 
 /* ========== UTILITY ========== */
-.container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; overflow-x: hidden; }
+
+/* Global text overflow safety */
+h1, h2, h3, h4, h5, h6, p, span, li, td, th, label, a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
 .gradient-text {
     background: var(--gradient-main);
     -webkit-background-clip: text;
@@ -108,7 +120,7 @@ button { cursor: pointer; border: none; font-family: inherit; }
 }
 
 .nav-logo img {
-    height: 52px;
+    height: 72px;
     width: auto;
     display: block;
     border-radius: 8px;
@@ -646,6 +658,7 @@ button { cursor: pointer; border: none; font-family: inherit; }
 }
 
 @media (max-width: 768px) {
+    /* Navbar mobile */
     .nav-menu { display: none; }
     .nav-menu.open {
         display: flex;
@@ -659,9 +672,213 @@ button { cursor: pointer; border: none; font-family: inherit; }
         border-bottom: 1px solid var(--border);
         gap: 0.5rem;
     }
+    .nav-menu.open a {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
     .hamburger { display: block; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .nav-logo img {
+        height: 48px;
+    }
+
+    /* Sections spacing */
+    section {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Typography — reduce titles 20% */
+    .section-title {
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    /* Buttons — full width column */
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        min-height: 52px;
+    }
+
+    .btn-lg {
+        padding: 1rem 1.5rem;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Cards */
+    .card {
+        padding: 1.5rem;
+    }
+
+    /* Footer mobile */
+    .footer {
+        padding: 3rem 0 1.5rem;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-brand-desc {
+        margin: 0.5rem auto 0;
+    }
+    .footer-socials {
+        justify-content: center;
+    }
+    .footer-col {
+        text-align: center;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    /* Mockup */
     .mockup-layout { grid-template-columns: 1fr; }
     .mockup-sidebar { display: none; }
+    .mockup-stats-row { grid-template-columns: repeat(2, 1fr); }
+
+    /* Feature/planning description text */
+    .feat-card p,
+    .sc-text p,
+    .section-subtitle,
+    .fd-desc {
+        padding: 0 4px;
+        font-size: 0.95rem;
+        max-font-size: 16px;
+    }
+}
+
+/* Extra small screens — 375px */
+@media (max-width: 420px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+        letter-spacing: -0.5px;
+    }
+
+    .nav-logo img {
+        height: 40px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .card {
+        padding: 1.2rem;
+    }
+}
+
+/* ===== CORRECTIONS MOBILE CRITIQUES ===== */
+@media (max-width: 768px) {
+
+    /* Chiffres stats coupés */
+    .stats-grid .stat-number,
+    .stat-val,
+    .stats-number,
+    [class*="stat"] h2,
+    [class*="stat"] h3 {
+        font-size: clamp(28px, 7vw, 48px) !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+
+    /* Cards stats — padding et largeur */
+    .stats-grid,
+    [class*="stats"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 0 !important;
+    }
+
+    .stats-grid > *,
+    [class*="stat-card"],
+    [class*="stats"] > * {
+        padding: 16px 12px !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* Texte qui déborde */
+    * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    p, li, span, h1, h2, h3, h4 {
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+
+    /* Carousel/tabs horizontal */
+    [class*="tabs"],
+    [class*="tab-nav"],
+    [class*="carousel"],
+    [class*="slider"] {
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        padding-bottom: 8px !important;
+    }
+
+    [class*="tab-item"],
+    [class*="slide"] {
+        scroll-snap-align: start !important;
+        flex-shrink: 0 !important;
+        min-width: 80vw !important;
+    }
+
+    /* Features layout */
+    [class*="feature"],
+    [class*="feat"] {
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Sections hero */
+    .hero-content,
+    [class*="hero"] {
+        text-align: center !important;
+        padding: 0 16px !important;
+    }
+}
+
+@media (max-width: 420px) {
+    .stats-grid,
+    [class*="stats"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    [class*="stat"] h2,
+    [class*="stat"] h3,
+    .stat-val {
+        font-size: clamp(24px, 8vw, 36px) !important;
+    }
 }

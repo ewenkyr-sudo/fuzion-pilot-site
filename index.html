@@ -2,6 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fuzion Pilot — L'outil qui n'existait nulle part ailleurs</title>
     <meta name="description" content="Fuzion Pilot est la plateforme SaaS de gestion d'agence OnlyFans. Planning, outreach, modèles, finances — tout centralisé.">
@@ -498,6 +501,7 @@
             transition: all 0.4s;
             position: relative;
             overflow: hidden;
+            min-width: 0;
         }
 
         .stat-card::before {
@@ -514,10 +518,13 @@
         .stat-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
             font-weight: 900;
             letter-spacing: -2px;
             line-height: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .stat-label {
@@ -890,10 +897,96 @@
 
         @media (max-width: 768px) {
             .hero-float, .hero-notif { display: none; }
+            .hero h1 {
+                font-size: clamp(2rem, 6vw, 3rem);
+                letter-spacing: -1.5px;
+            }
+            .hero-desc {
+                font-size: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 1rem;
+                min-height: 52px;
+            }
+            .hero-visual {
+                max-width: 100%;
+            }
+            .hero-mockup-3d {
+                transform: none;
+            }
             .features-mega-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
             .platforms-row { grid-template-columns: repeat(2, 1fr); }
             .testimonials-grid { grid-template-columns: 1fr; }
+
+            /* Stats cards mobile */
+            .stat-card {
+                padding: 1rem;
+                min-width: 0;
+            }
+            .stat-number {
+                font-size: clamp(1.5rem, 8vw, 2.5rem);
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            /* Marquee → scroll snap on mobile */
+            .marquee-section {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .marquee-track {
+                animation: none;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                gap: 0;
+            }
+            .marquee-item {
+                scroll-snap-align: start;
+                min-width: 80vw;
+                justify-content: center;
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+            .marquee-sep { display: none; }
+
+            /* Feature cards text */
+            .feat-card p,
+            .sc-text p {
+                padding: 0 4px;
+                font-size: 0.95rem;
+            }
+            .sc-text h3 {
+                font-size: clamp(1.3rem, 4vw, 1.8rem);
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.75rem;
+                letter-spacing: -1px;
+            }
+            .hero-badge {
+                font-size: 0.65rem;
+                padding: 0.35rem 0.8rem;
+            }
+            .hero-desc {
+                font-size: 0.9rem;
+            }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .stat-card { padding: 0.75rem; }
+            .stat-number { font-size: clamp(1.2rem, 7vw, 2rem); }
+            .stat-label { font-size: 0.75rem; }
+            .platforms-row { grid-template-columns: 1fr 1fr; }
+            .marquee-item { min-width: 85vw; }
         }
     </style>
 </head>
@@ -906,7 +999,7 @@
 <nav class="navbar">
     <div class="container nav-inner">
         <a href="index.html" class="nav-logo">
-            <img src="logo.png" alt="Fuzion Pilot" style="height: 52px; width: auto; border-radius: 8px;">
+            <span style="font-size: 22px; font-weight: 800; letter-spacing: 1px; font-family: 'Arial Black', sans-serif;"><span style="color: #ffffff;">FU</span><span style="background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Z</span><span style="color: #ffffff;">ION</span> <span style="display: block; font-size: 11px; font-weight: 400; letter-spacing: 8px; background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: -4px;">PILOT</span></span>
         </a>
         <ul class="nav-menu">
             <li><a href="index.html" class="active">Accueil</a></li>
@@ -1280,7 +1373,7 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div><a href="index.html" class="nav-logo"><img src="logo.png" alt="Fuzion Pilot" style="height: 52px; width: auto; border-radius: 8px;"></a><p class="footer-brand-desc">La plateforme tout-en-un concue par des managers d'agence, pour des managers d'agence.</p><div class="footer-socials"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-tiktok"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+            <div><a href="index.html" class="nav-logo"><span style="font-size: 22px; font-weight: 800; letter-spacing: 1px; font-family: 'Arial Black', sans-serif;"><span style="color: #ffffff;">FU</span><span style="background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Z</span><span style="color: #ffffff;">ION</span> <span style="display: block; font-size: 11px; font-weight: 400; letter-spacing: 8px; background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: -4px;">PILOT</span></span></a><p class="footer-brand-desc">La plateforme tout-en-un concue par des managers d'agence, pour des managers d'agence.</p><div class="footer-socials"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-tiktok"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
             <div class="footer-col"><h4>Produit</h4><a href="features.html">Fonctionnalites</a><a href="pricing.html">Tarifs</a><a href="demo.html">Demo</a><a href="#">Changelog</a></div>
             <div class="footer-col"><h4>Ressources</h4><a href="#">Documentation</a><a href="#">Tutoriels</a><a href="#">Blog</a><a href="#">Communaute</a></div>
             <div class="footer-col"><h4>Entreprise</h4><a href="about.html">A propos</a><a href="#">Contact</a><a href="#">Mentions legales</a><a href="#">Confidentialite</a></div>
