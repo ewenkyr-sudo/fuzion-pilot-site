@@ -619,44 +619,164 @@
         }
 
         @media (max-width: 768px) {
+            /* Hero compact */
+            .page-hero {
+                padding: 4rem 0 2rem !important;
+            }
+            .page-hero h1 {
+                font-size: clamp(1.6rem, 5vw, 2.2rem);
+                letter-spacing: -1px;
+            }
+            .page-hero p {
+                font-size: 0.95rem;
+                padding: 0 1rem;
+            }
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .scroll-indicator { display: none; }
+            .grid-overlay { display: none; }
+
+            /* Pricing grid — full width, tighter */
             .pricing-grid {
                 max-width: 100%;
+                gap: 1rem;
             }
             .pricing-card {
                 padding: 1.5rem;
+                border-radius: 20px;
             }
-            .page-hero h1 {
-                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            .pricing-card:hover {
+                transform: none !important;
+                box-shadow: none !important;
             }
+            .pricing-card.popular {
+                transform: none !important;
+                order: -1; /* Popular card first on mobile */
+            }
+            .pricing-card.popular:hover {
+                transform: none !important;
+            }
+
+            /* Prix plus compact */
+            .pricing-amount {
+                font-size: 2.8rem;
+            }
+            .pricing-currency {
+                font-size: 1.1rem;
+            }
+            .pricing-desc {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+            .pricing-period {
+                margin-bottom: 1.2rem;
+            }
+            .pricing-features {
+                margin-bottom: 1.2rem;
+            }
+            .pricing-features li {
+                padding: 0.4rem 0;
+                font-size: 0.82rem;
+                gap: 0.5rem;
+            }
+
+            /* Toggle compact */
+            .pricing-toggle {
+                margin: 1.5rem 0 2.5rem;
+                gap: 0.75rem;
+            }
+            .pricing-toggle span {
+                font-size: 0.8rem;
+            }
+
+            /* Comparison table — sticky first col */
             .comparison-table {
-                font-size: 0.7rem;
+                font-size: 0.72rem;
                 display: block;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
             .comparison-table th,
             .comparison-table td {
-                padding: 0.5rem;
+                padding: 0.5rem 0.4rem;
                 white-space: nowrap;
             }
-            .page-hero {
-                padding: 5rem 0 2.5rem !important;
+            .comparison-table thead th {
+                top: 0;
+                font-size: 0.75rem;
+                padding: 0.8rem 0.4rem;
+            }
+            .comparison-table td:first-child,
+            .comparison-table th:first-child {
+                position: sticky;
+                left: 0;
+                background: var(--bg-dark);
+                z-index: 5;
+                min-width: 120px;
+                white-space: normal;
+            }
+
+            /* Comparison section padding */
+            .comparison {
+                padding: 3rem 0;
+            }
+
+            /* FAQ compact */
+            .faq-section {
+                padding: 3rem 0;
+            }
+            .faq-question {
+                padding: 1rem 1.2rem;
+                font-size: 0.88rem;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0 1.2rem 1rem;
+            }
+            .faq-answer p {
+                font-size: 0.85rem;
+            }
+
+            /* CTA compact */
+            .pricing-cta {
+                padding: 3rem 0;
             }
         }
 
         @media (max-width: 420px) {
+            .page-hero {
+                padding: 3rem 0 1.5rem !important;
+            }
+            .page-hero h1 {
+                font-size: clamp(1.3rem, 5vw, 1.8rem);
+            }
             .pricing-card {
                 padding: 1.2rem;
+                border-radius: 16px;
+            }
+            .pricing-amount {
+                font-size: 2.2rem;
+            }
+            .pricing-features li {
+                font-size: 0.78rem;
             }
             .comparison-table {
                 font-size: 0.6rem;
             }
             .comparison-table th,
             .comparison-table td {
-                padding: 0.35rem;
+                padding: 0.3rem;
             }
-            .page-hero h1 {
-                font-size: clamp(1.4rem, 5vw, 2rem);
+            .comparison-table td:first-child,
+            .comparison-table th:first-child {
+                min-width: 100px;
+                font-size: 0.6rem;
+            }
+            .faq-question {
+                font-size: 0.82rem;
+                padding: 0.85rem 1rem;
+            }
             }
         }
     </style>
