@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuzion Pilot — Paiement sécurisé</title>
+    <meta name="description" content="Finalisez votre abonnement Fuzion Pilot. Paiement sécurisé par Stripe.">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(124,58,237,0.18) 0%, transparent 55%),
+                radial-gradient(circle at 85% 90%, rgba(6,214,160,0.12) 0%, transparent 55%),
+                var(--bg-dark);
+            min-height: 100vh;
+        }
+
+        .checkout-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .checkout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .checkout-logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+        .checkout-logo .fuzion { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .checkout-logo .pilot { color: var(--text-primary); }
+
+        .checkout-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color .2s;
+        }
+        .checkout-back:hover { color: var(--text-primary); }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .summary-card, .payment-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .summary-title, .payment-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .plan-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .plan-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        .plan-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+        }
+        .plan-price-row:last-of-type { border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+        .plan-price-label { color: var(--text-secondary); font-size: 0.95rem; }
+        .plan-price-value { font-weight: 600; }
+
+        .plan-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1rem 0 0;
+        }
+        .plan-total-label { font-size: 0.95rem; color: var(--text-secondary); }
+        .plan-total-value { font-size: 1.8rem; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .plan-features { list-style: none; margin-top: 1.5rem; padding: 0; }
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.35rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .plan-features li i { color: var(--accent); font-size: 0.8rem; }
+
+        .cycle-toggle {
+            display: inline-flex;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .cycle-toggle button {
+            background: transparent;
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all .2s;
+        }
+        .cycle-toggle button.active {
+            background: var(--gradient-main);
+            color: white;
+        }
+
+        form { display: flex; flex-direction: column; gap: 1rem; }
+        .field-label { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.35rem; display: block; }
+        .field-input, #card-element {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0.85rem 1rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color .2s, box-shadow .2s;
+        }
+        .field-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(124,58,237,0.15); }
+        #card-element.StripeElement--focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(124,58,237,0.15); }
+
+        .submit-btn {
+            margin-top: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--gradient-main);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: transform .15s, box-shadow .2s, opacity .2s;
+        }
+        .submit-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(124,58,237,0.35); }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .error-msg {
+            color: var(--red);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        .error-msg.show { display: block; }
+
+        .security-note {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .security-note i { color: var(--accent); }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+        .submit-btn.loading .spinner { display: block; }
+        .submit-btn.loading .btn-label { display: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 880px) {
+            .checkout-grid { grid-template-columns: 1fr; }
+            .summary-card { order: 2; }
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-wrapper">
+        <div class="checkout-header">
+            <a href="index.html" class="checkout-logo">
+                <span class="fuzion">FUZION</span><span class="pilot">PILOT</span>
+            </a>
+            <a href="pricing.html" class="checkout-back">
+                <i class="fas fa-arrow-left"></i> Retour aux tarifs
+            </a>
+        </div>
+
+        <div class="checkout-grid">
+            <!-- ORDER SUMMARY -->
+            <div class="summary-card">
+                <div class="summary-title"><i class="fas fa-receipt"></i> Votre commande</div>
+
+                <div class="plan-name" id="planName">Pro</div>
+                <div class="plan-desc" id="planDesc">Pour les agences en croissance</div>
+
+                <div class="cycle-toggle">
+                    <button type="button" id="cycleMonthly" class="active" onclick="setCycle('monthly')">Mensuel</button>
+                    <button type="button" id="cycleAnnual" onclick="setCycle('annual')">Annuel (-20%)</button>
+                </div>
+
+                <div class="plan-price-row">
+                    <span class="plan-price-label">Abonnement <span id="cycleLabel">mensuel</span></span>
+                    <span class="plan-price-value" id="planUnitPrice">39 €</span>
+                </div>
+                <div class="plan-price-row">
+                    <span class="plan-price-label">TVA (calculée au paiement)</span>
+                    <span class="plan-price-value">—</span>
+                </div>
+                <div class="plan-total">
+                    <span class="plan-total-label">Total facturé aujourd'hui</span>
+                    <span class="plan-total-value" id="planTotal">39 €</span>
+                </div>
+
+                <ul class="plan-features" id="planFeatures">
+                    <li><i class="fas fa-check"></i> 10 modèles</li>
+                    <li><i class="fas fa-check"></i> Équipe illimitée</li>
+                    <li><i class="fas fa-check"></i> Outreach complet</li>
+                    <li><i class="fas fa-check"></i> Analytics avancées</li>
+                    <li><i class="fas fa-check"></i> Module coaching</li>
+                    <li><i class="fas fa-check"></i> Finances & revenus</li>
+                </ul>
+            </div>
+
+            <!-- PAYMENT FORM -->
+            <div class="payment-card">
+                <div class="payment-title"><i class="fas fa-lock"></i> Paiement sécurisé</div>
+
+                <form id="payment-form">
+                    <div>
+                        <label class="field-label" for="name">Nom complet</label>
+                        <input class="field-input" type="text" id="name" name="name" placeholder="Jane Doe" required>
+                    </div>
+                    <div>
+                        <label class="field-label" for="email">Email</label>
+                        <input class="field-input" type="email" id="email" name="email" placeholder="vous@agence.com" required>
+                    </div>
+                    <div>
+                        <label class="field-label">Informations de carte</label>
+                        <div id="card-element"></div>
+                        <div id="card-errors" class="error-msg" role="alert"></div>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="submit-btn">
+                        <span class="btn-label">
+                            <i class="fas fa-lock"></i> Payer <span id="btnAmount">39 €</span>
+                        </span>
+                        <span class="spinner"></span>
+                    </button>
+
+                    <div class="security-note">
+                        <i class="fas fa-shield-halved"></i>
+                        Paiement sécurisé par Stripe — aucune donnée carte ne transite par nos serveurs.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ----- PLAN CONFIG -----
+        // Price IDs will come from Stripe Dashboard (create products + prices in test mode).
+        // Replace these after creating products in Stripe.
+        const PLANS = {
+            pro: {
+                name: 'Pro',
+                desc: 'Pour les agences en croissance',
+                monthly: { price: 39, priceId: 'price_PRO_MONTHLY_ID' },
+                annual:  { price: 29, priceId: 'price_PRO_ANNUAL_ID' },
+                features: [
+                    '10 modèles',
+                    'Équipe illimitée',
+                    'Outreach complet',
+                    'Analytics avancées',
+                    'Module coaching',
+                    'Finances & revenus'
+                ]
+            },
+            enterprise: {
+                name: 'Enterprise',
+                desc: 'Pour les grandes agences',
+                monthly: { price: 149, priceId: 'price_ENTERPRISE_MONTHLY_ID' },
+                annual:  { price: 119, priceId: 'price_ENTERPRISE_ANNUAL_ID' },
+                features: [
+                    'Modèles illimités',
+                    'Tout le plan Pro',
+                    'API & intégrations',
+                    'Multi-agences',
+                    'White label',
+                    'Support prioritaire 24/7'
+                ]
+            }
+        };
+
+        // ----- STATE -----
+        const params = new URLSearchParams(window.location.search);
+        let currentPlan = params.get('plan') || 'pro';
+        let currentCycle = params.get('cycle') || 'monthly';
+        if (!PLANS[currentPlan]) currentPlan = 'pro';
+        if (currentCycle !== 'monthly' && currentCycle !== 'annual') currentCycle = 'monthly';
+
+        // ----- STRIPE INIT -----
+        // REPLACE pk_test_YOUR_PUBLISHABLE_KEY_HERE with your test publishable key.
+        const STRIPE_PUBLISHABLE_KEY = 'pk_test_YOUR_PUBLISHABLE_KEY_HERE';
+        const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+        const elements = stripe.elements();
+
+        const cardElement = elements.create('card', {
+            style: {
+                base: {
+                    color: '#ffffff',
+                    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+                    fontSize: '15px',
+                    '::placeholder': { color: '#5a5a7a' }
+                },
+                invalid: { color: '#ef4444' }
+            }
+        });
+        cardElement.mount('#card-element');
+
+        cardElement.on('change', (event) => {
+            const errEl = document.getElementById('card-errors');
+            if (event.error) {
+                errEl.textContent = event.error.message;
+                errEl.classList.add('show');
+            } else {
+                errEl.textContent = '';
+                errEl.classList.remove('show');
+            }
+        });
+
+        // ----- RENDER -----
+        function renderPlan() {
+            const plan = PLANS[currentPlan];
+            const cyclePrice = plan[currentCycle].price;
+
+            document.getElementById('planName').textContent = plan.name;
+            document.getElementById('planDesc').textContent = plan.desc;
+            document.getElementById('planUnitPrice').textContent = cyclePrice + ' €';
+            document.getElementById('planTotal').textContent =
+                currentCycle === 'annual' ? (cyclePrice * 12) + ' €' : cyclePrice + ' €';
+            document.getElementById('btnAmount').textContent =
+                currentCycle === 'annual' ? (cyclePrice * 12) + ' €' : cyclePrice + ' €';
+            document.getElementById('cycleLabel').textContent =
+                currentCycle === 'annual' ? 'annuel' : 'mensuel';
+
+            document.getElementById('cycleMonthly').classList.toggle('active', currentCycle === 'monthly');
+            document.getElementById('cycleAnnual').classList.toggle('active', currentCycle === 'annual');
+
+            const list = document.getElementById('planFeatures');
+            list.innerHTML = '';
+            plan.features.forEach(f => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check"></i> ${f}`;
+                list.appendChild(li);
+            });
+        }
+
+        function setCycle(c) {
+            currentCycle = c;
+            renderPlan();
+        }
+
+        renderPlan();
+
+        // ----- SUBMIT -----
+        const form = document.getElementById('payment-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const errEl = document.getElementById('card-errors');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errEl.classList.remove('show');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const plan = PLANS[currentPlan];
+            const priceId = plan[currentCycle].priceId;
+
+            try {
+                // 1. Create subscription on our backend
+                const resp = await fetch('/api/create-subscription', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        priceId,
+                        email,
+                        name,
+                        plan: currentPlan,
+                        cycle: currentCycle
+                    })
+                });
+
+                const data = await resp.json();
+                if (!resp.ok) throw new Error(data.error || 'Erreur serveur');
+
+                // 2. Confirm card payment with the returned client_secret
+                const { error, paymentIntent } = await stripe.confirmCardPayment(data.clientSecret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: { name, email }
+                    }
+                });
+
+                if (error) {
+                    throw new Error(error.message);
+                }
+
+                if (paymentIntent && paymentIntent.status === 'succeeded') {
+                    window.location.href =
+                        `/success.html?plan=${currentPlan}&cycle=${currentCycle}&email=${encodeURIComponent(email)}`;
+                } else {
+                    throw new Error('Paiement non confirmé.');
+                }
+            } catch (err) {
+                errEl.textContent = err.message || 'Une erreur est survenue.';
+                errEl.classList.add('show');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+            }
+        });
+    </script>
+</body>
+</html>
