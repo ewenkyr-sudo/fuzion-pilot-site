@@ -1,0 +1,12 @@
+{
+  "name": "fuzion-pilot-site",
+  "version": "1.0.0",
+  "description": "Fuzion Pilot — marketing site with Stripe subscription integration (Vercel serverless).",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "stripe": "^14.21.0"
+  }
+}
