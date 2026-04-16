@@ -875,7 +875,7 @@
                     <li><i class="fas fa-check"></i> Finances & revenus</li>
                     <li class="disabled"><i class="fas fa-xmark"></i> API & intégrations</li>
                 </ul>
-                <a href="#" class="pricing-btn pricing-btn-primary">Choisir Pro</a>
+                <a href="checkout.html?plan=pro&cycle=monthly" id="btnPro" class="pricing-btn pricing-btn-primary">Choisir Pro</a>
             </div>
 
             <!-- ENTERPRISE -->
@@ -899,7 +899,7 @@
                     <li><i class="fas fa-check"></i> Account manager dédié</li>
                     <li><i class="fas fa-check"></i> Formation équipe incluse</li>
                 </ul>
-                <a href="#" class="pricing-btn pricing-btn-outline">Contacter l'équipe</a>
+                <a href="checkout.html?plan=enterprise&cycle=monthly" id="btnEnterprise" class="pricing-btn pricing-btn-outline">Choisir Enterprise</a>
             </div>
         </div>
     </div>
@@ -1003,6 +1003,12 @@ function togglePricing() {
     document.querySelectorAll('.price-period-text').forEach(el => {
         el.textContent = isAnnual ? '/mois (facturé annuellement)' : '/mois';
     });
+    // Update checkout buttons to reflect selected cycle
+    const cycle = isAnnual ? 'annual' : 'monthly';
+    const btnPro = document.getElementById('btnPro');
+    const btnEnt = document.getElementById('btnEnterprise');
+    if (btnPro) btnPro.href = `checkout.html?plan=pro&cycle=${cycle}`;
+    if (btnEnt) btnEnt.href = `checkout.html?plan=enterprise&cycle=${cycle}`;
 }
 
 // Particle System
