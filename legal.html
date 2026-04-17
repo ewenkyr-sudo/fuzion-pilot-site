@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuzion Pilot — Mentions Légales, CGV & Politique de Confidentialité</title>
+    <meta name="description" content="Mentions légales, conditions générales de vente, politique de confidentialité et cookies de Fuzion Pilot.">
+    <meta property="og:title" content="Fuzion Pilot — Mentions Légales">
+    <meta property="og:description" content="Mentions légales, CGV, politique de confidentialité et cookies.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .legal-hero {
+            padding: 8rem 0 3rem;
+            text-align: center;
+            position: relative;
+        }
+        .legal-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+        .legal-hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .legal-nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2.5rem 0 3rem;
+        }
+        .legal-nav a {
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .legal-nav a:hover {
+            border-color: var(--primary);
+            color: var(--primary-light);
+            background: rgba(124, 58, 237, 0.08);
+        }
+
+        .legal-section {
+            max-width: 820px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+        .legal-section h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-primary);
+            scroll-margin-top: 100px;
+        }
+        .legal-section h2 .section-icon {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--primary-light);
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85rem;
+            margin-right: 0.75rem;
+            vertical-align: middle;
+        }
+        .legal-section h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 1.8rem 0 0.8rem;
+        }
+        .legal-section p, .legal-section li {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+        .legal-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .legal-section ul li {
+            position: relative;
+            padding-left: 1.4rem;
+        }
+        .legal-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .legal-section a {
+            color: var(--primary-light);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .legal-section a:hover {
+            color: var(--accent);
+        }
+        .legal-section .info-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .legal-section .info-box p {
+            margin-bottom: 0.4rem;
+        }
+        .legal-section .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 50;
+            cursor: pointer;
+            border: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .legal-hero { padding: 6rem 1rem 2rem; }
+            .legal-hero h1 { font-size: 1.8rem; }
+            .legal-section { padding: 0 1rem; margin-bottom: 3rem; }
+            .legal-section h2 { font-size: 1.3rem; }
+            .legal-nav { gap: 0.4rem; }
+            .legal-nav a { font-size: 0.8rem; padding: 0.5rem 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner container">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Fuzion Pilot" class="nav-logo-icon">
+            <span class="nav-logo-text">Fuzion Pilot</span>
+        </a>
+        <div class="nav-menu">
+            <a href="features.html">Fonctionnalités</a>
+            <a href="pricing.html">Tarifs</a>
+            <a href="about.html">À propos</a>
+            <a href="demo.html">Démo</a>
+        </div>
+        <a href="https://app.fuzionpilot.com" class="nav-cta-btn" target="_blank">Se connecter <i class="fas fa-arrow-right"></i></a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="legal-hero">
+    <div class="container">
+        <h1>Mentions Légales & <span class="gradient-text">Conditions</span></h1>
+        <p>Toutes les informations juridiques relatives à l'utilisation de Fuzion Pilot, conformément au droit français.</p>
+
+        <div class="legal-nav">
+            <a href="#mentions"><i class="fas fa-building"></i> Mentions légales</a>
+            <a href="#cgv"><i class="fas fa-file-contract"></i> CGV</a>
+            <a href="#confidentialite"><i class="fas fa-shield-halved"></i> Confidentialité</a>
+            <a href="#cookies"><i class="fas fa-cookie-bite"></i> Cookies</a>
+            <a href="#utilisation"><i class="fas fa-gavel"></i> Conditions d'utilisation</a>
+        </div>
+    </div>
+</section>
+
+<!-- 1. MENTIONS LÉGALES -->
+<section class="legal-section" id="mentions">
+    <h2><span class="section-icon"><i class="fas fa-building"></i></span>Mentions Légales</h2>
+
+    <h3>Éditeur du site</h3>
+    <div class="info-box">
+        <p><strong>Nom du produit :</strong> Fuzion Pilot</p>
+        <p><strong>Éditeur :</strong> Ewen Kyr, personne physique (entrepreneur individuel)</p>
+        <p><strong>Adresse :</strong> Pornichet, Loire-Atlantique (44380), France</p>
+        <p><strong>Email :</strong> <a href="mailto:contact@fuzionpilot.com">contact@fuzionpilot.com</a></p>
+        <p><strong>Site web :</strong> <a href="https://fuzionpilot.com" target="_blank">https://fuzionpilot.com</a></p>
+        <p><strong>Directeur de la publication :</strong> Ewen Kyr</p>
+    </div>
+
+    <h3>Hébergement</h3>
+    <div class="info-box">
+        <p><strong>Hébergeur :</strong> Vercel Inc.</p>
+        <p><strong>Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis</p>
+        <p><strong>Site web :</strong> <a href="https://vercel.com" target="_blank" rel="noopener">https://vercel.com</a></p>
+    </div>
+
+    <h3>Activité</h3>
+    <p>Fuzion Pilot est un logiciel SaaS (Software as a Service) dédié à la gestion d'agences de créateurs de contenu. L'activité principale consiste en l'édition et la commercialisation de cette solution logicielle accessible en ligne.</p>
+
+    <h3>Propriété intellectuelle</h3>
+    <p>L'ensemble du contenu du site Fuzion Pilot (textes, images, graphismes, logo, icônes, logiciels, etc.) est la propriété exclusive de l'éditeur ou de ses partenaires. Toute reproduction, représentation, modification, publication ou adaptation, totale ou partielle, est interdite sans l'autorisation écrite préalable de l'éditeur, conformément aux articles L.122-4 et L.335-2 du Code de la propriété intellectuelle.</p>
+</section>
+
+<!-- 2. CONDITIONS GÉNÉRALES DE VENTE -->
+<section class="legal-section" id="cgv">
+    <h2><span class="section-icon"><i class="fas fa-file-contract"></i></span>Conditions Générales de Vente (CGV)</h2>
+
+    <h3>Article 1 — Objet</h3>
+    <p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre l'éditeur de Fuzion Pilot et tout utilisateur souscrivant à un abonnement payant au service. En s'inscrivant et en souscrivant à un abonnement, l'utilisateur reconnaît avoir pris connaissance des présentes CGV et les accepte sans réserve.</p>
+
+    <h3>Article 2 — Description du service</h3>
+    <p>Fuzion Pilot est une plateforme SaaS de gestion d'agence de créateurs de contenu. Le service inclut, selon l'offre souscrite : gestion d'équipe, outreach, suivi des modèles, planning, finances, coaching, statistiques et outils de communication interne.</p>
+
+    <h3>Article 3 — Abonnement et tarifs</h3>
+    <ul>
+        <li>Le service est proposé sous forme d'abonnement <strong>mensuel</strong> ou <strong>annuel</strong>.</li>
+        <li>Les tarifs en vigueur sont affichés sur la page <a href="pricing.html">Tarifs</a> du site et s'entendent en euros (€), toutes taxes comprises (TTC).</li>
+        <li>L'éditeur se réserve le droit de modifier les tarifs à tout moment. Toute modification sera communiquée à l'utilisateur avec un préavis de 30 jours et prendra effet à la prochaine période de facturation.</li>
+    </ul>
+
+    <h3>Article 4 — Paiement</h3>
+    <ul>
+        <li>Le paiement s'effectue par <strong>carte bancaire</strong> via la plateforme sécurisée <strong>Stripe</strong>.</li>
+        <li>Le paiement est dû à l'avance, au début de chaque période de facturation (mensuelle ou annuelle).</li>
+        <li>L'éditeur ne stocke aucune donnée bancaire. Toutes les transactions sont traitées par Stripe conformément aux normes PCI-DSS.</li>
+    </ul>
+
+    <h3>Article 5 — Résiliation</h3>
+    <ul>
+        <li>L'utilisateur peut résilier son abonnement <strong>à tout moment</strong> depuis son espace client.</li>
+        <li>La résiliation prend effet à la fin de la période de facturation en cours.</li>
+        <li><strong>Aucun remboursement au prorata</strong> ne sera effectué pour la période restante après résiliation.</li>
+        <li>L'accès au service reste actif jusqu'à la fin de la période déjà payée.</li>
+    </ul>
+
+    <h3>Article 6 — Droit de rétractation</h3>
+    <p>Conformément à l'article L.221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contrats de fourniture de contenu numérique non fourni sur un support matériel dont l'exécution a commencé avec l'accord du consommateur. En souscrivant à l'abonnement, l'utilisateur accepte que le service commence immédiatement et renonce expressément à son droit de rétractation.</p>
+
+    <h3>Article 7 — Disponibilité du service</h3>
+    <p>L'éditeur s'engage à mettre en œuvre tous les moyens raisonnables pour assurer la disponibilité du service. Toutefois, l'éditeur ne garantit pas une disponibilité de 100% et ne saurait être tenu responsable des interruptions liées à des opérations de maintenance, des mises à jour, ou des causes de force majeure.</p>
+
+    <h3>Article 8 — Droit applicable et litiges</h3>
+    <p>Les présentes CGV sont régies par le droit français. En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute action judiciaire. À défaut d'accord, le litige sera soumis aux tribunaux compétents de <strong>Saint-Nazaire, France</strong>.</p>
+    <p>Conformément aux dispositions du Code de la consommation, le consommateur peut recourir gratuitement au service de médiation auprès du médiateur de la consommation dont relève le professionnel.</p>
+</section>
+
+<!-- 3. POLITIQUE DE CONFIDENTIALITÉ -->
+<section class="legal-section" id="confidentialite">
+    <h2><span class="section-icon"><i class="fas fa-shield-halved"></i></span>Politique de Confidentialité (RGPD)</h2>
+
+    <h3>Responsable du traitement</h3>
+    <p>Le responsable du traitement des données personnelles est Ewen Kyr, joignable à l'adresse <a href="mailto:contact@fuzionpilot.com">contact@fuzionpilot.com</a>.</p>
+
+    <h3>Données collectées</h3>
+    <p>Dans le cadre de l'utilisation du service, Fuzion Pilot collecte les données suivantes :</p>
+    <ul>
+        <li><strong>Données d'inscription :</strong> nom, prénom, adresse email, mot de passe (hashé).</li>
+        <li><strong>Données de facturation :</strong> informations de paiement traitées exclusivement par Stripe (Fuzion Pilot ne stocke aucune donnée bancaire).</li>
+        <li><strong>Données d'utilisation :</strong> leads, modèles, statistiques d'équipe, messages internes, plannings — toutes les données que l'utilisateur saisit dans la plateforme dans le cadre de son activité professionnelle.</li>
+        <li><strong>Données techniques :</strong> adresse IP, type de navigateur, système d'exploitation, pages consultées — collectées à des fins de sécurité et d'amélioration du service.</li>
+    </ul>
+
+    <h3>Finalités du traitement</h3>
+    <ul>
+        <li>Fourniture et gestion du service SaaS.</li>
+        <li>Gestion de la relation client et du support.</li>
+        <li>Facturation et traitement des paiements.</li>
+        <li>Amélioration et optimisation du service.</li>
+        <li>Respect des obligations légales.</li>
+    </ul>
+
+    <h3>Base juridique</h3>
+    <p>Le traitement des données repose sur :</p>
+    <ul>
+        <li>L'<strong>exécution du contrat</strong> (article 6.1.b du RGPD) pour les données nécessaires à la fourniture du service.</li>
+        <li>L'<strong>intérêt légitime</strong> (article 6.1.f du RGPD) pour les données techniques et l'amélioration du service.</li>
+        <li>Le <strong>consentement</strong> (article 6.1.a du RGPD) pour toute communication marketing optionnelle.</li>
+    </ul>
+
+    <h3>Durée de conservation</h3>
+    <ul>
+        <li><strong>Données de compte :</strong> conservées pendant toute la durée de l'abonnement, puis supprimées dans un délai de 12 mois après la résiliation, sauf obligation légale de conservation.</li>
+        <li><strong>Données de facturation :</strong> conservées pendant 10 ans conformément aux obligations comptables et fiscales françaises.</li>
+        <li><strong>Données techniques (logs) :</strong> conservées pendant 12 mois maximum.</li>
+    </ul>
+
+    <h3>Partage et revente des données</h3>
+    <p><strong>Fuzion Pilot ne revend jamais les données personnelles de ses utilisateurs à des tiers.</strong></p>
+    <p>Les données peuvent être partagées uniquement avec :</p>
+    <ul>
+        <li><strong>Stripe</strong> pour le traitement des paiements.</li>
+        <li><strong>Vercel / Render</strong> pour l'hébergement du service.</li>
+        <li>Les <strong>autorités compétentes</strong> en cas d'obligation légale.</li>
+    </ul>
+
+    <h3>Droits de l'utilisateur</h3>
+    <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
+    <ul>
+        <li><strong>Droit d'accès :</strong> obtenir une copie de vos données personnelles.</li>
+        <li><strong>Droit de rectification :</strong> corriger des données inexactes ou incomplètes.</li>
+        <li><strong>Droit à l'effacement :</strong> demander la suppression de vos données (« droit à l'oubli »).</li>
+        <li><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré et lisible par machine.</li>
+        <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données pour des motifs légitimes.</li>
+        <li><strong>Droit à la limitation :</strong> demander la limitation du traitement dans certains cas.</li>
+    </ul>
+    <p>Pour exercer vos droits, contactez-nous à : <a href="mailto:contact@fuzionpilot.com">contact@fuzionpilot.com</a>. Nous répondrons dans un délai maximum de 30 jours.</p>
+    <p>En cas de litige, vous pouvez adresser une réclamation à la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>.</p>
+
+    <h3>Transferts internationaux</h3>
+    <p>Certaines données peuvent être transférées vers les États-Unis dans le cadre de l'utilisation des services Stripe et Vercel. Ces transferts sont encadrés par des garanties appropriées (clauses contractuelles types, Data Privacy Framework).</p>
+</section>
+
+<!-- 4. POLITIQUE DE COOKIES -->
+<section class="legal-section" id="cookies">
+    <h2><span class="section-icon"><i class="fas fa-cookie-bite"></i></span>Politique de Cookies</h2>
+
+    <h3>Qu'est-ce qu'un cookie ?</h3>
+    <p>Un cookie est un petit fichier texte stocké sur votre appareil (ordinateur, smartphone, tablette) lors de votre visite sur un site web. Il permet au site de mémoriser certaines informations pour améliorer votre expérience de navigation.</p>
+
+    <h3>Cookies utilisés par Fuzion Pilot</h3>
+    <p>Fuzion Pilot utilise <strong>uniquement des cookies fonctionnels et strictement nécessaires</strong> au fonctionnement du service :</p>
+    <ul>
+        <li><strong>Cookie d'authentification (session) :</strong> permet de maintenir votre connexion au service. Durée : la session ou 30 jours maximum.</li>
+        <li><strong>Cookie de préférences :</strong> mémorise vos choix d'affichage (thème, langue). Durée : 12 mois.</li>
+    </ul>
+
+    <h3>Cookies publicitaires et traceurs</h3>
+    <p><strong>Fuzion Pilot n'utilise aucun cookie publicitaire, aucun cookie de tracking tiers, et aucun cookie de profilage.</strong> Nous n'utilisons pas Google Analytics, Facebook Pixel, ni aucun autre outil de suivi publicitaire.</p>
+
+    <h3>Gestion des cookies</h3>
+    <p>Les cookies fonctionnels étant strictement nécessaires au fonctionnement du service, ils ne requièrent pas de consentement préalable conformément à l'article 82 de la loi Informatique et Libertés. Vous pouvez toutefois les supprimer via les paramètres de votre navigateur, ce qui pourrait affecter le fonctionnement du service.</p>
+</section>
+
+<!-- 5. CONDITIONS D'UTILISATION -->
+<section class="legal-section" id="utilisation">
+    <h2><span class="section-icon"><i class="fas fa-gavel"></i></span>Conditions d'Utilisation</h2>
+
+    <h3>Article 1 — Acceptation</h3>
+    <p>L'utilisation de Fuzion Pilot implique l'acceptation pleine et entière des présentes conditions d'utilisation. Si vous n'acceptez pas ces conditions, vous ne devez pas utiliser le service.</p>
+
+    <h3>Article 2 — Usage professionnel</h3>
+    <p>Fuzion Pilot est destiné à un <strong>usage exclusivement professionnel</strong>. Le service est conçu pour la gestion d'agences de créateurs de contenu et doit être utilisé dans ce cadre. L'utilisateur garantit être un professionnel agissant dans le cadre de son activité.</p>
+
+    <h3>Article 3 — Compte utilisateur</h3>
+    <ul>
+        <li>L'utilisateur est responsable de la confidentialité de ses identifiants de connexion.</li>
+        <li>Toute activité réalisée depuis son compte est réputée effectuée par l'utilisateur.</li>
+        <li>L'utilisateur s'engage à informer immédiatement l'éditeur en cas d'utilisation non autorisée de son compte.</li>
+    </ul>
+
+    <h3>Article 4 — Interdictions</h3>
+    <p>Il est strictement interdit de :</p>
+    <ul>
+        <li><strong>Revendre, sous-licencier</strong> ou redistribuer l'accès au service à des tiers sans autorisation.</li>
+        <li>Utiliser le service à des fins <strong>illégales</strong> ou contraires à l'ordre public.</li>
+        <li>Tenter de <strong>contourner les mesures de sécurité</strong>, d'accéder aux données d'autres utilisateurs, ou de porter atteinte à l'intégrité du système.</li>
+        <li>Effectuer du <strong>reverse engineering</strong>, décompilation ou désassemblage du logiciel.</li>
+        <li>Utiliser des <strong>robots, scrapers</strong> ou outils automatisés pour extraire des données du service.</li>
+    </ul>
+
+    <h3>Article 5 — Responsabilité</h3>
+    <ul>
+        <li>L'éditeur fournit le service <strong>« en l'état »</strong> et ne garantit pas l'absence de bugs ou d'interruptions.</li>
+        <li>La <strong>responsabilité de l'éditeur est limitée</strong> au montant des sommes effectivement payées par l'utilisateur au cours des 12 derniers mois.</li>
+        <li>L'éditeur ne saurait être tenu responsable des <strong>dommages indirects</strong>, perte de données, perte de chiffre d'affaires, ou préjudice commercial résultant de l'utilisation ou de l'impossibilité d'utiliser le service.</li>
+        <li>L'utilisateur est seul responsable des <strong>données qu'il saisit</strong> dans la plateforme et de leur conformité avec la législation applicable.</li>
+    </ul>
+
+    <h3>Article 6 — Suspension et résiliation</h3>
+    <p>L'éditeur se réserve le droit de suspendre ou résilier l'accès au service, sans préavis ni indemnité, en cas de :</p>
+    <ul>
+        <li>Violation des présentes conditions d'utilisation.</li>
+        <li>Non-paiement de l'abonnement.</li>
+        <li>Utilisation frauduleuse ou abusive du service.</li>
+        <li>Mise en danger de la sécurité du service ou des autres utilisateurs.</li>
+    </ul>
+
+    <h3>Article 7 — Modifications</h3>
+    <p>L'éditeur se réserve le droit de modifier les présentes conditions à tout moment. Les modifications seront communiquées aux utilisateurs par email ou notification dans l'application. La poursuite de l'utilisation du service après notification vaut acceptation des nouvelles conditions.</p>
+
+    <h3>Article 8 — Droit applicable</h3>
+    <p>Les présentes conditions sont soumises au <strong>droit français</strong>. Tout litige sera soumis à la compétence exclusive des tribunaux de <strong>Saint-Nazaire, France</strong>.</p>
+</section>
+
+<!-- LAST UPDATE -->
+<section class="legal-section" style="text-align:center;padding-bottom:2rem;">
+    <p style="color:var(--text-muted);font-size:0.85rem;"><i class="fas fa-clock"></i> Dernière mise à jour : 17 avril 2026</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div><a href="index.html" class="nav-logo"><span style="font-size: 22px; font-weight: 800; letter-spacing: 1px; font-family: 'Arial Black', sans-serif;"><span style="color: #ffffff;">FU</span><span style="background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Z</span><span style="color: #ffffff;">ION</span> <span style="display: block; font-size: 11px; font-weight: 400; letter-spacing: 8px; background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: -4px;">PILOT</span></span></a><p class="footer-brand-desc">La plateforme tout-en-un conçue par des managers d'agence, pour des managers d'agence.</p><div class="footer-socials"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div></div>
+            <div class="footer-col"><h4>Produit</h4><a href="features.html">Fonctionnalités</a><a href="pricing.html">Tarifs</a><a href="#">Changelog</a></div>
+            <div class="footer-col"><h4>Ressources</h4><a href="#">Documentation</a><a href="#">Tutoriels</a><a href="#">Blog</a></div>
+            <div class="footer-col"><h4>Entreprise</h4><a href="about.html">À propos</a><a href="mailto:contact@fuzionpilot.com">Contact</a><a href="legal.html">Mentions légales</a></div>
+        </div>
+        <div class="footer-bottom"><span>&copy; 2026 Fuzion Pilot. Tous droits réservés.</span><span>Fait avec <span style="color:#ef4444;">&#10084;</span> par des managers, pour des managers</span></div>
+    </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+<script src="shared.js" defer></script>
+<script>
+window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) btn.classList.add('show');
+    else btn.classList.remove('show');
+});
+</script>
+</body>
+</html>
