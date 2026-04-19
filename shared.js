@@ -60,3 +60,42 @@ function toggleFaq(el) {
 document.addEventListener('visibilitychange', () => {
     document.body.style.animationPlayState = document.hidden ? 'paused' : 'running';
 });
+
+// ========================================
+// LANGUAGE TOGGLE
+// ========================================
+(function() {
+    // Detect current language from path
+    var isEN = window.location.pathname.startsWith('/en/') || window.location.pathname === '/en';
+    var currentLang = isEN ? 'en' : 'fr';
+
+    // Inject toggle into navbar
+    var navMenu = document.querySelector('.nav-menu');
+    if (navMenu) {
+        var li = document.createElement('li');
+        li.innerHTML = '<button class="lang-toggle" onclick="switchLang()" title="' +
+            (currentLang === 'fr' ? 'Switch to English' : 'Passer en Français') + '">' +
+            (currentLang === 'fr' ? 'EN' : 'FR') +
+            '</button>';
+        // Insert before the last item (CTA button)
+        var cta = navMenu.querySelector('.nav-cta-btn')?.closest('li');
+        if (cta) navMenu.insertBefore(li, cta);
+        else navMenu.appendChild(li);
+    }
+})();
+
+function switchLang() {
+    var isEN = window.location.pathname.startsWith('/en/');
+    if (isEN) {
+        // Switch to FR
+        document.cookie = 'fp-site-lang=fr;path=/;max-age=' + (30*24*60*60) + ';SameSite=Lax';
+        var frPath = window.location.pathname.replace('/en/', '/');
+        window.location.href = frPath;
+    } else {
+        // Switch to EN
+        document.cookie = 'fp-site-lang=en;path=/;max-age=' + (30*24*60*60) + ';SameSite=Lax';
+        var page = window.location.pathname;
+        if (page === '/' || page === '') page = '/index.html';
+        window.location.href = '/en' + page;
+    }
+}
