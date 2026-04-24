@@ -6,972 +6,218 @@
     <link rel="shortcut icon" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuzion Pilot — Tarifs</title>
-    <meta name="description" content="Plans et tarifs Fuzion Pilot. Commencez gratuitement et scalez votre agence OnlyFans. Sans engagement.">
-    <meta property="og:title" content="Fuzion Pilot — Tarifs">
-    <meta property="og:description" content="Plans et tarifs Fuzion Pilot. Commencez gratuitement, sans engagement.">
+    <title>Tarifs — Fuzion Pilot</title>
+    <meta name="description" content="Tarification simple et transparente. Standard à 39 euros, Pro à 149 euros. Early access pricing verrouillé.">
+    <meta property="og:title" content="Tarifs — Fuzion Pilot">
+    <meta property="og:description" content="Tarification simple, transparente, conçue pour les agences OFM.">
     <meta property="og:image" content="logo.png">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Canvas and Particles */
-        .hero-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Animated Gradient Orbs */
-        .orb {
-            position: absolute;
-            filter: blur(80px);
-            z-index: 0;
-        }
-
-        .orb-1 {
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
-            top: -200px;
-            right: -150px;
-            animation: orbFloat1 12s ease-in-out infinite;
-        }
-
-        .orb-2 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
-            bottom: -100px;
-            left: -100px;
-            animation: orbFloat2 14s ease-in-out infinite;
-        }
-
-        .orb-3 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-            top: 50%;
-            left: 10%;
-            animation: orbFloat3 16s ease-in-out infinite;
-        }
-
-        @keyframes orbFloat1 {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(30px, -40px); }
-            50% { transform: translate(-20px, -60px); }
-            75% { transform: translate(40px, -30px); }
-        }
-
-        @keyframes orbFloat2 {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(-40px, 50px); }
-            66% { transform: translate(30px, -40px); }
-        }
-
-        @keyframes orbFloat3 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, 40px); }
-        }
-
-        /* Grid Overlay */
-        .grid-overlay {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(0deg, transparent 24%, rgba(124, 58, 237, 0.05) 25%, rgba(124, 58, 237, 0.05) 26%, transparent 27%, transparent 74%, rgba(124, 58, 237, 0.05) 75%, rgba(124, 58, 237, 0.05) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(124, 58, 237, 0.05) 25%, rgba(124, 58, 237, 0.05) 26%, transparent 27%, transparent 74%, rgba(124, 58, 237, 0.05) 75%, rgba(124, 58, 237, 0.05) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
-            animation: gridPulse 4s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes gridPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-
-        /* Animated Gradient Text */
-        .anim-gradient {
-            background: linear-gradient(270deg, #7c3aed, #10b981, #ec4899, #7c3aed);
-            background-size: 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 6s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Hero Badge with Pulse Dot */
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.5rem 1rem;
-            background: rgba(10, 213, 159, 0.1);
-            border: 1px solid rgba(10, 213, 159, 0.3);
-            border-radius: 50px;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            color: #06d6a0;
-            font-weight: 600;
-        }
-
-        .ping-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #06d6a0;
-            border-radius: 50%;
-            animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-
-        @keyframes ping {
-            75%, 100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        /* Page Hero Enhanced */
-        .page-hero {
-            padding: 10rem 0 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .page-hero-bg {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 50% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
-            z-index: -1;
-        }
-
-        .page-hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
-            font-weight: 900;
-            letter-spacing: -2px;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 3;
-        }
-
-        .page-hero p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 3;
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator i {
-            font-size: 1.5rem;
-            color: rgba(124, 58, 237, 0.6);
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
-
-        /* Toggle */
-        .pricing-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0 4rem;
-            position: relative;
-            z-index: 3;
-        }
-
-        .pricing-toggle span {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        .pricing-toggle span.active {
-            color: var(--text-primary);
-        }
-
-        .toggle-switch {
-            width: 56px;
-            height: 30px;
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            border-radius: 50px;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .toggle-switch::after {
-            content: '';
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--gradient-main);
-            top: 2px;
-            left: 2px;
-            transition: 0.3s;
-        }
-
-        .toggle-switch.annual::after {
-            left: 28px;
-        }
-
-        .toggle-switch.annual {
-            border-color: var(--primary);
-        }
-
-        .save-badge {
-            background: rgba(6, 214, 160, 0.15);
-            color: var(--accent);
-            padding: 0.2rem 0.7rem;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        /* Pricing Grid */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-            align-items: start;
-            position: relative;
-            z-index: 3;
-        }
-
-        .pricing-card {
-            background: rgba(17, 24, 39, 0.5);
-            backdrop-filter: blur(12px) brightness(1.1);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: var(--radius-xl);
-            padding: 2.5rem;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
-            transform-style: preserve-3d;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
-            border-color: rgba(124, 58, 237, 0.4);
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(20px) brightness(1.15);
-        }
-
-        .pricing-card.popular {
-            border-color: var(--primary);
-            box-shadow: 0 0 60px rgba(124, 58, 237, 0.25);
-            transform: scale(1.04);
-            background: rgba(124, 58, 237, 0.08);
-            backdrop-filter: blur(15px) brightness(1.15);
-        }
-
-        .pricing-card.popular::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: var(--radius-xl);
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.8), rgba(168, 85, 247, 0.4), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: populatePulse 2s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        @keyframes populatePulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .pricing-card.popular:hover {
-            transform: scale(1.04) translateY(-6px);
-            box-shadow: 0 0 80px rgba(124, 58, 237, 0.35);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--gradient-main);
-            padding: 0.35rem 1.3rem;
-            border-radius: 50px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 10;
-        }
-
-        .pricing-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-
-        .pricing-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-price {
-            display: flex;
-            align-items: baseline;
-            gap: 0.2rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .pricing-currency {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-
-        .pricing-amount {
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1;
-        }
-
-        .pricing-period {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .pricing-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 0.5rem 0;
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-        }
-
-        .pricing-features li i {
-            width: 18px;
-            font-size: 0.75rem;
-        }
-
-        .pricing-features li i.fa-check {
-            color: var(--accent);
-        }
-
-        .pricing-features li i.fa-xmark {
-            color: var(--text-muted);
-        }
-
-        .pricing-features li.disabled {
-            color: var(--text-muted);
-            opacity: 0.5;
-        }
-
-        .pricing-btn {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            border-radius: 14px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .pricing-btn-outline {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .pricing-btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .pricing-btn-primary {
-            background: var(--gradient-main);
-            color: white;
-        }
-
-        .pricing-btn-primary:hover {
-            box-shadow: 0 12px 35px var(--primary-glow);
-            transform: translateY(-2px);
-        }
-
-        /* Comparison Table Enhanced */
-        .comparison {
-            padding: 6rem 0;
-            position: relative;
-            z-index: 3;
-        }
-
-        .comparison-table {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 1rem 1.5rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.88rem;
-        }
-
-        .comparison-table th:first-child,
-        .comparison-table td:first-child {
-            text-align: left;
-        }
-
-        .comparison-table thead th {
-            font-weight: 700;
-            padding: 1.5rem 1.5rem;
-            font-size: 1rem;
-            position: sticky;
-            top: 60px;
-            background: var(--bg-dark);
-            z-index: 10;
-        }
-
-        .comparison-table thead th:nth-child(3) {
-            color: var(--primary-light);
-        }
-
-        .comparison-table tbody td {
-            color: var(--text-secondary);
-        }
-
-        .comparison-table tbody tr:hover td {
-            background: rgba(124, 58, 237, 0.05);
-        }
-
-        .comparison-table .cat-row td {
-            font-weight: 700;
-            color: var(--text-primary);
-            font-size: 0.82rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding-top: 2rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .check-yes {
-            color: var(--accent);
-            text-shadow: 0 0 8px rgba(6, 214, 160, 0.3);
-        }
-
-        .check-no {
-            color: var(--text-muted);
-            opacity: 0.3;
-        }
-
-        /* FAQ Enhanced */
-        .faq-section {
-            padding: 6rem 0;
-            background: var(--bg-section);
-            position: relative;
-            z-index: 3;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            margin-bottom: 0.6rem;
-            overflow: hidden;
-            background: var(--bg-card);
-            transition: all 0.3s;
-        }
-
-        .faq-item:hover {
-            border-color: var(--border-hover);
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.1);
-            background: rgba(17, 24, 39, 0.6);
-        }
-
-        .faq-question {
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .faq-question i {
-            color: var(--primary-light);
-            transition: transform 0.3s;
-            font-size: 0.8rem;
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 300px;
-            padding: 0 1.5rem 1.2rem;
-        }
-
-        .faq-answer p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* CTA Section */
-        .pricing-cta {
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-            z-index: 3;
-        }
-
-        .pricing-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.06) 0%, transparent 60%);
-        }
-
-        @media (max-width: 1024px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                max-width: 440px;
-            }
-
-            .pricing-card.popular {
-                transform: scale(1);
-            }
-
-            .pricing-card.popular:hover {
-                transform: translateY(-6px);
-            }
-
-            .comparison-table {
-                font-size: 0.8rem;
-            }
-
-            .comparison-table th,
-            .comparison-table td {
-                padding: 0.7rem;
-            }
-
-            .orb-1, .orb-2, .orb-3 {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            /* Hero compact */
-            .page-hero {
-                padding: 4rem 0 2rem !important;
-            }
-            .page-hero h1 {
-                font-size: clamp(1.6rem, 5vw, 2.2rem);
-                letter-spacing: -1px;
-            }
-            .page-hero p {
-                font-size: 0.95rem;
-                padding: 0 1rem;
-            }
-            .hero-badge {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
-            }
-            .scroll-indicator { display: none; }
-            .grid-overlay { display: none; }
-
-            /* Pricing grid — full width, tighter */
-            .pricing-grid {
-                max-width: 100%;
-                gap: 1rem;
-            }
-            .pricing-card {
-                padding: 1.5rem;
-                border-radius: 20px;
-            }
-            .pricing-card:hover {
-                transform: none !important;
-                box-shadow: none !important;
-            }
-            .pricing-card.popular {
-                transform: none !important;
-                order: -1; /* Popular card first on mobile */
-            }
-            .pricing-card.popular:hover {
-                transform: none !important;
-            }
-
-            /* Prix plus compact */
-            .pricing-amount {
-                font-size: 2.8rem;
-            }
-            .pricing-currency {
-                font-size: 1.1rem;
-            }
-            .pricing-desc {
-                font-size: 0.8rem;
-                margin-bottom: 1rem;
-            }
-            .pricing-period {
-                margin-bottom: 1.2rem;
-            }
-            .pricing-features {
-                margin-bottom: 1.2rem;
-            }
-            .pricing-features li {
-                padding: 0.4rem 0;
-                font-size: 0.82rem;
-                gap: 0.5rem;
-            }
-
-            /* Toggle compact */
-            .pricing-toggle {
-                margin: 1.5rem 0 2.5rem;
-                gap: 0.75rem;
-            }
-            .pricing-toggle span {
-                font-size: 0.8rem;
-            }
-
-            /* Comparison table — sticky first col */
-            .comparison-table {
-                font-size: 0.72rem;
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .comparison-table th,
-            .comparison-table td {
-                padding: 0.5rem 0.4rem;
-                white-space: nowrap;
-            }
-            .comparison-table thead th {
-                top: 0;
-                font-size: 0.75rem;
-                padding: 0.8rem 0.4rem;
-            }
-            .comparison-table td:first-child,
-            .comparison-table th:first-child {
-                position: sticky;
-                left: 0;
-                background: var(--bg-dark);
-                z-index: 5;
-                min-width: 120px;
-                white-space: normal;
-            }
-
-            /* Comparison section padding */
-            .comparison {
-                padding: 3rem 0;
-            }
-
-            /* FAQ compact */
-            .faq-section {
-                padding: 3rem 0;
-            }
-            .faq-question {
-                padding: 1rem 1.2rem;
-                font-size: 0.88rem;
-            }
-            .faq-item.active .faq-answer {
-                padding: 0 1.2rem 1rem;
-            }
-            .faq-answer p {
-                font-size: 0.85rem;
-            }
-
-            /* CTA compact */
-            .pricing-cta {
-                padding: 3rem 0;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .page-hero {
-                padding: 3rem 0 1.5rem !important;
-            }
-            .page-hero h1 {
-                font-size: clamp(1.3rem, 5vw, 1.8rem);
-            }
-            .pricing-card {
-                padding: 1.2rem;
-                border-radius: 16px;
-            }
-            .pricing-amount {
-                font-size: 2.2rem;
-            }
-            .pricing-features li {
-                font-size: 0.78rem;
-            }
-            .comparison-table {
-                font-size: 0.6rem;
-            }
-            .comparison-table th,
-            .comparison-table td {
-                padding: 0.3rem;
-            }
-            .comparison-table td:first-child,
-            .comparison-table th:first-child {
-                min-width: 100px;
-                font-size: 0.6rem;
-            }
-            .faq-question {
-                font-size: 0.82rem;
-                padding: 0.85rem 1rem;
-            }
-            }
-        }
+        .page-hero { padding: 8rem 0 4rem; text-align: center; }
+        .page-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 1rem; }
+        .page-hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 750px; margin: 0 auto; }
+        .pricing-features { list-style: none; display: grid; gap: 0.7rem; margin-bottom: 2rem; }
+        .pricing-features li { font-size: 0.88rem; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+        .pricing-features li span { color: var(--accent); font-weight: 600; }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 0 auto; max-width: 800px; }
+        .compare-table th, .compare-table td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+        .compare-table th { color: var(--text-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .compare-table td:nth-child(2), .compare-table td:nth-child(3), .compare-table th:nth-child(2), .compare-table th:nth-child(3) { text-align: center; }
+        .compare-table td { color: var(--text-secondary); }
+        .compare-table .check { color: var(--accent); font-weight: 700; }
+        .compare-table .cross { color: var(--text-dim); }
+        .founder-quote { max-width: 700px; margin: 0 auto; text-align: center; padding: 3rem 2rem; }
+        .founder-quote blockquote { font-size: 1.15rem; font-style: italic; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+        .founder-quote cite { font-size: 0.85rem; color: var(--text-muted); font-style: normal; }
+        .faq-grid { max-width: 700px; margin: 0 auto; display: grid; gap: 1rem; }
+        .faq-item { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; }
+        .faq-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .faq-item p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+        .cta-section { padding: 5rem 0; text-align: center; }
+        .cta-section h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
+        .cta-section p { color: var(--text-secondary); margin-bottom: 2rem; }
     </style>
 </head>
 <body>
 
-<canvas class="hero-canvas"></canvas>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-
 <nav class="navbar">
     <div class="container nav-inner">
-        <a href="index.html" class="nav-logo"><span style="font-size: 22px; font-weight: 800; letter-spacing: 1px; font-family: 'Arial Black', sans-serif;"><span style="color: #ffffff;">FU</span><span style="background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Z</span><span style="color: #ffffff;">ION</span> <span style="display: block; font-size: 11px; font-weight: 400; letter-spacing: 8px; background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: -4px;">PILOT</span></span></a>
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Fuzion Pilot">
+            <span class="nav-logo-text">Fuzion Pilot</span>
+        </a>
         <ul class="nav-menu">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="features.html">Fonctionnalités</a></li>
             <li><a href="pricing.html" class="active">Tarifs</a></li>
             <li><a href="about.html">À propos</a></li>
-            <li><a href="https://lcx-agency.onrender.com" class="nav-cta-btn"><i class="fas fa-rocket"></i> Essai gratuit</a></li>
         </ul>
-        <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <div class="nav-actions">
+            <a href="https://lcx-agency.onrender.com" class="nav-cta-ghost">Voir la démo</a>
+            <a href="https://lcx-agency.onrender.com/register" class="nav-cta-btn">Essai gratuit →</a>
+            <button class="lang-toggle" onclick="window.location.href='/en/'">EN</button>
+        </div>
+        <button class="hamburger" onclick="toggleMenu()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="16" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
     </div>
 </nav>
 
+<!-- HERO -->
 <section class="page-hero">
-    <div class="grid-overlay"></div>
-    <div class="page-hero-bg"></div>
-    <div class="container">
-        <div class="hero-badge">
-            <span class="ping-dot"></span>
-            <span>Plans de tarification</span>
-        </div>
-        <div class="section-tag"><i class="fas fa-tag"></i> Tarifs</div>
-        <h1>Des plans <span class="gradient-text anim-gradient">adaptés à votre growth</span></h1>
-        <p>Commencez gratuitement et scalez au rythme de votre agence. Pas d'engagement, annulez à tout moment.</p>
-    </div>
-    <div class="scroll-indicator">
-        <i class="fas fa-mouse"></i>
+    <div class="container reveal">
+        <span class="section-tag">Tarifs</span>
+        <h1>Tarification simple <span class="gradient-text">et transparente.</span></h1>
+        <p>Pas de frais cachés. Pas de % sur vos revenus. Un prix fixe, des fonctionnalités complètes.</p>
     </div>
 </section>
 
-<section style="padding:0 0 6rem; position: relative; z-index: 2;">
+<!-- PRICING CARDS -->
+<section style="padding:0 0 5rem">
     <div class="container">
-        <div class="pricing-toggle" id="pricingToggle">
-            <span class="active" id="monthlyLabel">Mensuel</span>
-            <div class="toggle-switch" id="toggleSwitch" onclick="togglePricing()"></div>
-            <span id="annualLabel">Annuel</span>
-            <span class="save-badge">-20%</span>
-        </div>
-
         <div class="pricing-grid">
-            <!-- STARTER -->
-            <div class="pricing-card reveal">
-                <div class="pricing-name">Starter</div>
-                <div class="pricing-desc">Pour lancer votre agence</div>
-                <div class="pricing-price">
-                    <span class="pricing-currency">€</span>
-                    <span class="pricing-amount" data-monthly="0" data-annual="0">0</span>
+            <!-- Standard -->
+            <div class="card reveal reveal-delay-1" style="padding:2.5rem">
+                <span class="badge badge-blue" style="margin-bottom:1rem">Early bird</span>
+                <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:0.3rem">Standard</h3>
+                <div style="margin-bottom:1.5rem">
+                    <span style="font-size:2.5rem;font-weight:800;font-family:var(--font-mono)" class="gradient-text">€39</span>
+                    <span style="color:var(--text-muted);font-size:0.85rem">/mois</span>
                 </div>
-                <div class="pricing-period">Gratuit pour toujours</div>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.6">Idéal pour les agences qui démarrent ou gèrent jusqu'à 5 modèles. Toutes les fonctionnalités core incluses.</p>
                 <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> 1 modèle</li>
-                    <li><i class="fas fa-check"></i> 3 membres d'équipe</li>
-                    <li><i class="fas fa-check"></i> Dashboard basique</li>
-                    <li><i class="fas fa-check"></i> Gestion des tâches</li>
-                    <li><i class="fas fa-check"></i> Planning simple</li>
-                    <li class="disabled"><i class="fas fa-xmark"></i> Outreach automatisé</li>
-                    <li class="disabled"><i class="fas fa-xmark"></i> Scripts & templates</li>
-                    <li class="disabled"><i class="fas fa-xmark"></i> Analytics avancées</li>
-                    <li class="disabled"><i class="fas fa-xmark"></i> Module coaching</li>
-                    <li class="disabled"><i class="fas fa-xmark"></i> Support prioritaire</li>
+                    <li><span>✓</span> Jusqu'à 5 modèles</li>
+                    <li><span>✓</span> Jusqu'à 10 membres d'équipe</li>
+                    <li><span>✓</span> Dashboard & KPIs</li>
+                    <li><span>✓</span> Chatters management</li>
+                    <li><span>✓</span> Fans CRM + export CSV</li>
+                    <li><span>✓</span> Content Planner</li>
+                    <li><span>✓</span> Shifts en temps réel</li>
+                    <li><span>✓</span> Finances & splits</li>
+                    <li><span>✓</span> Recrutement pipeline</li>
+                    <li><span>✓</span> Support FR + EN</li>
+                    <li><span>✓</span> Accès communauté</li>
                 </ul>
-                <a href="https://lcx-agency.onrender.com" class="pricing-btn pricing-btn-outline">Commencer gratuitement</a>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1.2rem">Passera à €79/mois après le lancement</p>
+                <a href="https://lcx-agency.onrender.com/register" class="btn btn-secondary" style="width:100%;justify-content:center">Essai gratuit</a>
             </div>
-
-            <!-- PRO -->
-            <div class="pricing-card popular reveal reveal-delay-1">
-                <div class="popular-badge"><i class="fas fa-star" style="margin-right:4px;"></i> Le plus populaire</div>
-                <div class="pricing-name">Pro</div>
-                <div class="pricing-desc">Pour les agences en croissance</div>
-                <div class="pricing-price">
-                    <span class="pricing-currency">€</span>
-                    <span class="pricing-amount" data-monthly="39" data-annual="29">39</span>
+            <!-- Pro -->
+            <div class="card reveal reveal-delay-2" style="padding:2.5rem;border-color:var(--border-accent);position:relative">
+                <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%)">
+                    <span class="badge badge-blue" style="font-size:0.6rem;padding:4px 12px">Recommandé</span>
                 </div>
-                <div class="pricing-period price-period-text">/mois</div>
-                <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> 10 modèles</li>
-                    <li><i class="fas fa-check"></i> Équipe illimitée</li>
-                    <li><i class="fas fa-check"></i> Dashboard complet</li>
-                    <li><i class="fas fa-check"></i> Outreach complet</li>
-                    <li><i class="fas fa-check"></i> Scripts & templates</li>
-                    <li><i class="fas fa-check"></i> Demandes de contenu</li>
-                    <li><i class="fas fa-check"></i> Analytics avancées</li>
-                    <li><i class="fas fa-check"></i> Module coaching</li>
-                    <li><i class="fas fa-check"></i> Finances & revenus</li>
-                    <li class="disabled"><i class="fas fa-xmark"></i> API & intégrations</li>
-                </ul>
-                <a href="checkout.html?plan=pro&cycle=monthly" id="btnPro" class="pricing-btn pricing-btn-primary">Choisir Pro</a>
-            </div>
-
-            <!-- ENTERPRISE -->
-            <div class="pricing-card reveal reveal-delay-2">
-                <div class="pricing-name">Enterprise</div>
-                <div class="pricing-desc">Pour les grandes agences</div>
-                <div class="pricing-price">
-                    <span class="pricing-currency">€</span>
-                    <span class="pricing-amount" data-monthly="149" data-annual="119">149</span>
+                <span class="badge badge-purple" style="margin-bottom:1rem">Agences 5+ modèles</span>
+                <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:0.3rem">Pro</h3>
+                <div style="margin-bottom:1.5rem">
+                    <span style="font-size:2.5rem;font-weight:800;font-family:var(--font-mono)" class="gradient-text-blue">€149</span>
+                    <span style="color:var(--text-muted);font-size:0.85rem">/mois</span>
                 </div>
-                <div class="pricing-period price-period-text">/mois</div>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.6">Pour les agences en croissance. Modèles et équipe illimités, coaching intégré, accès prioritaire au fondateur.</p>
                 <ul class="pricing-features">
-                    <li><i class="fas fa-check"></i> Modèles illimités</li>
-                    <li><i class="fas fa-check"></i> Tout le plan Pro</li>
-                    <li><i class="fas fa-check"></i> API & intégrations</li>
-                    <li><i class="fas fa-check"></i> Multi-agences</li>
-                    <li><i class="fas fa-check"></i> White label</li>
-                    <li><i class="fas fa-check"></i> Support prioritaire 24/7</li>
-                    <li><i class="fas fa-check"></i> Onboarding personnalisé</li>
-                    <li><i class="fas fa-check"></i> SLA garanti</li>
-                    <li><i class="fas fa-check"></i> Account manager dédié</li>
-                    <li><i class="fas fa-check"></i> Formation équipe incluse</li>
+                    <li><span>✓</span> Modèles illimités</li>
+                    <li><span>✓</span> Équipe illimitée</li>
+                    <li><span>✓</span> Tout ce qui est dans Standard</li>
+                    <li><span>✓</span> Module Coaching complet</li>
+                    <li><span>✓</span> VA (Virtual Assistant)</li>
+                    <li><span>✓</span> Support prioritaire</li>
+                    <li><span>✓</span> Call mensuel 1-on-1 fondateur</li>
+                    <li><span>✓</span> Accès API en avant-première</li>
+                    <li><span>✓</span> Onboarding personnalisé</li>
+                    <li><span>✓</span> Roadmap influence</li>
                 </ul>
-                <a href="checkout.html?plan=enterprise&cycle=monthly" id="btnEnterprise" class="pricing-btn pricing-btn-outline">Choisir Enterprise</a>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1.2rem">Passera à €299/mois après le lancement</p>
+                <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary" style="width:100%;justify-content:center">Essai gratuit →</a>
             </div>
         </div>
+        <p class="reveal" style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-top:2rem">7 jours gratuits · Aucune carte requise · Annulez à tout moment</p>
     </div>
 </section>
 
 <!-- COMPARISON TABLE -->
-<section class="comparison" style="background:var(--bg-section);">
+<section style="padding:4rem 0;background:var(--bg-surface)">
     <div class="container">
         <div class="section-header reveal">
-            <div class="section-tag"><i class="fas fa-table"></i> Comparaison</div>
-            <h2 class="section-title">Comparez les plans en détail</h2>
+            <h2 class="section-title">Comparaison <span class="gradient-text">détaillée</span></h2>
         </div>
-        <table class="comparison-table reveal">
-            <thead>
-                <tr><th></th><th>Starter</th><th>Pro</th><th>Enterprise</th></tr>
-            </thead>
-            <tbody>
-                <tr class="cat-row"><td colspan="4">Gestion d'équipe</td></tr>
-                <tr><td>Modèles</td><td>1</td><td>10</td><td>Illimité</td></tr>
-                <tr><td>Membres d'équipe</td><td>3</td><td>Illimité</td><td>Illimité</td></tr>
-                <tr><td>Rôles personnalisés</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-                <tr><td>Multi-agences</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
+        <div class="reveal" style="overflow-x:auto">
+            <table class="compare-table">
+                <thead>
+                    <tr><th>Fonctionnalité</th><th>Standard</th><th>Pro</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Modèles</td><td>Jusqu'à 5</td><td>Illimités</td></tr>
+                    <tr><td>Membres d'équipe</td><td>Jusqu'à 10</td><td>Illimités</td></tr>
+                    <tr><td>Dashboard & KPIs</td><td class="check">✓</td><td class="check">✓</td></tr>
+                    <tr><td>Gestion des chatters</td><td class="check">✓</td><td class="check">✓</td></tr>
+                    <tr><td>Fans CRM</td><td class="check">✓</td><td class="check">✓</td></tr>
+                    <tr><td>Export CSV</td><td class="check">✓</td><td class="check">✓</td></tr>
+                    <tr><td>Content Planner</td><td class="check">✓</td><td class="check">✓</td></tr>
+                    <tr><td>Shifts temps réel</td><td class="check">✓</td><td class="check">✓</td></tr>
+                    <tr><td>Finances & splits</td><td class="check">✓</td><td class="check">✓</td></tr>
+                    <tr><td>Recrutement pipeline</td><td class="check">✓</td><td class="check">✓</td></tr>
+                    <tr><td>Module Coaching</td><td class="cross">—</td><td class="check">✓</td></tr>
+                    <tr><td>VA (Virtual Assistant)</td><td class="cross">—</td><td class="check">✓</td></tr>
+                    <tr><td>Support prioritaire</td><td class="cross">—</td><td class="check">✓</td></tr>
+                    <tr><td>Call 1-on-1 fondateur</td><td class="cross">—</td><td class="check">✓</td></tr>
+                    <tr><td>Accès API</td><td class="cross">—</td><td class="check">✓</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
-                <tr class="cat-row"><td colspan="4">Fonctionnalités</td></tr>
-                <tr><td>Dashboard</td><td>Basique</td><td>Complet</td><td>Complet</td></tr>
-                <tr><td>Planning</td><td>Simple</td><td>Avancé</td><td>Avancé</td></tr>
-                <tr><td>Outreach</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-                <tr><td>Scripts & templates</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-                <tr><td>Demandes de contenu</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-                <tr><td>Analytics avancées</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-                <tr><td>Finances</td><td>Basique</td><td>Complet</td><td>Complet</td></tr>
-                <tr><td>Coaching</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-
-                <tr class="cat-row"><td colspan="4">Support & intégrations</td></tr>
-                <tr><td>Support</td><td>Email</td><td>Chat</td><td>24/7 prioritaire</td></tr>
-                <tr><td>API</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-                <tr><td>White label</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-                <tr><td>Onboarding personnalisé</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-                <tr><td>Account manager</td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-no"><i class="fas fa-xmark"></i></td><td class="check-yes"><i class="fas fa-check"></i></td></tr>
-            </tbody>
-        </table>
+<!-- FOUNDER QUOTE -->
+<section style="padding:4rem 0">
+    <div class="container">
+        <div class="founder-quote reveal">
+            <blockquote>"Je ne voulais pas d'un pricing au pourcentage qui punit le succès. Vous grandissez, votre prix reste le même. Les early adopters gardent ce tarif pour toujours — c'est ma façon de remercier ceux qui nous font confiance dès le début."</blockquote>
+            <cite>— Fondateur, Fuzion Pilot</cite>
+        </div>
     </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq-section">
+<section style="padding:4rem 0;background:var(--bg-surface)">
     <div class="container">
         <div class="section-header reveal">
-            <div class="section-tag"><i class="fas fa-circle-question"></i> FAQ</div>
-            <h2 class="section-title">Questions sur les tarifs</h2>
+            <span class="section-tag">FAQ</span>
+            <h2 class="section-title">Questions fréquentes</h2>
         </div>
-        <div class="faq-container">
-            <div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">Puis-je commencer gratuitement ?<i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Oui ! Le plan Starter est 100% gratuit et vous permet de tester la plateforme avec 1 modèle et 3 membres d'équipe. Aucune carte bancaire requise.</p></div></div>
-            <div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">Puis-je changer de plan à tout moment ?<i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Absolument. Vous pouvez upgrader ou downgrader à tout moment. La différence est calculée au prorata sur votre prochaine facture.</p></div></div>
-            <div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">Y a-t-il un engagement minimum ?<i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Non, aucun engagement. Vous pouvez annuler à tout moment. Si vous choisissez le paiement annuel, vous bénéficiez de -20% et pouvez être remboursé sous 30 jours.</p></div></div>
-            <div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">Quels moyens de paiement acceptez-vous ?<i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Nous acceptons les cartes bancaires (Visa, Mastercard, Amex), PayPal et les virements SEPA pour les plans Enterprise.</p></div></div>
-            <div class="faq-item reveal"><div class="faq-question" onclick="toggleFaq(this)">Le plan Enterprise est-il personnalisable ?<i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Oui, le plan Enterprise est entièrement personnalisable. Contactez notre équipe pour un devis adapté à vos besoins spécifiques.</p></div></div>
+        <div class="faq-grid">
+            <div class="faq-item reveal">
+                <h4>Est-ce que l'essai gratuit est vraiment sans carte ?</h4>
+                <p>Oui. 7 jours d'accès complet, aucune carte bancaire demandée. Si vous ne souscrivez pas, votre compte est simplement mis en pause.</p>
+            </div>
+            <div class="faq-item reveal">
+                <h4>Puis-je changer de plan plus tard ?</h4>
+                <p>Absolument. Vous pouvez passer du Standard au Pro (ou inversement) à tout moment depuis vos paramètres. Le changement est immédiat.</p>
+            </div>
+            <div class="faq-item reveal">
+                <h4>Le prix early bird est-il garanti ?</h4>
+                <p>Oui. Si vous souscrivez pendant la phase early access, votre tarif est verrouillé à vie. Même quand les prix augmenteront, le vôtre restera identique.</p>
+            </div>
+            <div class="faq-item reveal">
+                <h4>Proposez-vous un onboarding ?</h4>
+                <p>Les utilisateurs Pro bénéficient d'un onboarding personnalisé avec le fondateur. Les utilisateurs Standard ont accès à la documentation et aux tutoriels vidéo.</p>
+            </div>
+            <div class="faq-item reveal">
+                <h4>Y a-t-il un engagement minimum ?</h4>
+                <p>Non. C'est du mois par mois, annulez quand vous voulez. Pas de frais de résiliation, pas de période d'engagement.</p>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="pricing-cta">
-    <div class="container" style="position:relative;z-index:2;">
-        <div class="reveal">
-            <h2 class="section-title">Encore des questions ?</h2>
-            <p class="section-subtitle" style="margin-bottom:2rem;">Notre équipe est disponible pour vous aider à choisir le plan parfait pour votre agence.</p>
-            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-                <a href="#" class="btn btn-primary"><i class="fas fa-comments"></i> Contacter l'équipe</a>
-                <a href="features.html" class="btn btn-secondary"><i class="fas fa-sparkles"></i> Voir les fonctionnalités</a>
-            </div>
+<section class="cta-section">
+    <div class="container reveal">
+        <h2>Lancez-vous aujourd'hui.</h2>
+        <p style="max-width:500px;margin:0 auto 2rem">Aucune carte requise · €39 early bird · Le prix augmente après le lancement</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+            <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary btn-lg">Essai gratuit →</a>
+            <a href="https://lcx-agency.onrender.com" class="btn btn-ghost btn-lg">Voir la démo</a>
         </div>
     </div>
 </section>
@@ -979,180 +225,51 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div><a href="index.html" class="nav-logo"><span style="font-size: 22px; font-weight: 800; letter-spacing: 1px; font-family: 'Arial Black', sans-serif;"><span style="color: #ffffff;">FU</span><span style="background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Z</span><span style="color: #ffffff;">ION</span> <span style="display: block; font-size: 11px; font-weight: 400; letter-spacing: 8px; background: linear-gradient(135deg, #00C9A7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: -4px;">PILOT</span></span></a><p class="footer-brand-desc">La plateforme tout-en-un conçue par des managers d'agence, pour des managers d'agence.</p><div class="footer-socials"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div></div>
-            <div class="footer-col"><h4>Produit</h4><a href="features.html">Fonctionnalités</a><a href="pricing.html">Tarifs</a><a href="#">Changelog</a></div>
-            <div class="footer-col"><h4>Ressources</h4><a href="#">Documentation</a><a href="#">Tutoriels</a><a href="#">Blog</a></div>
-            <div class="footer-col"><h4>Entreprise</h4><a href="about.html">À propos</a><a href="mailto:contact@fuzionpilot.com">Contact</a><a href="legal.html">Mentions légales</a></div>
+            <div>
+                <a href="index.html" class="nav-logo" style="margin-bottom:0.5rem;display:inline-flex">
+                    <img src="logo.png" alt="Fuzion Pilot" style="height:32px">
+                    <span class="nav-logo-text">Fuzion Pilot</span>
+                </a>
+                <p class="footer-brand-desc">La plateforme tout-en-un pour gérer votre agence OFM. Conçue par des managers, pour des managers.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="#" aria-label="Discord"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Produit</h4>
+                <a href="features.html">Fonctionnalités</a>
+                <a href="pricing.html">Tarifs</a>
+                <a href="compare.html">Comparer</a>
+                <a href="https://lcx-agency.onrender.com">Démo</a>
+            </div>
+            <div class="footer-col">
+                <h4>Ressources</h4>
+                <a href="#">Documentation</a>
+                <a href="#">Tutoriels</a>
+                <a href="#">Blog</a>
+                <a href="#">Communauté</a>
+            </div>
+            <div class="footer-col">
+                <h4>Entreprise</h4>
+                <a href="about.html">À propos</a>
+                <a href="mailto:contact@fuzionpilot.com">Contact</a>
+                <a href="legal.html">Mentions légales</a>
+                <a href="legal.html#confidentialite">Confidentialité</a>
+            </div>
         </div>
-        <div class="footer-bottom"><span>&copy; 2026 Fuzion Pilot. Tous droits réservés.</span><span>Fait avec <span style="color:#ef4444;">&#10084;</span> par des managers, pour des managers</span></div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Fuzion Pilot. Built by managers, for managers.</span>
+            <span style="display:flex;align-items:center;gap:6px">
+                <img src="logo.png" alt="" style="height:16px;border-radius:4px;opacity:0.5">
+                Fuzion Pilot
+            </span>
+        </div>
     </div>
 </footer>
 
 <script src="shared.js" defer></script>
-<script>
-// Pricing Toggle
-let isAnnual = false;
-function togglePricing() {
-    isAnnual = !isAnnual;
-    document.getElementById('toggleSwitch').classList.toggle('annual', isAnnual);
-    document.getElementById('monthlyLabel').classList.toggle('active', !isAnnual);
-    document.getElementById('annualLabel').classList.toggle('active', isAnnual);
-    document.querySelectorAll('.pricing-amount').forEach(el => {
-        const val = isAnnual ? el.dataset.annual : el.dataset.monthly;
-        el.textContent = val;
-    });
-    document.querySelectorAll('.price-period-text').forEach(el => {
-        el.textContent = isAnnual ? '/mois (facturé annuellement)' : '/mois';
-    });
-    // Update checkout buttons to reflect selected cycle
-    const cycle = isAnnual ? 'annual' : 'monthly';
-    const btnPro = document.getElementById('btnPro');
-    const btnEnt = document.getElementById('btnEnterprise');
-    if (btnPro) btnPro.href = `checkout.html?plan=pro&cycle=${cycle}`;
-    if (btnEnt) btnEnt.href = `checkout.html?plan=enterprise&cycle=${cycle}`;
-}
-
-// Particle System
-class ParticleSystem {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
-        this.particles = [];
-        this.mouse = { x: 0, y: 0 };
-        this.resize();
-        this.init();
-        this.setupEventListeners();
-    }
-
-    resize() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-    }
-
-    init() {
-        this.particles = [];
-        const particleCount = 50;
-        for (let i = 0; i < particleCount; i++) {
-            this.particles.push({
-                x: Math.random() * this.canvas.width,
-                y: Math.random() * this.canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                radius: Math.random() * 1.5 + 0.5
-            });
-        }
-    }
-
-    setupEventListeners() {
-        window.addEventListener('mousemove', (e) => {
-            this.mouse.x = e.clientX;
-            this.mouse.y = e.clientY;
-        });
-
-        window.addEventListener('resize', () => this.resize());
-
-        document.addEventListener('mouseleave', () => {
-            this.mouse.x = -10000;
-            this.mouse.y = -10000;
-        });
-    }
-
-    update() {
-        this.particles.forEach(p => {
-            p.x += p.vx;
-            p.y += p.vy;
-
-            if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
-            if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
-
-            p.x = Math.max(0, Math.min(this.canvas.width, p.x));
-            p.y = Math.max(0, Math.min(this.canvas.height, p.y));
-
-            const dx = this.mouse.x - p.x;
-            const dy = this.mouse.y - p.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            const repulsionRange = 150;
-
-            if (distance < repulsionRange) {
-                const force = (repulsionRange - distance) / repulsionRange;
-                p.vx -= (dx / distance) * force * 0.3;
-                p.vy -= (dy / distance) * force * 0.3;
-            }
-        });
-    }
-
-    draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.particles.forEach(p => {
-            this.ctx.fillStyle = `rgba(124, 58, 237, ${0.5 + Math.random() * 0.3})`;
-            this.ctx.beginPath();
-            this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            this.ctx.fill();
-        });
-
-        this.particles.forEach((p1, i) => {
-            this.particles.slice(i + 1).forEach(p2 => {
-                const dx = p2.x - p1.x;
-                const dy = p2.y - p1.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const maxDistance = 200;
-
-                if (distance < maxDistance) {
-                    const opacity = (1 - distance / maxDistance) * 0.2;
-                    this.ctx.strokeStyle = `rgba(124, 58, 237, ${opacity})`;
-                    this.ctx.lineWidth = 1;
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(p1.x, p1.y);
-                    this.ctx.lineTo(p2.x, p2.y);
-                    this.ctx.stroke();
-                }
-            });
-        });
-    }
-
-    animate() {
-        this.update();
-        this.draw();
-        requestAnimationFrame(() => this.animate());
-    }
-}
-
-// Initialize Particle System
-const canvas = document.querySelector('.hero-canvas');
-if (canvas) {
-    const particleSystem = new ParticleSystem(canvas);
-    particleSystem.animate();
-}
-
-// 3D Hover Tilt Effect for Pricing Cards
-const pricingCards = document.querySelectorAll('.pricing-card');
-pricingCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-    });
-});
-
-// FAQ Toggle
-function toggleFaq(element) {
-    const item = element.parentElement;
-    item.classList.toggle('active');
-}
-</script>
-
 </body>
 </html>
