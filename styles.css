@@ -886,6 +886,14 @@ section {
     .card { padding: 1.2rem; }
 }
 
+/* ========== FAQ ACCORDION ========== */
+.faq-item.open .faq-a {
+    max-height: 200px !important;
+}
+.faq-item.open .faq-q span:last-child {
+    transform: rotate(45deg);
+}
+
 /* ========== REDUCED MOTION ========== */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {

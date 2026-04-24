@@ -69,19 +69,7 @@ document.addEventListener('visibilitychange', () => {
     var isEN = window.location.pathname.startsWith('/en/') || window.location.pathname === '/en';
     var currentLang = isEN ? 'en' : 'fr';
 
-    // Inject toggle into navbar
-    var navMenu = document.querySelector('.nav-menu');
-    if (navMenu) {
-        var li = document.createElement('li');
-        li.innerHTML = '<button class="lang-toggle" onclick="switchLang()" title="' +
-            (currentLang === 'fr' ? 'Switch to English' : 'Passer en Français') + '">' +
-            (currentLang === 'fr' ? 'EN' : 'FR') +
-            '</button>';
-        // Insert before the last item (CTA button)
-        var cta = navMenu.querySelector('.nav-cta-btn')?.closest('li');
-        if (cta) navMenu.insertBefore(li, cta);
-        else navMenu.appendChild(li);
-    }
+    // Lang toggle now included directly in HTML navbar
 })();
 
 function switchLang() {

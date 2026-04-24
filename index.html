@@ -1075,359 +1075,446 @@
     </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="hero-grid-overlay"></div>
 
-    <div class="container hero-content">
-        <div>
-            <div class="hero-badge">
+<!-- ===== HERO ===== -->
+<section class="hero" style="min-height:100vh;display:flex;align-items:center;padding:7rem 0 4rem;position:relative;overflow:hidden">
+    <!-- Ambient orbs -->
+    <div class="orb orb-blue" style="width:600px;height:600px;top:-200px;right:-100px"></div>
+    <div class="orb orb-purple" style="width:400px;height:400px;bottom:-100px;left:-50px"></div>
+
+    <div class="container" style="position:relative;z-index:2;text-align:center">
+        <!-- Badge -->
+        <div class="reveal" style="margin-bottom:2rem">
+            <span class="section-tag" style="animation:fadeInUp 0.6s ease 0.2s both">
                 <span class="pulse-dot"></span>
-                Conçu par des managers, pour des managers
-            </div>
-            <h1>
-                L'outil qui n'existait
-                <span class="line-2"><span class="anim-gradient">nulle part ailleurs.</span></span>
-            </h1>
-            <p class="hero-desc">
-                Fuzion Pilot est la plateforme surpuissante pour gérer votre agence de A à Z. Planning, scripts, modèles, chatters, outreach, demandes de contenu, finances — tout centralisé dans une interface pensée par des managers.
-            </p>
-            <div class="hero-buttons">
-                <a href="https://lcx-agency.onrender.com" class="btn btn-primary btn-lg btn-glow">
-                    <i class="fas fa-rocket"></i>
-                    Essayer gratuitement
-                </a>
-                <a href="https://lcx-agency.onrender.com" class="btn btn-secondary btn-lg">
-                    <i class="fas fa-play"></i>
-                    Voir la démo
-                </a>
-            </div>
-            <div class="hero-proof">
-                <div class="avatar-stack">
-                    <span style="background:var(--gradient-main);">E</span>
-                    <span style="background:var(--gradient-pink);">M</span>
-                    <span style="background:var(--gradient-blue);">S</span>
-                    <span style="background:var(--gradient-warm);">K</span>
-                    <span style="background:rgba(255,255,255,0.08);color:var(--text-muted);font-size:0.5rem;">+500</span>
-                </div>
-                <div>
-                    <div class="hero-proof-text"><strong>500+ agences</strong> nous font confiance</div>
-                    <div class="hero-proof-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.9/5</div>
-                </div>
-            </div>
+                Early access — Lancement Avril 2026
+            </span>
         </div>
 
-        <div class="hero-visual">
-            <div class="hero-mockup-3d">
-                <div class="app-mockup-epic">
-                    <div class="mockup-chrome">
-                        <span class="mockup-dot mockup-dot-r"></span>
-                        <span class="mockup-dot mockup-dot-y"></span>
-                        <span class="mockup-dot mockup-dot-g"></span>
-                        <div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/dashboard</div>
-                    </div>
-                    <div class="mockup-layout">
-                        <div class="mockup-sidebar">
-                            <div class="mockup-sidebar-brand"><span class="dot">FP</span> Fuzion Pilot</div>
-                            <div class="mockup-nav-label">Principal</div>
-                            <div class="mockup-nav-item active"><i class="fas fa-th-large"></i> Dashboard</div>
-                            <div class="mockup-nav-item"><i class="fas fa-calendar-alt"></i> Planning</div>
-                            <div class="mockup-nav-item"><i class="fas fa-tasks"></i> Tâches</div>
-                            <div class="mockup-nav-label">Équipes</div>
-                            <div class="mockup-nav-item"><i class="fas fa-user-circle"></i> Modèles</div>
-                            <div class="mockup-nav-item"><i class="fas fa-comments"></i> Chatters</div>
-                            <div class="mockup-nav-item"><i class="fas fa-paper-plane"></i> Outreach</div>
-                            <div class="mockup-nav-item"><i class="fas fa-robot"></i> VA</div>
-                            <div class="mockup-nav-label">Outils</div>
-                            <div class="mockup-nav-item"><i class="fas fa-chart-pie"></i> Stats</div>
-                            <div class="mockup-nav-item"><i class="fas fa-graduation-cap"></i> Coaching</div>
-                            <div class="mockup-nav-item"><i class="fas fa-chart-line"></i> Analytics</div>
-                            <div class="mockup-nav-item"><i class="fas fa-wallet"></i> Finances</div>
-                        </div>
-                        <div class="mockup-main">
-                            <div class="mockup-page-title">Dashboard</div>
-                            <div class="mockup-page-subtitle">Vue d'ensemble de ton agence</div>
-                            <div class="mockup-stats-row">
-                                <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--primary-light);">22,556</div><div class="mockup-stat-lbl">Followers</div></div>
-                                <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--accent);">5</div><div class="mockup-stat-lbl">Modèles</div></div>
-                                <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--pink);">15</div><div class="mockup-stat-lbl">Équipe</div></div>
-                                <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--orange);">10</div><div class="mockup-stat-lbl">Étudiants</div></div>
-                            </div>
-                            <div class="mockup-chart-area">
-                                <div class="mockup-chart-title">Outreach — Temps réel</div>
-                                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.3rem;margin-bottom:0.6rem;text-align:center;">
-                                    <div><span style="font-size:0.85rem;font-weight:800;color:var(--primary-light);">1,390</span><br><span style="font-size:0.45rem;color:var(--text-muted);">DMs</span></div>
-                                    <div><span style="font-size:0.85rem;font-weight:800;color:var(--accent);">4</span><br><span style="font-size:0.45rem;color:var(--text-muted);">Warm</span></div>
-                                    <div><span style="font-size:0.85rem;font-weight:800;color:var(--pink);">3</span><br><span style="font-size:0.45rem;color:var(--text-muted);">Calls</span></div>
-                                    <div><span style="font-size:0.85rem;font-weight:800;color:var(--yellow);">39.9%</span><br><span style="font-size:0.45rem;color:var(--text-muted);">Taux</span></div>
-                                </div>
-                                <div class="chart-bars" style="height:70px;">
-                                    <div class="chart-bar" style="height:35%;background:var(--primary);animation-delay:0.1s;"></div>
-                                    <div class="chart-bar" style="height:55%;background:var(--primary);animation-delay:0.15s;"></div>
-                                    <div class="chart-bar" style="height:45%;background:var(--primary-light);animation-delay:0.2s;"></div>
-                                    <div class="chart-bar" style="height:75%;background:var(--accent);animation-delay:0.25s;"></div>
-                                    <div class="chart-bar" style="height:60%;background:var(--primary);animation-delay:0.3s;"></div>
-                                    <div class="chart-bar" style="height:85%;background:var(--accent);animation-delay:0.35s;"></div>
-                                    <div class="chart-bar" style="height:100%;background:var(--gradient-main);animation-delay:0.4s;"></div>
-                                    <div class="chart-bar" style="height:70%;background:var(--primary-light);animation-delay:0.45s;"></div>
-                                    <div class="chart-bar" style="height:90%;background:var(--accent);animation-delay:0.5s;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Title -->
+        <h1 class="reveal gradient-text" style="font-size:clamp(2.5rem,5.5vw,4.2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1.5rem;max-width:800px;margin-left:auto;margin-right:auto">
+            L'operating system<br>pour agences OFM.
+        </h1>
 
-            <!-- Floating cards -->
-            <div class="hero-float f1">
-                <div class="float-inner">
-                    <div class="float-icon" style="background:rgba(6,214,160,0.15);color:var(--accent);"><i class="fas fa-arrow-trend-up"></i></div>
-                    <div><div class="float-val" style="color:var(--accent);">+39.9%</div><div class="float-lbl">Taux de réponse</div></div>
-                </div>
-            </div>
-            <div class="hero-float f2">
-                <div class="float-inner">
-                    <div class="float-icon" style="background:rgba(124,58,237,0.15);color:var(--primary-light);"><i class="fas fa-envelope-open-text"></i></div>
-                    <div><div class="float-val" style="color:var(--primary-light);">1,390</div><div class="float-lbl">DMs envoyes</div></div>
-                </div>
-            </div>
-            <div class="hero-float f3">
-                <div class="float-inner">
-                    <div class="float-icon" style="background:rgba(236,72,153,0.15);color:var(--pink);"><i class="fas fa-users"></i></div>
-                    <div><div class="float-val" style="color:var(--pink);">22.5K</div><div class="float-lbl">Followers gérés</div></div>
-                </div>
-            </div>
+        <!-- Subtitle -->
+        <p class="reveal" style="font-size:1.1rem;color:var(--text-secondary);max-width:600px;margin:0 auto 2.5rem;line-height:1.7">
+            Arrêtez de jongler avec 6 outils. Gérez toute votre agence — équipe, shifts, finances, fans, contenu, recrutement — depuis une seule plateforme conçue par des managers.
+        </p>
 
-            <!-- Notification -->
-            <div class="hero-notif">
-                <div class="notif-dot"></div>
-                <div class="notif-text"><strong>Gaby</strong> vient de closer un nouveau modèle</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="scroll-indicator">
-        <div class="scroll-mouse"></div>
-        <span class="scroll-text">Scroll</span>
-    </div>
-</section>
-
-<!-- MARQUEE -->
-<section class="marquee-section">
-    <div class="marquee-track">
-        <div class="marquee-item"><i class="fas fa-th-large"></i> Dashboard</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-comments"></i> Chatters</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-paper-plane"></i> Outreach</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-calendar-check"></i> Planning</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-scroll"></i> Scripts</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-image"></i> Contenu</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-chart-line"></i> Analytics</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-wallet"></i> Finances</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Coaching</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-users-gear"></i> Équipe</div><span class="marquee-sep">|</span>
-        <!-- duplicate for seamless loop -->
-        <div class="marquee-item"><i class="fas fa-th-large"></i> Dashboard</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-comments"></i> Chatters</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-paper-plane"></i> Outreach</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-calendar-check"></i> Planning</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-scroll"></i> Scripts</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-image"></i> Contenu</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-chart-line"></i> Analytics</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-wallet"></i> Finances</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Coaching</div><span class="marquee-sep">|</span>
-        <div class="marquee-item"><i class="fas fa-users-gear"></i> Équipe</div><span class="marquee-sep">|</span>
-    </div>
-</section>
-
-<!-- STATS -->
-<section class="stats-section">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-card reveal"><div class="stat-number anim-gradient" id="counter1">0+</div><div class="stat-label">Agences actives</div></div>
-            <div class="stat-card reveal reveal-delay-1"><div class="stat-number anim-gradient" id="counter2">0+</div><div class="stat-label">Followers gérés</div></div>
-            <div class="stat-card reveal reveal-delay-2"><div class="stat-number anim-gradient">99.9%</div><div class="stat-label">Disponibilité</div></div>
-            <div class="stat-card reveal reveal-delay-3"><div class="stat-number anim-gradient">4.9/5</div><div class="stat-label">Note moyenne</div></div>
-        </div>
-    </div>
-</section>
-
-<!-- VIDEO -->
-<section class="video-section">
-    <div class="container">
-        <div class="section-header reveal">
-            <div class="section-tag"><i class="fas fa-play-circle"></i> Démo</div>
-            <h2 class="section-title">Découvrez Fuzion Pilot <span class="anim-gradient">en action</span></h2>
-            <p class="section-subtitle">2 minutes pour comprendre comment Fuzion Pilot va transformer votre agence.</p>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1050px;margin:0 auto;">
-            <a href="experience.html" class="video-wrapper reveal" style="aspect-ratio:16/10;">
-                <div class="video-bg-mockup">
-                    <div style="width:80%;max-width:350px;height:80%;background:var(--bg-card);border-radius:12px;display:grid;grid-template-columns:80px 1fr;transform:perspective(600px) rotateY(-8deg) rotateX(5deg);">
-                        <div style="background:rgba(0,0,0,0.2);border-right:1px solid rgba(255,255,255,0.03);border-radius:12px 0 0 12px;"></div>
-                        <div style="padding:0.6rem;display:flex;flex-direction:column;gap:4px;">
-                            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;"><div style="height:25px;background:rgba(255,255,255,0.03);border-radius:4px;"></div><div style="height:25px;background:rgba(255,255,255,0.03);border-radius:4px;"></div><div style="height:25px;background:rgba(255,255,255,0.03);border-radius:4px;"></div><div style="height:25px;background:rgba(255,255,255,0.03);border-radius:4px;"></div></div>
-                            <div style="flex:1;background:rgba(255,255,255,0.02);border-radius:6px;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="video-overlay">
-                    <div class="play-btn-epic" style="width:70px;height:70px;font-size:1.6rem;"><i class="fas fa-cube" style="margin-left:2px;"></i></div>
-                    <div class="video-label">Vue éclatée 3D</div>
-                    <div class="video-sublabel">Explorez chaque couche de l'app en 3D</div>
-                </div>
-            </a>
-            <a href="https://lcx-agency.onrender.com" class="video-wrapper reveal" style="aspect-ratio:16/10;">
-                <div class="video-bg-mockup">
-                    <div style="width:80%;max-width:350px;height:80%;background:var(--bg-card);border-radius:12px;display:grid;grid-template-columns:80px 1fr;">
-                        <div style="background:rgba(0,0,0,0.2);border-right:1px solid rgba(255,255,255,0.03);border-radius:12px 0 0 12px;"></div>
-                        <div style="padding:0.6rem;"><div style="width:40%;height:8px;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:0.5rem;"></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:0.5rem;"><div style="height:25px;background:rgba(255,255,255,0.03);border-radius:4px;"></div><div style="height:25px;background:rgba(255,255,255,0.03);border-radius:4px;"></div><div style="height:25px;background:rgba(255,255,255,0.03);border-radius:4px;"></div><div style="height:25px;background:rgba(255,255,255,0.03);border-radius:4px;"></div></div><div style="height:60px;background:rgba(255,255,255,0.02);border-radius:6px;"></div></div>
-                    </div>
-                </div>
-                <div class="video-overlay">
-                    <div class="play-btn-epic" style="width:70px;height:70px;font-size:1.6rem;"><i class="fas fa-play" style="margin-left:4px;"></i></div>
-                    <div class="video-label">Démo interactive</div>
-                    <div class="video-sublabel">Expérience cinématique — clavier & souris</div>
-                </div>
+        <!-- CTAs -->
+        <div class="reveal" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+            <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary btn-lg">Essai gratuit →</a>
+            <a href="https://lcx-agency.onrender.com" class="btn btn-ghost btn-lg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Voir la démo (2 min)
             </a>
         </div>
-    </div>
-</section>
 
-<!-- FEATURES -->
-<section class="features-section">
-    <div class="container">
-        <div class="section-header reveal">
-            <div class="section-tag"><i class="fas fa-sparkles"></i> Fonctionnalités</div>
-            <h2 class="section-title">Tout pour gérer votre agence <span class="anim-gradient">à 100%</span></h2>
-            <p class="section-subtitle">Un outil surpuissant conçu par des managers d'agence qui savent exactement ce dont vous avez besoin.</p>
-        </div>
+        <!-- Sub-CTA -->
+        <p class="reveal" style="font-size:0.82rem;color:var(--text-muted)">Aucune carte requise · Tarif early bird à l'intérieur</p>
 
-        <div class="features-mega-grid">
-            <div class="card feat-card reveal"><div class="feat-glow" style="background:var(--primary);"></div><div class="feat-icon" style="background:rgba(124,58,237,0.15);color:var(--primary-light);"><i class="fas fa-th-large"></i></div><h3>Dashboard temps réel</h3><p>Vue 360 de votre agence : followers, équipe, revenus, tâches urgentes et KPIs — tout en un coup d'œil.</p></div>
-            <div class="card feat-card reveal reveal-delay-1"><div class="feat-glow" style="background:var(--accent);"></div><div class="feat-icon" style="background:rgba(6,214,160,0.15);color:var(--accent);"><i class="fas fa-comments"></i></div><h3>Gestion des Chatters</h3><p>Suivi en temps réel : revenus, PPV, tips par chatter et par modèle. Identifiez vos top performers.</p></div>
-            <div class="card feat-card reveal reveal-delay-2"><div class="feat-glow" style="background:var(--pink);"></div><div class="feat-icon" style="background:rgba(236,72,153,0.15);color:var(--pink);"><i class="fas fa-paper-plane"></i></div><h3>Outreach complet</h3><p>Pipeline de A à Z : leads, DMs, taux de réponse, calls bookés, signatures — tout trackable.</p></div>
-            <div class="card feat-card reveal"><div class="feat-glow" style="background:var(--yellow);"></div><div class="feat-icon" style="background:rgba(251,191,36,0.15);color:var(--yellow);"><i class="fas fa-scroll"></i></div><h3>Scripts & Templates</h3><p>Bibliothèque de scripts partagée pour vos chatters. Créez, testez et assignez des templates en quelques clics.</p></div>
-            <div class="card feat-card reveal reveal-delay-1"><div class="feat-glow" style="background:var(--blue);"></div><div class="feat-icon" style="background:rgba(59,130,246,0.15);color:var(--blue);"><i class="fas fa-calendar-check"></i></div><h3>Planning & Tâches</h3><p>Planifiez les shifts, gérez les deadlines et les priorités de toute votre équipe depuis un seul endroit.</p></div>
-            <div class="card feat-card reveal reveal-delay-2"><div class="feat-glow" style="background:var(--red);"></div><div class="feat-icon" style="background:rgba(239,68,68,0.15);color:var(--red);"><i class="fas fa-image"></i></div><h3>Demandes de contenu</h3><p>Centralisez les demandes pour vos modèles : photos, vidéos, customs — avec statut et suivi intégrés.</p></div>
-            <div class="card feat-card reveal"><div class="feat-glow" style="background:var(--cyan);"></div><div class="feat-icon" style="background:rgba(14,165,233,0.15);color:var(--cyan);"><i class="fas fa-chart-line"></i></div><h3>Analytics avancées</h3><p>Graphiques détaillés, comparaisons, rapports exportables — prenez des décisions data-driven.</p></div>
-            <div class="card feat-card reveal reveal-delay-1"><div class="feat-glow" style="background:#a855f7;"></div><div class="feat-icon" style="background:rgba(168,85,247,0.15);color:#a855f7;"><i class="fas fa-wallet"></i></div><h3>Finances & Revenus</h3><p>Revenus par modèle, commissions, dépenses, projections. Votre comptabilité simplifiée.</p></div>
-            <div class="card feat-card reveal reveal-delay-2"><div class="feat-glow" style="background:#10b981;"></div><div class="feat-icon" style="background:rgba(16,185,129,0.15);color:#10b981;"><i class="fas fa-graduation-cap"></i></div><h3>Coaching & Formation</h3><p>Formez vos recrues avec des parcours personnalisés et suivez la progression de vos étudiants.</p></div>
-        </div>
-
-        <div style="text-align:center;margin-top:3rem;" class="reveal">
-            <a href="features.html" class="btn btn-secondary"><i class="fas fa-arrow-right"></i> Toutes les fonctionnalités en détail</a>
-        </div>
-    </div>
-</section>
-
-<!-- SHOWCASE: Planning + Scripts + Contenu -->
-<section class="showcases">
-    <div class="container">
-        <div class="showcase-block reveal">
-            <div class="sc-text">
-                <div class="section-tag"><i class="fas fa-calendar-check"></i> Planning & Scripts</div>
-                <h3>Organisez tout, <span class="anim-gradient">automatisez le reste</span></h3>
-                <p>Planning des modèles, shifts des chatters, scripts de messages, demandes de contenu — chaque détail est géré depuis un seul endroit.</p>
-                <ul class="sc-features">
-                    <li><i class="fas fa-check-circle"></i> Planning visuel avec codes couleur</li>
-                    <li><i class="fas fa-check-circle"></i> Bibliothèque de scripts avec A/B testing</li>
-                    <li><i class="fas fa-check-circle"></i> Demandes de contenu avec suivi de statut</li>
-                    <li><i class="fas fa-check-circle"></i> Notifications automatiques</li>
-                </ul>
-            </div>
-            <div class="sc-visual">
-                <div class="sc-mockup-tilt">
-                    <div class="app-mockup-epic">
-                        <div class="mockup-chrome"><span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span><div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/planning</div></div>
-                        <div class="mockup-main" style="padding:1.2rem;">
-                            <div class="mockup-page-title">Planning — Avril 2026</div>
-                            <div style="display:grid;grid-template-columns:70px repeat(7,1fr);gap:2px;font-size:0.5rem;margin-top:0.6rem;">
-                                <div></div><div style="text-align:center;color:var(--text-muted);padding:4px;">LUN</div><div style="text-align:center;color:var(--text-muted);padding:4px;">MAR</div><div style="text-align:center;color:var(--text-muted);padding:4px;">MER</div><div style="text-align:center;color:var(--text-muted);padding:4px;">JEU</div><div style="text-align:center;color:var(--text-muted);padding:4px;">VEN</div><div style="text-align:center;color:var(--primary-light);padding:4px;font-weight:700;">SAM</div><div style="text-align:center;color:var(--text-muted);padding:4px;">DIM</div>
-                                <div style="color:var(--text-secondary);padding:4px;font-weight:600;">Gaby</div><div style="background:rgba(124,58,237,0.15);border-radius:3px;padding:3px;color:var(--primary-light);text-align:center;">8-16h</div><div style="background:rgba(124,58,237,0.15);border-radius:3px;padding:3px;color:var(--primary-light);text-align:center;">8-16h</div><div style="background:rgba(124,58,237,0.15);border-radius:3px;padding:3px;color:var(--primary-light);text-align:center;">8-16h</div><div style="background:rgba(239,68,68,0.1);border-radius:3px;padding:3px;color:var(--red);text-align:center;">OFF</div><div style="background:rgba(124,58,237,0.15);border-radius:3px;padding:3px;color:var(--primary-light);text-align:center;">8-16h</div><div style="background:rgba(124,58,237,0.15);border-radius:3px;padding:3px;color:var(--primary-light);text-align:center;">10-18h</div><div style="background:rgba(239,68,68,0.1);border-radius:3px;padding:3px;color:var(--red);text-align:center;">OFF</div>
-                                <div style="color:var(--text-secondary);padding:4px;font-weight:600;">Ines</div><div style="background:rgba(6,214,160,0.15);border-radius:3px;padding:3px;color:var(--accent);text-align:center;">16-0h</div><div style="background:rgba(6,214,160,0.15);border-radius:3px;padding:3px;color:var(--accent);text-align:center;">16-0h</div><div style="background:rgba(239,68,68,0.1);border-radius:3px;padding:3px;color:var(--red);text-align:center;">OFF</div><div style="background:rgba(6,214,160,0.15);border-radius:3px;padding:3px;color:var(--accent);text-align:center;">16-0h</div><div style="background:rgba(6,214,160,0.15);border-radius:3px;padding:3px;color:var(--accent);text-align:center;">16-0h</div><div style="background:rgba(6,214,160,0.15);border-radius:3px;padding:3px;color:var(--accent);text-align:center;">14-22h</div><div style="background:rgba(239,68,68,0.1);border-radius:3px;padding:3px;color:var(--red);text-align:center;">OFF</div>
-                                <div style="color:var(--text-secondary);padding:4px;font-weight:600;">Ewen</div><div style="background:rgba(236,72,153,0.15);border-radius:3px;padding:3px;color:var(--pink);text-align:center;grid-column:span 5;">Outreach — Full week</div><div style="background:rgba(236,72,153,0.1);border-radius:3px;padding:3px;color:var(--pink);text-align:center;">Review</div><div style="background:rgba(239,68,68,0.1);border-radius:3px;padding:3px;color:var(--red);text-align:center;">OFF</div>
-                            </div>
+        <!-- Dashboard mockup -->
+        <div class="reveal" style="margin-top:4rem;position:relative">
+            <div class="app-mockup" style="max-width:900px;margin:0 auto;box-shadow:var(--shadow-xl),var(--shadow-glow-strong)">
+                <div class="mockup-chrome">
+                    <span class="mockup-dot mockup-dot-r"></span>
+                    <span class="mockup-dot mockup-dot-y"></span>
+                    <span class="mockup-dot mockup-dot-g"></span>
+                    <span class="mockup-url">app.fuzionpilot.com/dashboard</span>
+                </div>
+                <div style="background:var(--bg-base);padding:1.5rem">
+                    <div class="mockup-stats-row">
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--accent-light)">$12,450</div><div class="mockup-stat-lbl">Revenue</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--green)">24</div><div class="mockup-stat-lbl">Active fans</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--purple)">8</div><div class="mockup-stat-lbl">Chatters</div></div>
+                        <div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--yellow)">3</div><div class="mockup-stat-lbl">Live shifts</div></div>
+                    </div>
+                    <div class="mockup-chart-area">
+                        <div class="mockup-chart-title">Revenue — 30 derniers jours</div>
+                        <div class="chart-bars">
+                            <div class="chart-bar" style="height:40%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:55%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:45%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:70%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:60%;background:var(--accent-light)"></div>
+                            <div class="chart-bar" style="height:80%;background:var(--accent-light)"></div>
+                            <div class="chart-bar" style="height:65%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:90%;background:var(--accent-light)"></div>
+                            <div class="chart-bar" style="height:75%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:85%;background:var(--accent-light)"></div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Glow under mockup -->
+            <div style="position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:60%;height:80px;background:radial-gradient(ellipse,rgba(59,130,246,0.12),transparent 70%);pointer-events:none"></div>
         </div>
+    </div>
+</section>
 
-        <div class="showcase-block reveal">
-            <div class="sc-text">
-                <div class="section-tag"><i class="fas fa-paper-plane"></i> Outreach & Chatters</div>
-                <h3>Scalez votre acquisition <span class="anim-gradient">sans limites</span></h3>
-                <p>Chaque DM, chaque lead, chaque call — tout est traqué. Visualisez les performances de chaque assistant et chaque chatter en temps réel.</p>
-                <ul class="sc-features">
-                    <li><i class="fas fa-check-circle"></i> Pipeline outreach complet par assistant</li>
-                    <li><i class="fas fa-check-circle"></i> Revenus chatters par modèle en live</li>
-                    <li><i class="fas fa-check-circle"></i> Taux de réponse et de conversion</li>
-                    <li><i class="fas fa-check-circle"></i> Leaderboard des top performers</li>
-                </ul>
-            </div>
-            <div class="sc-visual">
-                <div class="sc-mockup-tilt">
-                    <div class="app-mockup-epic">
-                        <div class="mockup-chrome"><span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span><div class="mockup-url"><i class="fas fa-lock" style="margin-right:4px;font-size:0.55rem;color:var(--accent);"></i> lcx-agency.com/outreach</div></div>
-                        <div class="mockup-main" style="padding:1.2rem;">
-                            <div class="mockup-page-title">Outreach — Temps réel</div>
-                            <div class="mockup-stats-row"><div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--primary-light);">1,390</div><div class="mockup-stat-lbl">DMs total</div></div><div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--accent);">4</div><div class="mockup-stat-lbl">Warm</div></div><div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--pink);">3</div><div class="mockup-stat-lbl">Calls</div></div><div class="mockup-stat"><div class="mockup-stat-val" style="color:var(--yellow);">39.9%</div><div class="mockup-stat-lbl">Taux</div></div></div>
-                            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;"><table class="mockup-table"><thead><tr><th>Assistant</th><th>DMs</th><th>Warm</th><th>Calls</th><th>Signés</th><th>Taux</th></tr></thead><tbody><tr><td>Gaby</td><td>1,343</td><td style="color:var(--accent);font-weight:700;">4</td><td style="color:var(--primary-light);font-weight:700;">3</td><td style="color:var(--pink);font-weight:700;">2</td><td style="color:var(--accent);font-weight:700;">39.8%</td></tr><tr><td>Ines</td><td>47</td><td style="color:var(--accent);font-weight:700;">0</td><td style="color:var(--primary-light);font-weight:700;">0</td><td style="color:var(--pink);font-weight:700;">0</td><td style="color:var(--accent);font-weight:700;">42.6%</td></tr><tr><td>Ewen</td><td>856</td><td style="color:var(--accent);font-weight:700;">6</td><td style="color:var(--primary-light);font-weight:700;">4</td><td style="color:var(--pink);font-weight:700;">3</td><td style="color:var(--accent);font-weight:700;">45.2%</td></tr></tbody></table></div>
-                        </div>
-                    </div>
+<!-- ===== FOUNDER QUOTE ===== -->
+<section style="padding:5rem 0;background:var(--bg-surface)">
+    <div class="container">
+        <div class="reveal" style="max-width:700px;margin:0 auto;text-align:center">
+            <span class="badge badge-blue" style="margin-bottom:1.5rem">Mot du fondateur</span>
+            <blockquote style="font-size:1.2rem;line-height:1.8;color:var(--text-secondary);font-style:italic;margin-bottom:2rem">
+                "J'ai construit Fuzion Pilot parce que je ne trouvais pas l'outil dont j'avais besoin pour ma propre agence. Après des mois d'utilisation chez LCX Agency, je le partage avec les autres managers."
+            </blockquote>
+            <div style="display:flex;align-items:center;gap:12px;justify-content:center">
+                <div style="width:44px;height:44px;border-radius:50%;background:var(--gradient-blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:white;box-shadow:0 0 16px rgba(59,130,246,0.2)">EK</div>
+                <div style="text-align:left">
+                    <div style="font-weight:600;font-size:0.95rem">Ewen K.</div>
+                    <div style="font-size:0.8rem;color:var(--text-muted)">Fondateur, LCX Agency</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PLATFORMS -->
-<section class="platforms-section">
+<!-- ===== PROBLEM ===== -->
+<section style="padding:6rem 0">
     <div class="container">
         <div class="section-header reveal">
-            <div class="section-tag"><i class="fas fa-laptop-mobile"></i> Multi-plateforme</div>
-            <h2 class="section-title">Disponible <span class="anim-gradient">partout</span></h2>
-            <p class="section-subtitle">Gérez votre agence depuis n'importe quel appareil, n'importe quand.</p>
+            <span class="section-tag">Le problème</span>
+            <h2 class="section-title">Gérer une agence OFM,<br>c'est le <span class="gradient-text-blue">chaos.</span></h2>
+            <p class="section-subtitle">Vous utilisez probablement 6+ outils en ce moment. Voici le quotidien des managers :</p>
         </div>
-        <div class="platforms-row">
-            <div class="card plat-card reveal"><div class="plat-icon anim-gradient"><i class="fas fa-globe"></i></div><h3>Web App</h3><p>Tout navigateur, partout</p></div>
-            <div class="card plat-card reveal reveal-delay-1"><div class="plat-icon anim-gradient"><i class="fas fa-desktop"></i></div><h3>Windows & Mac</h3><p>Application desktop native</p></div>
-            <div class="card plat-card reveal reveal-delay-2"><div class="plat-icon anim-gradient"><i class="fab fa-android"></i></div><h3>Android</h3><p>Disponible sur Play Store</p></div>
-            <div class="card plat-card reveal reveal-delay-3"><div class="plat-icon anim-gradient"><i class="fab fa-apple"></i></div><h3>iOS</h3><p>Bientôt disponible</p></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:900px;margin:0 auto">
+            <div class="card reveal reveal-delay-1" style="text-align:center;padding:1.5rem">
+                <div style="font-size:1.8rem;margin-bottom:0.8rem">💬</div>
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.4rem">Infloww pour les DMs</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary)">Messagerie OF séparée de tout le reste</p>
+            </div>
+            <div class="card reveal reveal-delay-2" style="text-align:center;padding:1.5rem">
+                <div style="font-size:1.8rem;margin-bottom:0.8rem">📊</div>
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.4rem">Google Sheets pour les fans</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary)">Fichiers partagés ingérables à 1000+ fans</p>
+            </div>
+            <div class="card reveal reveal-delay-3" style="text-align:center;padding:1.5rem">
+                <div style="font-size:1.8rem;margin-bottom:0.8rem">📝</div>
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.4rem">Notion pour les SOPs</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary)">Docs perdus, personne ne lit les process</p>
+            </div>
+            <div class="card reveal reveal-delay-1" style="text-align:center;padding:1.5rem">
+                <div style="font-size:1.8rem;margin-bottom:0.8rem">📋</div>
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.4rem">Trello pour les tâches</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary)">Encore un outil déconnecté de la réalité</p>
+            </div>
+            <div class="card reveal reveal-delay-2" style="text-align:center;padding:1.5rem">
+                <div style="font-size:1.8rem;margin-bottom:0.8rem">🎮</div>
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.4rem">Discord pour l'équipe</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary)">Discussions noyées dans les channels</p>
+            </div>
+            <div class="card reveal reveal-delay-3" style="text-align:center;padding:1.5rem">
+                <div style="font-size:1.8rem;margin-bottom:0.8rem">🧠</div>
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:0.4rem">Votre tête pour les finances</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary)">Commissions calculées à la main, erreurs garanties</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
+<!-- ===== FEATURES ===== -->
+<section style="padding:6rem 0;background:var(--bg-surface)">
     <div class="container">
         <div class="section-header reveal">
-            <div class="section-tag"><i class="fas fa-heart"></i> Témoignages</div>
-            <h2 class="section-title">Ils ont <span class="anim-gradient">transformé</span> leur agence</h2>
+            <span class="section-tag">Fonctionnalités</span>
+            <h2 class="section-title">Une plateforme.<br><span class="gradient-text">Tout ce dont votre agence a besoin.</span></h2>
+            <p class="section-subtitle">Fuzion Pilot centralise chaque aspect de vos opérations.</p>
         </div>
-        <div class="testimonials-grid">
-            <div class="card test-card reveal"><div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="test-text">"Avant Fuzion Pilot, on utilisait 6 outils différents. Maintenant tout est centralisé, on a gagné 3h par jour minimum."</p><div class="test-author"><div class="test-avatar" style="background:var(--gradient-main);">MA</div><div><div class="test-name">Marc A.</div><div class="test-role">Fondateur — EliteManagement</div></div></div></div>
-            <div class="card test-card reveal reveal-delay-1"><div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="test-text">"Le planning et les scripts ont changé notre game. Nos chatters performent 2x mieux avec les bons templates."</p><div class="test-author"><div class="test-avatar" style="background:var(--gradient-pink);">SL</div><div><div class="test-name">Sophie L.</div><div class="test-role">Agency Manager — NovaCrew</div></div></div></div>
-            <div class="card test-card reveal reveal-delay-2"><div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="test-text">"On est passé de 3 à 15 modèles en 6 mois. Les analytics nous permettent de scaler en confiance."</p><div class="test-author"><div class="test-avatar" style="background:var(--gradient-blue);">KD</div><div><div class="test-name">Kevin D.</div><div class="test-role">CEO — ScaleDigital</div></div></div></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;max-width:1050px;margin:0 auto">
+            <div class="card card-gradient reveal reveal-delay-1">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--accent-subtle);display:flex;align-items:center;justify-content:center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <span class="badge badge-blue">Exclusif</span>
+                </div>
+                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Shifts en temps réel</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Suivez vos chatters en direct. Qui est en shift, sur quel modèle, combien de revenue généré en ce moment.</p>
+            </div>
+            <div class="card card-gradient reveal reveal-delay-2">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:rgba(34,197,94,0.08);display:flex;align-items:center;justify-content:center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <span class="badge badge-green">Gain de temps</span>
+                </div>
+                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Fan CRM avec import CSV</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Importez des milliers de fans en un clic. Segmentation automatique (whales, VIP, at-risk, silent).</p>
+            </div>
+            <div class="card card-gradient reveal reveal-delay-3">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:rgba(139,92,246,0.08);display:flex;align-items:center;justify-content:center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3"/></svg>
+                    </div>
+                    <span class="badge badge-purple">Unique</span>
+                </div>
+                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Multi-plateforme natif</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">OnlyFans + Fansly + Fanvue + MYM. Toutes vos créatrices sur toutes les plateformes, trackées au même endroit.</p>
+            </div>
+            <div class="card card-gradient reveal reveal-delay-1">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--accent-subtle);display:flex;align-items:center;justify-content:center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Gestion d'équipe & VA</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Chatters, VAs, étudiants, modèles — chacun avec son dashboard dédié et ses permissions.</p>
+            </div>
+            <div class="card card-gradient reveal reveal-delay-2">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:rgba(245,158,11,0.08);display:flex;align-items:center;justify-content:center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                    </div>
+                    <span class="badge badge-yellow">Rare</span>
+                </div>
+                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Coaching & Formation</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Module intégré pour former vos recrues. Parfait pour les agences qui vendent aussi du coaching.</p>
+            </div>
+            <div class="card card-gradient reveal reveal-delay-3">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:rgba(34,197,94,0.08);display:flex;align-items:center;justify-content:center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </div>
+                </div>
+                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Finances & Commissions</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Calcul auto des commissions chatters, suivi des paiements, revenus agence. Fini les cauchemars Excel.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-epic">
-    <div class="cta-bg"></div>
-    <div class="container" style="position:relative;z-index:2;">
+<!-- ===== INFLOWW COMPATIBILITY ===== -->
+<section style="padding:6rem 0">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-tag">Compatibilité</span>
+            <h2 class="section-title">Fonctionne <span class="gradient-text-blue">avec Infloww</span>,<br>pas contre.</h2>
+            <p class="section-subtitle">La plupart des managers utilisent Infloww pour la messagerie OF. Fuzion Pilot gère tout le reste.</p>
+        </div>
+        <div class="reveal" style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:3rem">
+            <div class="card" style="text-align:center;padding:2rem;flex:1;min-width:200px;max-width:280px">
+                <div style="font-size:2rem;margin-bottom:0.8rem">📨</div>
+                <h3 style="font-weight:700;margin-bottom:0.3rem">Infloww</h3>
+                <p style="font-size:0.82rem;color:var(--text-muted)">Gère votre inbox OF</p>
+            </div>
+            <div style="font-size:2rem;font-weight:800;color:var(--accent)">+</div>
+            <div class="card" style="text-align:center;padding:2rem;flex:1;min-width:200px;max-width:280px;border-color:var(--border-accent)">
+                <img src="logo.png" alt="" style="width:32px;height:32px;margin:0 auto 0.8rem;border-radius:8px">
+                <h3 style="font-weight:700;margin-bottom:0.3rem">Fuzion Pilot</h3>
+                <p style="font-size:0.82rem;color:var(--text-muted)">Gère vos opérations agence</p>
+            </div>
+        </div>
+        <div class="reveal" style="text-align:center;color:var(--accent-light);font-weight:600;font-size:1.1rem;margin-bottom:3rem">= Votre stack agence complet</div>
+
+        <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:700px;margin:0 auto">
+            <div>
+                <h4 style="font-weight:700;font-size:0.85rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem">Infloww gère</h4>
+                <ul style="list-style:none;display:grid;gap:0.6rem">
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--text-muted)">→</span> DMs & messagerie</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--text-muted)">→</span> PPV & mass messaging</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--text-muted)">→</span> Scheduled posts</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-weight:700;font-size:0.85rem;color:var(--accent-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem">Fuzion Pilot gère</h4>
+                <ul style="list-style:none;display:grid;gap:0.6rem">
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Équipe & shifts</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Finances & commissions</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Fan CRM</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Recrutement</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Coaching & VA</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Content Planner</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section style="padding:6rem 0;background:var(--bg-surface)">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-tag">Comment ça marche</span>
+            <h2 class="section-title">Démarrez en <span class="gradient-text-blue">3 minutes.</span></h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:950px;margin:0 auto">
+            <div class="reveal reveal-delay-1" style="text-align:center;padding:2rem">
+                <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-subtle);border:1px solid var(--border-accent);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:var(--accent-light)">1</div>
+                <h3 style="font-weight:700;margin-bottom:0.5rem">Créez votre agence</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Inscrivez-vous, configurez votre profil agence, invitez votre équipe (chatters, VAs, modèles).</p>
+            </div>
+            <div class="reveal reveal-delay-2" style="text-align:center;padding:2rem">
+                <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-subtle);border:1px solid var(--border-accent);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:var(--accent-light)">2</div>
+                <h3 style="font-weight:700;margin-bottom:0.5rem">Connectez vos plateformes</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Ajoutez vos comptes OF, Fansly, Fanvue, MYM. Importez vos fans existants via CSV.</p>
+            </div>
+            <div class="reveal reveal-delay-3" style="text-align:center;padding:2rem">
+                <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-subtle);border:1px solid var(--border-accent);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:var(--accent-light)">3</div>
+                <h3 style="font-weight:700;margin-bottom:0.5rem">Commencez à gérer</h3>
+                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Dashboards temps réel, planning de shifts, suivi de revenue, gestion des fans. Dès le jour 1.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing" style="padding:6rem 0">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-tag">Tarifs</span>
+            <h2 class="section-title">Tarification simple.<br><span class="gradient-text">Conçue pour les agences.</span></h2>
+            <p class="section-subtitle">Tarifs early access — verrouillés pour les early adopters.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:750px;margin:0 auto">
+            <!-- Standard -->
+            <div class="card reveal reveal-delay-1" style="padding:2.5rem">
+                <span class="badge badge-blue" style="margin-bottom:1rem">Early bird</span>
+                <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:0.3rem">Standard</h3>
+                <div style="margin-bottom:1.5rem">
+                    <span style="font-size:2.5rem;font-weight:800;font-family:var(--font-mono)" class="gradient-text">€39</span>
+                    <span style="color:var(--text-muted);font-size:0.85rem">/mois</span>
+                </div>
+                <ul style="list-style:none;display:grid;gap:0.7rem;margin-bottom:2rem">
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Jusqu'à 5 modèles</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Jusqu'à 10 membres</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Toutes les fonctionnalités core</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Support FR + EN</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Accès communauté</li>
+                </ul>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1.2rem">Passera à €79/mois après le lancement</p>
+                <a href="https://lcx-agency.onrender.com/register" class="btn btn-secondary" style="width:100%;justify-content:center">Essai gratuit</a>
+            </div>
+            <!-- Pro -->
+            <div class="card reveal reveal-delay-2" style="padding:2.5rem;border-color:var(--border-accent);position:relative">
+                <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%)">
+                    <span class="badge badge-blue" style="font-size:0.6rem;padding:4px 12px">Recommandé</span>
+                </div>
+                <span class="badge badge-purple" style="margin-bottom:1rem">Agences 5+ modèles</span>
+                <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:0.3rem">Pro</h3>
+                <div style="margin-bottom:1.5rem">
+                    <span style="font-size:2.5rem;font-weight:800;font-family:var(--font-mono)" class="gradient-text-blue">€149</span>
+                    <span style="color:var(--text-muted);font-size:0.85rem">/mois</span>
+                </div>
+                <ul style="list-style:none;display:grid;gap:0.7rem;margin-bottom:2rem">
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Modèles illimités</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Équipe illimitée</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Toutes les features + Coaching</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Support prioritaire</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Call mensuel 1-on-1 fondateur</li>
+                    <li style="font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Accès API en avant-première</li>
+                </ul>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1.2rem">Passera à €299/mois après le lancement</p>
+                <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary" style="width:100%;justify-content:center">Essai gratuit →</a>
+            </div>
+        </div>
+        <p class="reveal" style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-top:2rem">7 jours gratuits · Aucune carte requise · Annulez à tout moment</p>
+    </div>
+</section>
+
+<!-- ===== FRENCH MADE ===== -->
+<section style="padding:4rem 0;background:var(--bg-surface)">
+    <div class="container">
+        <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto">
+            <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:1rem">🇫🇷 Made in France. Pour les agences du monde entier.</h2>
+            <p style="color:var(--text-secondary);margin-bottom:2rem">On comprend les marchés FR et US.</p>
+            <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap">
+                <div style="text-align:center"><div style="font-size:1.5rem;margin-bottom:0.3rem">🔗</div><div style="font-size:0.82rem;color:var(--text-secondary)">Support MYM natif</div></div>
+                <div style="text-align:center"><div style="font-size:1.5rem;margin-bottom:0.3rem">🛡️</div><div style="font-size:0.82rem;color:var(--text-secondary)">RGPD-ready</div></div>
+                <div style="text-align:center"><div style="font-size:1.5rem;margin-bottom:0.3rem">🌍</div><div style="font-size:0.82rem;color:var(--text-secondary)">Support FR + EN</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section style="padding:6rem 0">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-tag">FAQ</span>
+            <h2 class="section-title">Questions fréquentes</h2>
+        </div>
+        <div style="max-width:700px;margin:0 auto" class="reveal">
+            <div class="faq-item" style="border-bottom:1px solid var(--border);padding:1.2rem 0">
+                <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" style="display:flex;justify-content:space-between;align-items:center;width:100%;background:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;padding:0;font-family:inherit">
+                    Quelle différence avec Infloww ?
+                    <span style="color:var(--text-muted);font-size:1.2rem;transition:transform 0.3s">+</span>
+                </button>
+                <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease">
+                    <p style="padding-top:0.8rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Infloww gère la messagerie OnlyFans. Fuzion Pilot gère tout ce qu'il y a autour : votre équipe, finances, shifts, recrutement, fans CRM, content planning, coaching. La plupart des agences utilisent les deux ensemble.</p>
+                </div>
+            </div>
+            <div class="faq-item" style="border-bottom:1px solid var(--border);padding:1.2rem 0">
+                <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" style="display:flex;justify-content:space-between;align-items:center;width:100%;background:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;padding:0;font-family:inherit">
+                    Puis-je importer mes données existantes ?
+                    <span style="color:var(--text-muted);font-size:1.2rem;transition:transform 0.3s">+</span>
+                </button>
+                <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease">
+                    <p style="padding-top:0.8rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Oui. Import CSV des fans avec segmentation automatique, quiz d'onboarding modèle, import bulk des comptes plateforme.</p>
+                </div>
+            </div>
+            <div class="faq-item" style="border-bottom:1px solid var(--border);padding:1.2rem 0">
+                <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" style="display:flex;justify-content:space-between;align-items:center;width:100%;background:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;padding:0;font-family:inherit">
+                    Il y a un essai gratuit ?
+                    <span style="color:var(--text-muted);font-size:1.2rem;transition:transform 0.3s">+</span>
+                </button>
+                <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease">
+                    <p style="padding-top:0.8rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Oui, 7 jours gratuits, aucune carte de crédit requise. Annulez à tout moment.</p>
+                </div>
+            </div>
+            <div class="faq-item" style="border-bottom:1px solid var(--border);padding:1.2rem 0">
+                <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" style="display:flex;justify-content:space-between;align-items:center;width:100%;background:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;padding:0;font-family:inherit">
+                    Quelles plateformes sont supportées ?
+                    <span style="color:var(--text-muted);font-size:1.2rem;transition:transform 0.3s">+</span>
+                </button>
+                <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease">
+                    <p style="padding-top:0.8rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7">OnlyFans, Fansly, Fanvue, MYM en natif. Tracking des comptes Instagram + TikTok inclus.</p>
+                </div>
+            </div>
+            <div class="faq-item" style="border-bottom:1px solid var(--border);padding:1.2rem 0">
+                <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" style="display:flex;justify-content:space-between;align-items:center;width:100%;background:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;padding:0;font-family:inherit">
+                    C'est utilisable sur mobile ?
+                    <span style="color:var(--text-muted);font-size:1.2rem;transition:transform 0.3s">+</span>
+                </button>
+                <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease">
+                    <p style="padding-top:0.8rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Oui. L'app web fonctionne sur tous les navigateurs (iOS Safari, Android Chrome). Apps natives mobiles bientôt.</p>
+                </div>
+            </div>
+            <div class="faq-item" style="border-bottom:1px solid var(--border);padding:1.2rem 0">
+                <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" style="display:flex;justify-content:space-between;align-items:center;width:100%;background:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;padding:0;font-family:inherit">
+                    Proposez-vous un onboarding ?
+                    <span style="color:var(--text-muted);font-size:1.2rem;transition:transform 0.3s">+</span>
+                </button>
+                <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease">
+                    <p style="padding-top:0.8rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Oui. Chaque nouvelle agence bénéficie d'un call d'onboarding personnel avec le fondateur Ewen (45 min). Disponible pendant la phase early access.</p>
+                </div>
+            </div>
+            <div class="faq-item" style="border-bottom:1px solid var(--border);padding:1.2rem 0">
+                <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" style="display:flex;justify-content:space-between;align-items:center;width:100%;background:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;padding:0;font-family:inherit">
+                    Mes données sont sécurisées ?
+                    <span style="color:var(--text-muted);font-size:1.2rem;transition:transform 0.3s">+</span>
+                </button>
+                <div class="faq-a" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease">
+                    <p style="padding-top:0.8rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7">Oui. Chiffrement bout-en-bout, conforme RGPD, backups réguliers, hébergé en UE.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section style="padding:6rem 0;background:var(--bg-surface);position:relative;overflow:hidden">
+    <div class="orb orb-blue" style="width:500px;height:500px;top:-200px;left:-100px"></div>
+    <div class="container" style="position:relative;z-index:2;text-align:center">
         <div class="reveal">
-            <div class="section-tag"><i class="fas fa-rocket"></i> Prêt ?</div>
-            <h2>Prêt à <span class="anim-gradient">scaler</span> votre agence ?</h2>
-            <p>Rejoignez les 500+ agences qui utilisent Fuzion Pilot. Essai gratuit, aucune carte requise.</p>
-            <div class="cta-btns">
-                <a href="https://lcx-agency.onrender.com" class="btn btn-primary btn-lg btn-glow"><i class="fas fa-rocket"></i> Commencer gratuitement</a>
-                <a href="https://lcx-agency.onrender.com" class="btn btn-secondary btn-lg"><i class="fas fa-play"></i> Voir la démo</a>
+            <h2 class="gradient-text" style="font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem">Prêt à transformer votre agence ?</h2>
+            <p style="color:var(--text-secondary);font-size:1.05rem;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto">Rejoignez les early adopters et verrouillez le tarif early bird à vie.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+                <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary btn-lg">Essai gratuit 7 jours →</a>
+                <a href="mailto:contact@fuzionpilot.com" class="btn btn-ghost btn-lg">Réserver un call démo</a>
             </div>
+            <p style="font-size:0.82rem;color:var(--text-muted)">Aucune carte requise · €39 early bird · Le prix augmente après le lancement</p>
         </div>
     </div>
 </section>
