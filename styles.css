@@ -853,6 +853,13 @@ section {
     .card { padding: 1.5rem; }
     .card:hover { transform: none; }
 
+    /* Feature showcase blocks — stack on mobile */
+    [style*="grid-template-columns:1fr 1.2fr"],
+    [style*="grid-template-columns:1.2fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
     /* Mockup */
     .mockup-layout { grid-template-columns: 1fr; }
     .mockup-sidebar { display: none; }

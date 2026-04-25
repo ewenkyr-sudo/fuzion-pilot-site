@@ -1214,7 +1214,7 @@
     </div>
 </section>
 
-<!-- ===== FEATURES ===== -->
+<!-- ===== FEATURES WITH MOCKUPS ===== -->
 <section style="padding:6rem 0;background:var(--bg-surface)">
     <div class="container">
         <div class="section-header reveal">
@@ -1222,64 +1222,146 @@
             <h2 class="section-title">Une plateforme.<br><span class="gradient-text">Tout ce dont votre agence a besoin.</span></h2>
             <p class="section-subtitle">Fuzion Pilot centralise chaque aspect de vos opérations.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;max-width:1050px;margin:0 auto">
+
+        <!-- FEATURE 1: Shifts en temps réel -->
+        <div class="reveal" style="display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:center;margin-bottom:5rem;max-width:1050px;margin-left:auto;margin-right:auto">
+            <div>
+                <span class="badge badge-blue" style="margin-bottom:1rem">Exclusif</span>
+                <h3 style="font-size:1.4rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:-0.02em">Shifts en temps réel</h3>
+                <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.2rem">Suivez vos chatters en direct. Qui est en shift, sur quel modèle, combien de revenue généré en ce moment.</p>
+                <ul style="list-style:none;display:grid;gap:0.5rem">
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Timer live avec countdown</li>
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Revenue PPV + Tips par shift</li>
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Alertes overtime automatiques</li>
+                </ul>
+            </div>
+            <div class="app-mockup" style="box-shadow:var(--shadow-lg),var(--shadow-glow)">
+                <div class="mockup-chrome"><span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span><span class="mockup-url">app.fuzionpilot.com/chatters</span></div>
+                <div style="background:var(--bg-base);padding:1rem">
+                    <div style="font-size:0.7rem;font-weight:700;margin-bottom:0.6rem;color:var(--text-primary)">Active Shifts</div>
+                    <div style="display:grid;gap:0.4rem">
+                        <div style="display:flex;align-items:center;gap:8px;padding:0.5rem;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--green);font-size:0.6rem">
+                            <div class="pulse-dot" style="width:6px;height:6px"></div>
+                            <strong style="flex:1;color:var(--text-primary)">Emma L.</strong>
+                            <span style="color:var(--text-muted)">Model: Luna</span>
+                            <span style="color:var(--accent-light);font-family:var(--font-mono)">2h 14min</span>
+                            <span style="color:var(--green);font-family:var(--font-mono);font-weight:700">$342.50</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;padding:0.5rem;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--yellow);font-size:0.6rem">
+                            <div style="width:6px;height:6px;border-radius:50%;background:var(--yellow)"></div>
+                            <strong style="flex:1;color:var(--text-primary)">Marc D.</strong>
+                            <span style="color:var(--text-muted)">Model: Jade</span>
+                            <span style="color:var(--yellow);font-family:var(--font-mono)">+12min</span>
+                            <span style="color:var(--green);font-family:var(--font-mono);font-weight:700">$187.00</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;padding:0.5rem;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--green);font-size:0.6rem">
+                            <div class="pulse-dot" style="width:6px;height:6px"></div>
+                            <strong style="flex:1;color:var(--text-primary)">Sophie T.</strong>
+                            <span style="color:var(--text-muted)">Model: Mia</span>
+                            <span style="color:var(--accent-light);font-family:var(--font-mono)">45min</span>
+                            <span style="color:var(--green);font-family:var(--font-mono);font-weight:700">$89.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURE 2: Fan CRM -->
+        <div class="reveal" style="display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;margin-bottom:5rem;max-width:1050px;margin-left:auto;margin-right:auto">
+            <div class="app-mockup" style="box-shadow:var(--shadow-lg),var(--shadow-glow)">
+                <div class="mockup-chrome"><span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span><span class="mockup-url">app.fuzionpilot.com/fans</span></div>
+                <div style="background:var(--bg-base);padding:1rem">
+                    <div style="display:flex;gap:0.4rem;margin-bottom:0.8rem">
+                        <div style="padding:0.3rem 0.6rem;border-radius:6px;font-size:0.55rem;font-weight:700;background:var(--accent-subtle);color:var(--accent-light)">All (1,247)</div>
+                        <div style="padding:0.3rem 0.6rem;border-radius:6px;font-size:0.55rem;font-weight:700;background:rgba(245,158,11,0.1);color:var(--yellow)">Whales (23)</div>
+                        <div style="padding:0.3rem 0.6rem;border-radius:6px;font-size:0.55rem;font-weight:700;background:rgba(139,92,246,0.1);color:var(--purple)">VIP (156)</div>
+                        <div style="padding:0.3rem 0.6rem;border-radius:6px;font-size:0.55rem;font-weight:700;background:rgba(239,68,68,0.1);color:var(--red)">At-risk (34)</div>
+                    </div>
+                    <table style="width:100%;font-size:0.55rem;border-collapse:collapse">
+                        <tr style="color:var(--text-muted);border-bottom:1px solid var(--border)"><td style="padding:0.35rem">Fan</td><td>Segment</td><td>Spent</td><td>Last active</td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.02)"><td style="padding:0.35rem;color:var(--text-primary)">@mike_gold</td><td><span style="background:rgba(245,158,11,0.1);color:var(--yellow);padding:1px 6px;border-radius:4px;font-weight:600">Whale</span></td><td style="color:var(--green);font-weight:700;font-family:var(--font-mono)">$2,340</td><td style="color:var(--text-muted)">2h ago</td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.02)"><td style="padding:0.35rem;color:var(--text-primary)">@sarah_vip</td><td><span style="background:rgba(139,92,246,0.1);color:var(--purple);padding:1px 6px;border-radius:4px;font-weight:600">VIP</span></td><td style="color:var(--green);font-weight:700;font-family:var(--font-mono)">$890</td><td style="color:var(--text-muted)">1d ago</td></tr>
+                        <tr><td style="padding:0.35rem;color:var(--text-primary)">@john_new</td><td><span style="background:rgba(34,197,94,0.1);color:var(--green);padding:1px 6px;border-radius:4px;font-weight:600">New</span></td><td style="color:var(--green);font-weight:700;font-family:var(--font-mono)">$45</td><td style="color:var(--text-muted)">5min ago</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <span class="badge badge-green" style="margin-bottom:1rem">Gain de temps</span>
+                <h3 style="font-size:1.4rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:-0.02em">Fan CRM avec import CSV</h3>
+                <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.2rem">Importez des milliers de fans en un clic. Segmentation automatique : whales, VIP, at-risk, silent.</p>
+                <ul style="list-style:none;display:grid;gap:0.5rem">
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Import CSV en 1 clic</li>
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Segmentation auto (whales, VIP, at-risk)</li>
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Historique d'interactions par fan</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FEATURE 3: Finances -->
+        <div class="reveal" style="display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:center;margin-bottom:4rem;max-width:1050px;margin-left:auto;margin-right:auto">
+            <div>
+                <span class="badge badge-purple" style="margin-bottom:1rem">Automatisé</span>
+                <h3 style="font-size:1.4rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:-0.02em">Finances & Commissions</h3>
+                <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.2rem">Calcul auto des commissions chatters, suivi des paiements, revenus par modèle. Fini les cauchemars Excel.</p>
+                <ul style="list-style:none;display:grid;gap:0.5rem">
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Revenue par modèle & plateforme</li>
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Commissions auto-calculées</li>
+                    <li style="font-size:0.85rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">✓</span> Objectifs mensuels avec tracking</li>
+                </ul>
+            </div>
+            <div class="app-mockup" style="box-shadow:var(--shadow-lg),var(--shadow-glow)">
+                <div class="mockup-chrome"><span class="mockup-dot mockup-dot-r"></span><span class="mockup-dot mockup-dot-y"></span><span class="mockup-dot mockup-dot-g"></span><span class="mockup-url">app.fuzionpilot.com/finances</span></div>
+                <div style="background:var(--bg-base);padding:1rem">
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-bottom:0.8rem">
+                        <div style="background:var(--bg-elevated);border-radius:8px;padding:0.5rem;text-align:center;border-top:2px solid var(--green)"><div style="font-size:0.9rem;font-weight:800;font-family:var(--font-mono);color:var(--green)">$24,567</div><div style="font-size:0.5rem;color:var(--text-muted);margin-top:2px">REVENUE</div></div>
+                        <div style="background:var(--bg-elevated);border-radius:8px;padding:0.5rem;text-align:center;border-top:2px solid var(--accent)"><div style="font-size:0.9rem;font-weight:800;font-family:var(--font-mono);color:var(--accent-light)">$18,420</div><div style="font-size:0.5rem;color:var(--text-muted);margin-top:2px">PPV</div></div>
+                        <div style="background:var(--bg-elevated);border-radius:8px;padding:0.5rem;text-align:center;border-top:2px solid var(--yellow)"><div style="font-size:0.9rem;font-weight:800;font-family:var(--font-mono);color:var(--yellow)">$6,147</div><div style="font-size:0.5rem;color:var(--text-muted);margin-top:2px">TIPS</div></div>
+                    </div>
+                    <div style="background:var(--bg-elevated);border-radius:8px;padding:0.6rem">
+                        <div style="font-size:0.6rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.5rem">Revenue — 12 mois</div>
+                        <div class="chart-bars" style="height:60px">
+                            <div class="chart-bar" style="height:35%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:45%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:55%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:50%;background:var(--accent-light)"></div>
+                            <div class="chart-bar" style="height:65%;background:var(--accent-light)"></div>
+                            <div class="chart-bar" style="height:60%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:75%;background:var(--accent-light)"></div>
+                            <div class="chart-bar" style="height:70%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:80%;background:var(--accent-light)"></div>
+                            <div class="chart-bar" style="height:85%;background:var(--accent)"></div>
+                            <div class="chart-bar" style="height:90%;background:var(--accent-light)"></div>
+                            <div class="chart-bar" style="height:95%;background:var(--accent-light)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MORE FEATURES (compact grid) -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:1050px;margin:0 auto">
             <div class="card card-gradient reveal reveal-delay-1">
                 <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
-                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--accent-subtle);display:flex;align-items:center;justify-content:center">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    </div>
-                    <span class="badge badge-blue">Exclusif</span>
-                </div>
-                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Shifts en temps réel</h3>
-                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Suivez vos chatters en direct. Qui est en shift, sur quel modèle, combien de revenue généré en ce moment.</p>
-            </div>
-            <div class="card card-gradient reveal reveal-delay-2">
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
-                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:rgba(34,197,94,0.08);display:flex;align-items:center;justify-content:center">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                    </div>
-                    <span class="badge badge-green">Gain de temps</span>
-                </div>
-                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Fan CRM avec import CSV</h3>
-                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Importez des milliers de fans en un clic. Segmentation automatique (whales, VIP, at-risk, silent).</p>
-            </div>
-            <div class="card card-gradient reveal reveal-delay-3">
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
-                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:rgba(139,92,246,0.08);display:flex;align-items:center;justify-content:center">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3"/></svg>
-                    </div>
+                    <div style="width:36px;height:36px;border-radius:var(--radius-md);background:rgba(139,92,246,0.08);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v3"/></svg></div>
                     <span class="badge badge-purple">Unique</span>
                 </div>
-                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Multi-plateforme natif</h3>
-                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">OnlyFans + Fansly + Fanvue + MYM. Toutes vos créatrices sur toutes les plateformes, trackées au même endroit.</p>
-            </div>
-            <div class="card card-gradient reveal reveal-delay-1">
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
-                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--accent-subtle);display:flex;align-items:center;justify-content:center">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
-                </div>
-                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Gestion d'équipe & VA</h3>
-                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Chatters, VAs, étudiants, modèles — chacun avec son dashboard dédié et ses permissions.</p>
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem">Multi-plateforme natif</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.6">OF + Fansly + Fanvue + MYM. Toutes les plateformes, un seul dashboard.</p>
             </div>
             <div class="card card-gradient reveal reveal-delay-2">
                 <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
-                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:rgba(245,158,11,0.08);display:flex;align-items:center;justify-content:center">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-                    </div>
-                    <span class="badge badge-yellow">Rare</span>
+                    <div style="width:36px;height:36px;border-radius:var(--radius-md);background:var(--accent-subtle);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
                 </div>
-                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Coaching & Formation</h3>
-                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Module intégré pour former vos recrues. Parfait pour les agences qui vendent aussi du coaching.</p>
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem">Gestion d'équipe & VA</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.6">Chatters, VAs, étudiants — chacun avec son dashboard et ses permissions.</p>
             </div>
             <div class="card card-gradient reveal reveal-delay-3">
                 <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
-                    <div style="width:40px;height:40px;border-radius:var(--radius-md);background:rgba(34,197,94,0.08);display:flex;align-items:center;justify-content:center">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                    </div>
+                    <div style="width:36px;height:36px;border-radius:var(--radius-md);background:rgba(245,158,11,0.08);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+                    <span class="badge badge-yellow">Rare</span>
                 </div>
-                <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:0.5rem">Finances & Commissions</h3>
-                <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6">Calcul auto des commissions chatters, suivi des paiements, revenus agence. Fini les cauchemars Excel.</p>
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.4rem">Coaching & Formation</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.6">Module intégré pour former vos recrues. Parfait pour les agences coaching.</p>
             </div>
         </div>
     </div>
