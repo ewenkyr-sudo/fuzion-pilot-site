@@ -7,33 +7,63 @@
     <link rel="apple-touch-icon" href="/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — Fuzion Pilot</title>
-    <meta name="description" content="L'histoire derrière Fuzion Pilot. Built by a manager OFM qui en avait marre des spreadsheets.">
+    <meta name="description" content="Discover the team behind Fuzion Pilot. Built by OFM agency managers who needed a better tool and decided to create it themselves.">
     <meta property="og:title" content="About — Fuzion Pilot">
-    <meta property="og:description" content="Built by a manager, pour les managers.">
+    <meta property="og:description" content="Built by a manager. For managers. The story behind Fuzion Pilot.">
     <meta property="og:image" content="/logo.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/styles.css">
     <style>
-        .page-hero { padding: 8rem 0 4rem; text-align: center; }
-        .page-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 1rem; }
-        .page-hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-        .story-section { padding: 4rem 0; }
-        .story-block { max-width: 700px; margin: 0 auto; }
-        .story-block blockquote { font-size: 1.2rem; font-style: italic; color: var(--text-secondary); line-height: 1.9; border-left: 3px solid var(--accent); padding-left: 1.5rem; margin-bottom: 1.5rem; }
-        .story-block cite { font-size: 0.85rem; color: var(--text-muted); font-style: normal; display: block; margin-bottom: 2rem; }
-        .story-block p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.2rem; }
-        .mission-section { padding: 4rem 0; background: var(--bg-surface); }
-        .mission-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-        .mission-inner h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 1rem; }
-        .mission-inner p { color: var(--text-secondary); font-size: 1rem; line-height: 1.8; }
-        .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .diff-card { padding: 2rem; }
-        .diff-card .diff-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); background: var(--accent-subtle); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent-light); margin-bottom: 1rem; }
-        .diff-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .diff-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
-        .cta-section { padding: 5rem 0; text-align: center; }
-        .cta-section h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
-        .cta-section p { color: var(--text-secondary); margin-bottom: 2rem; }
+        .page-hero{padding:8rem 0 4rem;text-align:center;position:relative;overflow:hidden}
+        .page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(124,58,237,0.1) 0%,transparent 60%);z-index:1}
+        .page-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;letter-spacing:-2px;margin-bottom:1rem;position:relative;z-index:2}
+        .page-hero p{font-size:1.1rem;color:var(--text-secondary);max-width:650px;margin:0 auto;position:relative;z-index:2;line-height:1.75}
+
+        .story{padding:5rem 0;position:relative;z-index:10}
+        .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+        .story-text h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;letter-spacing:-1px;margin-bottom:1.5rem;line-height:1.2}
+        .story-text p{font-size:0.95rem;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem}
+        .highlight-quote{border-left:3px solid var(--accent-light);padding:1rem 1.5rem;background:rgba(59,130,246,0.05);border-radius:0 8px 8px 0;font-size:1rem;font-weight:600;font-style:italic;color:var(--accent-light);margin:1.5rem 0;border:1px solid rgba(59,130,246,0.15)}
+
+        .story-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;backdrop-filter:blur(10px)}
+        .story-timeline{display:flex;flex-direction:column;gap:1.5rem}
+        .timeline-item{display:flex;gap:1rem;align-items:flex-start}
+        .timeline-dot{width:40px;height:40px;min-width:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.85rem}
+        .timeline-content h4{font-size:0.95rem;font-weight:700;margin-bottom:0.2rem}
+        .timeline-content p{font-size:0.82rem;color:var(--text-muted);line-height:1.5}
+
+        .mission{padding:5rem 0;background:var(--bg-surface);position:relative;z-index:10}
+        .mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .mission-card{text-align:center;padding:2.5rem 2rem;transition:all 0.3s;border-radius:var(--radius-lg)}
+        .mission-card:hover{background:rgba(124,58,237,0.05);transform:translateY(-4px)}
+        .mission-icon{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 1.2rem}
+        .mission-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.5rem}
+        .mission-card p{font-size:0.88rem;color:var(--text-secondary);line-height:1.65}
+
+        .why-diff{padding:5rem 0;position:relative;z-index:10}
+        .diff-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;max-width:1000px;margin:0 auto}
+        .diff-card{padding:2rem;border-radius:var(--radius-lg);border:1px solid var(--border);transition:all 0.3s}
+        .diff-card:hover{border-color:var(--border-accent);transform:translateY(-4px)}
+        .diff-card h3{font-size:1rem;font-weight:700;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem}
+        .diff-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.65}
+
+        .about-cta{padding:5rem 0;text-align:center;position:relative;z-index:10}
+        .about-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(124,58,237,0.06) 0%,transparent 60%)}
+
+        .reveal{opacity:0;animation:fadeInUp 0.8s ease-out forwards}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+        @media(max-width:1024px){
+            .story-grid{grid-template-columns:1fr}
+            .mission-grid,.diff-grid{grid-template-columns:1fr}
+        }
+        @media(max-width:768px){
+            .page-hero{padding:5rem 0 2.5rem}
+            .page-hero h1{font-size:clamp(1.6rem,5vw,2.2rem)}
+            .story{padding:3rem 0}
+            .mission,.why-diff,.about-cta{padding:3rem 0}
+        }
     </style>
 </head>
 <body>
@@ -63,75 +93,137 @@
 
 <!-- HERO -->
 <section class="page-hero">
-    <div class="container reveal">
-        <span class="section-tag">About</span>
-        <h1>Built by a manager. <span class="gradient-text">For managers.</span></h1>
-        <p>Fuzion Pilot n'est pas né dans un bureau de la Silicon Valley. Il est né d'une frustration réelle, sur le terrain.</p>
+    <div class="page-hero-bg"></div>
+    <div class="container">
+        <span class="section-tag">Our story</span>
+        <h1>Built by a <span class="gradient-text">manager.</span><br>For managers.</h1>
+        <p>Fuzion Pilot was born from a simple frustration: no tool on the market truly met the needs of agency managers. So we built it ourselves.</p>
     </div>
 </section>
 
-<!-- FOUNDER STORY -->
-<section class="story-section">
+<!-- STORY -->
+<section class="story">
     <div class="container">
-        <div class="story-block reveal">
-            <blockquote>"Je gérais mon agence avec 14 spreadsheets, 6 outils différents et un groupe Telegram qui n'en finissait plus. Un jour, j'ai cherché un outil qui centraliserait tout. Il n'existait pas. Alors je l'ai construit."</blockquote>
-            <cite>— Founder, Fuzion Pilot</cite>
-            <p>Fuzion Pilot est né de l'expérience directe d'un manager OFM qui gérait plusieurs modèles sur OnlyFans, Fansly, Fanvue et MYM. La réalité du quotidien — jongler entre les plateformes, les chatters, les finances, le recrutement — sans aucun outil dédié, c'était l'enfer organisationnel.</p>
-            <p>Chaque fonctionnalité de Fuzion Pilot résout un problème réel, rencontré sur le terrain. Le CRM fans ? Parce qu'aucun CRM ne comprend ce business. Les shifts en temps réel ? Parce que les Google Sheets ne suffisent plus quand vous avez 8 chatters sur 3 fuseaux horaires. Le module coaching ? Parce que former une équipe sans structure, c'est recommencer à zéro à chaque embauche.</p>
-            <p>Ce n'est pas un outil générique adapté à l'OFM. C'est un outil OFM, point final.</p>
+        <div class="story-grid reveal">
+            <div class="story-text">
+                <h2>We lived through the <span class="gradient-text">same struggles</span> as you</h2>
+                <p>Before creating Fuzion Pilot, we were running our own agencies. We know the reality on the ground: Excel spreadsheets to track chatters, WhatsApp messages lost for content requests, 15 tabs open to monitor performance.</p>
+                <div class="highlight-quote">
+                    "I didn't build a tool for the market. I built the tool I dreamed of having when I was running my own agency."
+                    <div style="margin-top:0.8rem;display:flex;align-items:center;gap:10px">
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--gradient-blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:white">EK</div>
+                        <div><div style="font-weight:600;font-size:0.85rem">Ewen K.</div><div style="font-size:0.72rem;color:var(--text-muted)">Founder, LCX Agency</div></div>
+                    </div>
+                </div>
+                <p>Every feature in Fuzion Pilot was designed, tested, and iterated by active managers. Not by developers disconnected from the field. That's why the tool is so precise and adapted — because it comes from people who live your daily reality.</p>
+            </div>
+            <div>
+                <div class="story-card">
+                    <div style="font-weight:800;font-size:1rem;margin-bottom:1.5rem">Our journey</div>
+                    <div class="story-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot" style="background:rgba(124,58,237,0.15);color:var(--purple)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                            </div>
+                            <div class="timeline-content"><h4>The idea</h4><p>Frustration of using 10 different tools to manage one agency</p></div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot" style="background:rgba(6,214,160,0.15);color:var(--accent)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            </div>
+                            <div class="timeline-content"><h4>Development</h4><p>6 months of intensive dev, testing with our own agencies</p></div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot" style="background:rgba(236,72,153,0.15);color:var(--pink)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            </div>
+                            <div class="timeline-content"><h4>Launch</h4><p>First beta testers convinced, explosive word of mouth</p></div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot" style="background:rgba(245,158,11,0.15);color:var(--yellow)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div class="timeline-content"><h4>Today</h4><p>500+ agencies, 22K+ followers managed, weekly updates</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- MISSION -->
-<section class="mission-section">
+<section class="mission">
     <div class="container">
-        <div class="mission-inner reveal">
+        <div class="section-header reveal">
             <span class="section-tag">Our mission</span>
-            <h2>Donner aux managers les outils <span class="gradient-text">qu'ils méritent.</span></h2>
-            <p>Les agences OFM sont de vraies entreprises. Elles méritent des outils professionnels, pas des bricolages de spreadsheets. Our mission : fournir la plateforme SaaS de référence pour gérer, scaler et professionnaliser ce métier.</p>
+            <h2 class="section-title">What <span class="gradient-text">drives us</span></h2>
+        </div>
+        <div class="mission-grid">
+            <div class="card mission-card reveal">
+                <div class="mission-icon" style="background:rgba(124,58,237,0.15);color:var(--purple)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                </div>
+                <h3>Built by operators</h3>
+                <p>Every feature comes from a real field need. We don't build "cool" things — we build what saves time and money.</p>
+            </div>
+            <div class="card mission-card reveal" style="animation-delay:0.1s">
+                <div class="mission-icon" style="background:rgba(6,214,160,0.15);color:var(--accent)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <h3>Speed matters</h3>
+                <p>Weekly updates, new features every month. We iterate fast because your business doesn't wait.</p>
+            </div>
+            <div class="card mission-card reveal" style="animation-delay:0.2s">
+                <div class="mission-icon" style="background:rgba(236,72,153,0.15);color:var(--pink)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3>Community first</h3>
+                <p>Our roadmap is guided by the community. Vote for features, propose ideas — you decide the future of Fuzion Pilot.</p>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- WHY DIFFERENT -->
-<section style="padding:5rem 0">
+<section class="why-diff">
     <div class="container">
         <div class="section-header reveal">
-            <h2 class="section-title">Ce qui nous rend <span class="gradient-text">différents</span></h2>
+            <span class="section-tag">Why us</span>
+            <h2 class="section-title">What makes Fuzion Pilot <span class="gradient-text">unique</span></h2>
         </div>
         <div class="diff-grid">
-            <div class="card diff-card reveal reveal-delay-1">
-                <div class="diff-icon"><i class="fas fa-hammer"></i></div>
-                <h3>Construit par un praticien</h3>
-                <p>Le fondateur gère une agence. Chaque feature vient d'un besoin réel, pas d'une étude de marché. Vous parlez à quelqu'un qui comprend vos problèmes parce qu'il les vit.</p>
+            <div class="card diff-card reveal">
+                <h3><span style="color:var(--accent)">&#10003;</span> Built by active managers</h3>
+                <p>Not a disconnected tech startup. Our team actively runs agencies and tests every feature in real conditions.</p>
             </div>
-            <div class="card diff-card reveal reveal-delay-2">
-                <div class="diff-icon"><i class="fas fa-globe-europe"></i></div>
-                <h3>French-first, global-ready</h3>
-                <p>Fuzion Pilot est le seul outil qui supporte nativement le marché français (MYM inclus) tout en étant 100% bilingue FR/EN. Les concurrents ignorent le marché francophone.</p>
+            <div class="card diff-card reveal" style="animation-delay:0.1s">
+                <h3><span style="color:var(--accent)">&#10003;</span> Truly all-in-one</h3>
+                <p>Dashboard, chatters, shifts, fans CRM, content, finances, coaching — no more paying for 10 different subscriptions.</p>
             </div>
-            <div class="card diff-card reveal reveal-delay-3">
-                <div class="diff-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>RGPD dès la conception</h3>
-                <p>Hébergement européen, conformité RGPD native, données chiffrées. Pas un afterthought — c'est dans l'ADN du produit depuis le jour 1.</p>
+            <div class="card diff-card reveal" style="animation-delay:0.2s">
+                <h3><span style="color:var(--accent)">&#10003;</span> Evolves every week</h3>
+                <p>We don't ship a product and disappear. Every week brings improvements based on your feedback.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" style="background:var(--bg-surface)">
-    <div class="container reveal">
-        <h2>Rejoignez les managers qui scalent.</h2>
-        <p>Testez Fuzion Pilot gratuitement. Aucune carte requise.</p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-            <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary btn-lg">Start free trial →</a>
-            <a href="mailto:contact@fuzionpilot.com" class="btn btn-ghost btn-lg">Contacter le fondateur</a>
+<section class="about-cta">
+    <div class="container" style="position:relative;z-index:2">
+        <div class="reveal">
+            <h2 class="section-title">Join the movement</h2>
+            <p class="section-subtitle" style="margin-bottom:2.5rem">Be part of the managers who decided to level up.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary btn-lg">Start free trial →</a>
+                <a href="mailto:contact@fuzionpilot.com" class="btn btn-ghost btn-lg">Book a demo call</a>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
@@ -140,7 +232,7 @@
                     <img src="/logo.png" alt="Fuzion Pilot" style="height:32px">
                     <span class="nav-logo-text">Fuzion Pilot</span>
                 </a>
-                <p class="footer-brand-desc">La plateforme tout-en-un pour gérer votre agence OFM. Conçue par des managers, pour des managers.</p>
+                <p class="footer-brand-desc">The all-in-one platform to manage your OFM agency. Built by managers, for managers.</p>
                 <div class="footer-socials">
                     <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
                     <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -148,34 +240,13 @@
                     <a href="#" aria-label="Discord"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg></a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Product</h4>
-                <a href="/en/features.html">Features</a>
-                <a href="/en/pricing.html">Pricing</a>
-                <a href="/en/compare.html">Compare</a>
-                <a href="https://lcx-agency.onrender.com">Démo</a>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="#">Documentation</a>
-                <a href="#">Tutoriels</a>
-                <a href="#">Blog</a>
-                <a href="#">Communauté</a>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <a href="/en/about.html">About</a>
-                <a href="mailto:contact@fuzionpilot.com">Contact</a>
-                <a href="/en/legal.html">Mentions légales</a>
-                <a href="legal.html#confidentialite">Confidentialité</a>
-            </div>
+            <div class="footer-col"><h4>Product</h4><a href="/en/features.html">Features</a><a href="/en/pricing.html">Pricing</a><a href="/en/compare.html">Compare</a><a href="https://lcx-agency.onrender.com">Demo</a></div>
+            <div class="footer-col"><h4>Resources</h4><a href="#">Documentation</a><a href="#">Tutorials</a><a href="#">Blog</a><a href="#">Community</a></div>
+            <div class="footer-col"><h4>Company</h4><a href="/en/about.html">About</a><a href="mailto:contact@fuzionpilot.com">Contact</a><a href="/en/legal.html">Legal notice</a><a href="/en/legal.html#confidentialite">Privacy</a></div>
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 Fuzion Pilot. Built by managers, for managers.</span>
-            <span style="display:flex;align-items:center;gap:6px">
-                <img src="/logo.png" alt="" style="height:16px;border-radius:4px;opacity:0.5">
-                Fuzion Pilot
-            </span>
+            <span style="display:flex;align-items:center;gap:6px"><img src="/logo.png" alt="" style="height:16px;border-radius:4px;opacity:0.5"> Fuzion Pilot</span>
         </div>
     </div>
 </footer>

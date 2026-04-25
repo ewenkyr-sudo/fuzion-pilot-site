@@ -7,37 +7,69 @@
     <link rel="apple-touch-icon" href="/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing — Fuzion Pilot</title>
-    <meta name="description" content="Simple, transparent pricing. Standard à 39 euros, Pro à 149 euros. Early access pricing verrouillé.">
+    <meta name="description" content="Simple, transparent pricing for Fuzion Pilot. Start your free trial and scale your OFM agency. No commitment.">
     <meta property="og:title" content="Pricing — Fuzion Pilot">
-    <meta property="og:description" content="Tarification simple, transparente, conçue pour les agences OFM.">
+    <meta property="og:description" content="Simple pricing for OFM agencies. Start free, scale as you grow.">
     <meta property="og:image" content="/logo.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="/styles.css">
     <style>
-        .page-hero { padding: 8rem 0 4rem; text-align: center; }
-        .page-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 1rem; }
-        .page-hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 750px; margin: 0 auto; }
-        .pricing-features { list-style: none; display: grid; gap: 0.7rem; margin-bottom: 2rem; }
-        .pricing-features li { font-size: 0.88rem; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
-        .pricing-features li span { color: var(--accent); font-weight: 600; }
-        .compare-table { width: 100%; border-collapse: collapse; margin: 0 auto; max-width: 800px; }
-        .compare-table th, .compare-table td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
-        .compare-table th { color: var(--text-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .compare-table td:nth-child(2), .compare-table td:nth-child(3), .compare-table th:nth-child(2), .compare-table th:nth-child(3) { text-align: center; }
-        .compare-table td { color: var(--text-secondary); }
-        .compare-table .check { color: var(--accent); font-weight: 700; }
-        .compare-table .cross { color: var(--text-dim); }
-        .founder-quote { max-width: 700px; margin: 0 auto; text-align: center; padding: 3rem 2rem; }
-        .founder-quote blockquote { font-size: 1.15rem; font-style: italic; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
-        .founder-quote cite { font-size: 0.85rem; color: var(--text-muted); font-style: normal; }
-        .faq-grid { max-width: 700px; margin: 0 auto; display: grid; gap: 1rem; }
-        .faq-item { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; }
-        .faq-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .faq-item p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
-        .cta-section { padding: 5rem 0; text-align: center; }
-        .cta-section h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
-        .cta-section p { color: var(--text-secondary); margin-bottom: 2rem; }
+        .page-hero{padding:8rem 0 4rem;text-align:center;position:relative;overflow:hidden}
+        .page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(124,58,237,0.1) 0%,transparent 60%);z-index:1}
+        .page-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;letter-spacing:-2px;margin-bottom:1rem;position:relative;z-index:2}
+        .page-hero p{font-size:1.1rem;color:var(--text-secondary);max-width:600px;margin:0 auto;position:relative;z-index:2;line-height:1.7}
+
+        .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:750px;margin:0 auto}
+        .pricing-card{padding:2.5rem;position:relative;transition:all 0.3s}
+        .pricing-card:hover{transform:translateY(-4px)}
+        .pricing-card.popular{border-color:var(--border-accent)}
+        .pricing-card.popular::after{content:'Recommended';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gradient-blue);padding:4px 14px;border-radius:50px;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+
+        .pricing-amount{font-size:2.8rem;font-weight:900;font-family:var(--font-mono)}
+        .pricing-period{font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .pricing-features{list-style:none;display:grid;gap:0.6rem;margin-bottom:2rem}
+        .pricing-features li{font-size:0.88rem;color:var(--text-secondary);display:flex;align-items:center;gap:8px}
+        .pricing-features li span.check{color:var(--accent)}
+        .pricing-features li span.cross{color:var(--text-muted);opacity:0.4}
+        .pricing-features li.disabled{opacity:0.4}
+
+        .comparison{padding:5rem 0;position:relative;z-index:3}
+        .comparison-table{width:100%;max-width:800px;margin:0 auto;border-collapse:collapse}
+        .comparison-table th,.comparison-table td{padding:0.8rem 1rem;text-align:center;border-bottom:1px solid var(--border);font-size:0.85rem}
+        .comparison-table th:first-child,.comparison-table td:first-child{text-align:left}
+        .comparison-table thead th{font-weight:700;font-size:0.95rem;padding:1.2rem 1rem;position:sticky;top:60px;background:var(--bg-base);z-index:10}
+        .comparison-table tbody td{color:var(--text-secondary)}
+        .comparison-table tbody tr:hover td{background:rgba(124,58,237,0.03)}
+        .comparison-table .cat-row td{font-weight:700;color:var(--text-primary);font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;padding-top:1.8rem;border-bottom:2px solid var(--border)}
+        .check-yes{color:var(--accent)}
+        .check-no{color:var(--text-muted);opacity:0.3}
+
+        .faq-section{padding:5rem 0;background:var(--bg-surface)}
+        .faq-container{max-width:700px;margin:0 auto}
+        .faq-item{border-bottom:1px solid var(--border);padding:1.2rem 0}
+        .faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;padding:0;font-family:inherit;cursor:pointer}
+        .faq-q span{color:var(--text-muted);font-size:1.2rem;transition:transform 0.3s}
+        .faq-item.open .faq-q span{transform:rotate(45deg)}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+        .faq-item.open .faq-a{max-height:200px}
+        .faq-a p{padding-top:0.8rem;font-size:0.88rem;color:var(--text-secondary);line-height:1.7}
+
+        .pricing-cta{padding:5rem 0;text-align:center;position:relative}
+        .pricing-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(124,58,237,0.06) 0%,transparent 60%)}
+
+        .reveal{opacity:0;animation:fadeInUp 0.8s ease-out forwards}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+        @media(max-width:768px){
+            .page-hero{padding:5rem 0 2.5rem}
+            .page-hero h1{font-size:clamp(1.6rem,5vw,2.2rem)}
+            .pricing-card{padding:1.5rem}
+            .pricing-amount{font-size:2.2rem}
+            .comparison-table{font-size:0.75rem;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+            .comparison-table th,.comparison-table td{padding:0.5rem;white-space:nowrap}
+            .comparison-table td:first-child,.comparison-table th:first-child{position:sticky;left:0;background:var(--bg-base);z-index:5;min-width:120px;white-space:normal}
+        }
     </style>
 </head>
 <body>
@@ -67,161 +99,139 @@
 
 <!-- HERO -->
 <section class="page-hero">
-    <div class="container reveal">
+    <div class="page-hero-bg"></div>
+    <div class="container">
         <span class="section-tag">Pricing</span>
-        <h1>Tarification simple <span class="gradient-text">et transparente.</span></h1>
-        <p>Pas de frais cachés. Pas de % sur vos revenus. Un prix fixe, des fonctionnalités complètes.</p>
+        <h1>Simple, <span class="gradient-text">transparent</span> pricing.</h1>
+        <p>Early access pricing — locked forever for early adopters. Start free, scale as you grow. Cancel anytime.</p>
     </div>
 </section>
 
 <!-- PRICING CARDS -->
-<section style="padding:0 0 5rem">
+<section style="padding:0 0 5rem;position:relative;z-index:2">
     <div class="container">
+        <p class="reveal" style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:2.5rem">7-day free trial -- No credit card required -- Cancel anytime</p>
         <div class="pricing-grid">
-            <!-- Standard -->
-            <div class="card reveal reveal-delay-1" style="padding:2.5rem">
+            <!-- STANDARD -->
+            <div class="card pricing-card reveal">
                 <span class="badge badge-blue" style="margin-bottom:1rem">Early bird</span>
                 <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:0.3rem">Standard</h3>
-                <div style="margin-bottom:1.5rem">
-                    <span style="font-size:2.5rem;font-weight:800;font-family:var(--font-mono)" class="gradient-text">€39</span>
-                    <span style="color:var(--text-muted);font-size:0.85rem">/month</span>
-                </div>
-                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.6">Idéal pour les agences qui démarrent ou gèrent jusqu'à 5 modèles. All core features incluses.</p>
+                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.2rem">For growing agencies</p>
+                <div style="margin-bottom:0.3rem"><span class="pricing-amount gradient-text">&#8364;39</span><span style="color:var(--text-muted);font-size:0.85rem">/month</span></div>
+                <p class="pricing-period">Will go to &#8364;79/month after launch</p>
                 <ul class="pricing-features">
-                    <li><span>✓</span> Up to 5 modèles</li>
-                    <li><span>✓</span> Up to 10 members d'équipe</li>
-                    <li><span>✓</span> Dashboard & KPIs</li>
-                    <li><span>✓</span> Chatters management</li>
-                    <li><span>✓</span> Fans CRM + export CSV</li>
-                    <li><span>✓</span> Content Planner</li>
-                    <li><span>✓</span> Shifts en temps réel</li>
-                    <li><span>✓</span> Finances & splits</li>
-                    <li><span>✓</span> Recrutement pipeline</li>
-                    <li><span>✓</span> Support FR + EN</li>
-                    <li><span>✓</span> Community access</li>
+                    <li><span class="check">&#10003;</span> Up to 5 models</li>
+                    <li><span class="check">&#10003;</span> Up to 10 team members</li>
+                    <li><span class="check">&#10003;</span> Dashboard & analytics</li>
+                    <li><span class="check">&#10003;</span> Shifts management</li>
+                    <li><span class="check">&#10003;</span> Fans CRM with CSV import</li>
+                    <li><span class="check">&#10003;</span> Content planner</li>
+                    <li><span class="check">&#10003;</span> Finances & commissions</li>
+                    <li><span class="check">&#10003;</span> Recruitment pipeline</li>
+                    <li><span class="check">&#10003;</span> FR + EN support</li>
+                    <li><span class="check">&#10003;</span> Community access</li>
+                    <li class="disabled"><span class="cross">&#10005;</span> Coaching module</li>
+                    <li class="disabled"><span class="cross">&#10005;</span> Priority support</li>
+                    <li class="disabled"><span class="cross">&#10005;</span> API access</li>
                 </ul>
-                <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1.2rem">Will go to €79/month after launch</p>
                 <a href="https://lcx-agency.onrender.com/register" class="btn btn-secondary" style="width:100%;justify-content:center">Start free trial</a>
             </div>
-            <!-- Pro -->
-            <div class="card reveal reveal-delay-2" style="padding:2.5rem;border-color:var(--border-accent);position:relative">
-                <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%)">
-                    <span class="badge badge-blue" style="font-size:0.6rem;padding:4px 12px">Recommended</span>
-                </div>
+            <!-- PRO -->
+            <div class="card pricing-card popular reveal">
                 <span class="badge badge-purple" style="margin-bottom:1rem">Agencies 5+ models</span>
                 <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:0.3rem">Pro</h3>
-                <div style="margin-bottom:1.5rem">
-                    <span style="font-size:2.5rem;font-weight:800;font-family:var(--font-mono)" class="gradient-text-blue">€149</span>
-                    <span style="color:var(--text-muted);font-size:0.85rem">/month</span>
-                </div>
-                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.6">Pour les agences en croissance. Modèles et équipe illimités, coaching intégré, accès prioritaire au founder.</p>
+                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.2rem">For established agencies</p>
+                <div style="margin-bottom:0.3rem"><span class="pricing-amount gradient-text-blue">&#8364;149</span><span style="color:var(--text-muted);font-size:0.85rem">/month</span></div>
+                <p class="pricing-period">Will go to &#8364;299/month after launch</p>
                 <ul class="pricing-features">
-                    <li><span>✓</span> Modèles illimités</li>
-                    <li><span>✓</span> Unlimited team</li>
-                    <li><span>✓</span> Tout ce qui est dans Standard</li>
-                    <li><span>✓</span> Module Coaching complet</li>
-                    <li><span>✓</span> VA (Virtual Assistant)</li>
-                    <li><span>✓</span> Priority support</li>
-                    <li><span>✓</span> Monthly call 1-on-1 founder</li>
-                    <li><span>✓</span> Early API access</li>
-                    <li><span>✓</span> Onboarding personnalisé</li>
-                    <li><span>✓</span> Roadmap influence</li>
+                    <li><span class="check">&#10003;</span> Unlimited models</li>
+                    <li><span class="check">&#10003;</span> Unlimited team members</li>
+                    <li><span class="check">&#10003;</span> Everything in Standard</li>
+                    <li><span class="check">&#10003;</span> Coaching & training module</li>
+                    <li><span class="check">&#10003;</span> VA management</li>
+                    <li><span class="check">&#10003;</span> Advanced analytics</li>
+                    <li><span class="check">&#10003;</span> Priority support 24/7</li>
+                    <li><span class="check">&#10003;</span> Monthly 1-on-1 with founder</li>
+                    <li><span class="check">&#10003;</span> Early API access</li>
+                    <li><span class="check">&#10003;</span> Custom onboarding</li>
+                    <li><span class="check">&#10003;</span> Multi-platform native</li>
+                    <li><span class="check">&#10003;</span> White label (coming soon)</li>
                 </ul>
-                <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1.2rem">Will go to €299/month after launch</p>
                 <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary" style="width:100%;justify-content:center">Start free trial →</a>
             </div>
         </div>
-        <p class="reveal" style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-top:2rem">7-day free trial · No credit card required · Cancel anytime</p>
     </div>
 </section>
 
 <!-- COMPARISON TABLE -->
-<section style="padding:4rem 0;background:var(--bg-surface)">
+<section class="comparison" style="background:var(--bg-surface)">
     <div class="container">
         <div class="section-header reveal">
-            <h2 class="section-title">Comparaison <span class="gradient-text">détaillée</span></h2>
+            <span class="section-tag">Comparison</span>
+            <h2 class="section-title">Compare plans in detail</h2>
         </div>
-        <div class="reveal" style="overflow-x:auto">
-            <table class="compare-table">
-                <thead>
-                    <tr><th>Fonctionnalité</th><th>Standard</th><th>Pro</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Modèles</td><td>Up to 5</td><td>Illimités</td></tr>
-                    <tr><td>Membres d'équipe</td><td>Up to 10</td><td>Illimités</td></tr>
-                    <tr><td>Dashboard & KPIs</td><td class="check">✓</td><td class="check">✓</td></tr>
-                    <tr><td>Gestion des chatters</td><td class="check">✓</td><td class="check">✓</td></tr>
-                    <tr><td>Fans CRM</td><td class="check">✓</td><td class="check">✓</td></tr>
-                    <tr><td>Export CSV</td><td class="check">✓</td><td class="check">✓</td></tr>
-                    <tr><td>Content Planner</td><td class="check">✓</td><td class="check">✓</td></tr>
-                    <tr><td>Shifts temps réel</td><td class="check">✓</td><td class="check">✓</td></tr>
-                    <tr><td>Finances & splits</td><td class="check">✓</td><td class="check">✓</td></tr>
-                    <tr><td>Recrutement pipeline</td><td class="check">✓</td><td class="check">✓</td></tr>
-                    <tr><td>Module Coaching</td><td class="cross">—</td><td class="check">✓</td></tr>
-                    <tr><td>VA (Virtual Assistant)</td><td class="cross">—</td><td class="check">✓</td></tr>
-                    <tr><td>Priority support</td><td class="cross">—</td><td class="check">✓</td></tr>
-                    <tr><td>Call 1-on-1 founder</td><td class="cross">—</td><td class="check">✓</td></tr>
-                    <tr><td>Accès API</td><td class="cross">—</td><td class="check">✓</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<!-- FOUNDER QUOTE -->
-<section style="padding:4rem 0">
-    <div class="container">
-        <div class="founder-quote reveal">
-            <blockquote>"Je ne voulais pas d'un pricing au pourcentage qui punit le succès. Vous grandissez, votre prix reste le même. Les early adopters gardent ce tarif pour toujours — c'est ma façon de remercier ceux qui nous font confiance dès le début."</blockquote>
-            <cite>— Fondateur, Fuzion Pilot</cite>
-        </div>
+        <table class="comparison-table reveal">
+            <thead>
+                <tr><th></th><th>Standard</th><th style="color:var(--accent-light)">Pro</th></tr>
+            </thead>
+            <tbody>
+                <tr class="cat-row"><td colspan="3">Team Management</td></tr>
+                <tr><td>Models</td><td>5</td><td>Unlimited</td></tr>
+                <tr><td>Team members</td><td>10</td><td>Unlimited</td></tr>
+                <tr><td>Custom roles</td><td class="check-yes">&#10003;</td><td class="check-yes">&#10003;</td></tr>
+                <tr class="cat-row"><td colspan="3">Core Features</td></tr>
+                <tr><td>Dashboard & KPIs</td><td class="check-yes">&#10003;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>Shifts management</td><td class="check-yes">&#10003;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>Fans CRM</td><td class="check-yes">&#10003;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>Content planner</td><td class="check-yes">&#10003;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>Finances & commissions</td><td class="check-yes">&#10003;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>Recruitment pipeline</td><td class="check-yes">&#10003;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>Coaching module</td><td class="check-no">&#10005;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>VA management</td><td class="check-no">&#10005;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>Advanced analytics</td><td class="check-no">&#10005;</td><td class="check-yes">&#10003;</td></tr>
+                <tr class="cat-row"><td colspan="3">Support & Extras</td></tr>
+                <tr><td>Support</td><td>Email</td><td>24/7 Priority</td></tr>
+                <tr><td>1-on-1 with founder</td><td class="check-no">&#10005;</td><td>Monthly</td></tr>
+                <tr><td>API access</td><td class="check-no">&#10005;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>Custom onboarding</td><td class="check-no">&#10005;</td><td class="check-yes">&#10003;</td></tr>
+                <tr><td>White label</td><td class="check-no">&#10005;</td><td>Coming soon</td></tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
 <!-- FAQ -->
-<section style="padding:4rem 0;background:var(--bg-surface)">
+<section class="faq-section">
     <div class="container">
         <div class="section-header reveal">
             <span class="section-tag">FAQ</span>
-            <h2 class="section-title">Questions fréquentes</h2>
+            <h2 class="section-title">Pricing questions</h2>
         </div>
-        <div class="faq-grid">
-            <div class="faq-item reveal">
-                <h4>Est-ce que l'essai gratuit est vraiment sans carte ?</h4>
-                <p>Oui. 7 jours d'accès complet, aucune carte bancaire demandée. Si vous ne souscrivez pas, votre compte est simplement mis en pause.</p>
-            </div>
-            <div class="faq-item reveal">
-                <h4>Puis-je changer de plan plus tard ?</h4>
-                <p>Absolument. Vous pouvez passer du Standard au Pro (ou inversement) à tout moment depuis vos paramètres. Le changement est immédiat.</p>
-            </div>
-            <div class="faq-item reveal">
-                <h4>Le prix early bird est-il garanti ?</h4>
-                <p>Oui. Si vous souscrivez pendant la phase early access, votre tarif est verrouillé à vie. Même quand les prix augmenteront, le vôtre restera identique.</p>
-            </div>
-            <div class="faq-item reveal">
-                <h4>Proposez-vous un onboarding ?</h4>
-                <p>Les utilisateurs Pro bénéficient d'un onboarding personnalisé avec le founder. Les utilisateurs Standard ont accès à la documentation et aux tutoriels vidéo.</p>
-            </div>
-            <div class="faq-item reveal">
-                <h4>Y a-t-il un engagement minimum ?</h4>
-                <p>Non. C'est du month par month, annulez quand vous voulez. Pas de frais de résiliation, pas de période d'engagement.</p>
-            </div>
+        <div class="faq-container reveal">
+            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there a free trial?<span>+</span></button><div class="faq-a"><p>Yes! 7-day free trial on both plans. No credit card required. You can explore every feature before committing.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I switch plans anytime?<span>+</span></button><div class="faq-a"><p>Absolutely. You can upgrade or downgrade at any time. The difference is prorated on your next invoice.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there a minimum commitment?<span>+</span></button><div class="faq-a"><p>No commitment at all. Cancel anytime, no questions asked. Monthly billing, no lock-in contracts.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What payment methods do you accept?<span>+</span></button><div class="faq-a"><p>We accept all major credit cards (Visa, Mastercard, Amex) via Stripe. SEPA transfers available for Pro plans.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will early bird pricing increase?<span>+</span></button><div class="faq-a"><p>Yes, prices will increase after the launch period. But early adopters keep their rate locked forever as long as their subscription remains active.</p></div></div>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
-    <div class="container reveal">
-        <h2>Lancez-vous aujourd'hui.</h2>
-        <p style="max-width:500px;margin:0 auto 2rem">No credit card required · €39 early bird · Le prix augmente after launch</p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-            <a href="https://lcx-agency.onrender.com/register" class="btn btn-primary btn-lg">Start free trial →</a>
-            <a href="https://lcx-agency.onrender.com" class="btn btn-ghost btn-lg">View demo</a>
+<section class="pricing-cta">
+    <div class="container" style="position:relative;z-index:2">
+        <div class="reveal">
+            <h2 class="section-title">Still have questions?</h2>
+            <p class="section-subtitle" style="margin-bottom:2rem">Our team is available to help you choose the perfect plan for your agency.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                <a href="mailto:contact@fuzionpilot.com" class="btn btn-primary">Contact us</a>
+                <a href="/en/features.html" class="btn btn-ghost">View features</a>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
@@ -230,7 +240,7 @@
                     <img src="/logo.png" alt="Fuzion Pilot" style="height:32px">
                     <span class="nav-logo-text">Fuzion Pilot</span>
                 </a>
-                <p class="footer-brand-desc">La plateforme tout-en-un pour gérer votre agence OFM. Conçue par des managers, pour des managers.</p>
+                <p class="footer-brand-desc">The all-in-one platform to manage your OFM agency. Built by managers, for managers.</p>
                 <div class="footer-socials">
                     <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
                     <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -238,34 +248,13 @@
                     <a href="#" aria-label="Discord"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg></a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Product</h4>
-                <a href="/en/features.html">Features</a>
-                <a href="/en/pricing.html">Pricing</a>
-                <a href="/en/compare.html">Compare</a>
-                <a href="https://lcx-agency.onrender.com">Demo</a>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="#">Documentation</a>
-                <a href="#">Tutoriels</a>
-                <a href="#">Blog</a>
-                <a href="#">Communauté</a>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <a href="/en/about.html">About</a>
-                <a href="mailto:contact@fuzionpilot.com">Contact</a>
-                <a href="/en/legal.html">Mentions légales</a>
-                <a href="legal.html#confidentialite">Confidentialité</a>
-            </div>
+            <div class="footer-col"><h4>Product</h4><a href="/en/features.html">Features</a><a href="/en/pricing.html">Pricing</a><a href="/en/compare.html">Compare</a><a href="https://lcx-agency.onrender.com">Demo</a></div>
+            <div class="footer-col"><h4>Resources</h4><a href="#">Documentation</a><a href="#">Tutorials</a><a href="#">Blog</a><a href="#">Community</a></div>
+            <div class="footer-col"><h4>Company</h4><a href="/en/about.html">About</a><a href="mailto:contact@fuzionpilot.com">Contact</a><a href="/en/legal.html">Legal notice</a><a href="/en/legal.html#confidentialite">Privacy</a></div>
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 Fuzion Pilot. Built by managers, for managers.</span>
-            <span style="display:flex;align-items:center;gap:6px">
-                <img src="/logo.png" alt="" style="height:16px;border-radius:4px;opacity:0.5">
-                Fuzion Pilot
-            </span>
+            <span style="display:flex;align-items:center;gap:6px"><img src="/logo.png" alt="" style="height:16px;border-radius:4px;opacity:0.5"> Fuzion Pilot</span>
         </div>
     </div>
 </footer>
